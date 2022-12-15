@@ -3,11 +3,11 @@
   <title>LLye</title>
   
   
-  <link href="https://llye-hub.github.io/project/atom.xml" rel="self"/>
+  <link href="https://llye-hub.github.io/atom.xml" rel="self"/>
   
-  <link href="https://llye-hub.github.io/project/"/>
+  <link href="https://llye-hub.github.io/"/>
   <updated>2022-12-15T03:48:38.124Z</updated>
-  <id>https://llye-hub.github.io/project/</id>
+  <id>https://llye-hub.github.io/</id>
   
   <author>
     <name>yuye</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>firstPage.md</title>
-    <link href="https://llye-hub.github.io/project/2022/12/14/firstPage-md/"/>
-    <id>https://llye-hub.github.io/project/2022/12/14/firstPage-md/</id>
+    <link href="https://llye-hub.github.io/2022/12/14/firstPage-md/"/>
+    <id>https://llye-hub.github.io/2022/12/14/firstPage-md/</id>
     <published>2022-12-14T10:04:50.000Z</published>
     <updated>2022-12-15T03:48:38.124Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://llye-hub.github.io/project/2022/12/14/hello-world/"/>
-    <id>https://llye-hub.github.io/project/2022/12/14/hello-world/</id>
+    <link href="https://llye-hub.github.io/2022/12/14/hello-world/"/>
+    <id>https://llye-hub.github.io/2022/12/14/hello-world/</id>
     <published>2022-12-14T07:36:23.736Z</published>
     <updated>2022-12-14T07:36:23.736Z</updated>
     
