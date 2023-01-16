@@ -23,7 +23,7 @@ menu:
     url: /friends
     icon: fas fa-address-book
   # 二级菜单写法如下
-  #Medias:
+  # Medias:
   #  icon: fas fa-list
   #  children:
   #    - name: Musics

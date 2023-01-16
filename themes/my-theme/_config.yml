@@ -4,8 +4,8 @@ menu:
   Archives: archives  # 归档
   Categories: categories  # 分类
   Tags: tags  # 标签
-  Repository: https://github.com/LLye-hub  # github repositories
-  Links: links  # 友链
+  # Repository: https://github.com/LLye-hub  # github repositories
+  # Links: links  # 友链
   About: about  # 关于
 
 # Enable/Disable menu icons
@@ -61,10 +61,10 @@ pagination:
 sidebar: right
 widgets:
   - board  
+  - archive
   - category
   - tag
-  - tagcloud
-  - archive
+  # - tagcloud
   - recent_posts
 
 # display widgets at the bottom of index pages (pagination == 2)
@@ -211,30 +211,29 @@ profile:
     links:
       github: https://github.com/LLye-hub
     link_tooltip: true # enable the social link tooltip, options: true, false
+
+
   # My Skills 
   skills:
+    SQL: ★★★★☆
+    Hadoop: ★★☆☆☆
+    Spark: ★★☆☆☆
+    Java: ★☆☆☆☆
     Git: ★★★☆☆
-    Gulp: ★★★☆☆
-    Javascript: ★★★☆☆
-    HTML+CSS: ★★★☆☆
-    Bootstrap: ★★★☆☆
-    ThinkPHP: ★★★☆☆
-    平面设计: ★★★☆☆
   # My Personal Links
   links:
     Github: https://github.com/LLye-hub
     Blog: https://llye-hub.github.io/
   # My Personal Works
-  works:
-    name:
-      link: https://github.com/LLye-hub
-      date: 2021
+  # works:
+  #   nam4e:
+  #     link: https://github.com/LLye-hub
+  #     date: 2021
   # My Personal Projects
-  projects:
-    cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
-    cofess/hexo-theme-pure: https://github.com/cofess/hexo-theme-pure
+  # projects:
+  #   cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
+  #   cofess/hexo-theme-pure: https://github.com/cofess/hexo-theme-pure
   copyright: true # 底部版权信息
-
   # My Personal Labels
   labels:
     - sql
