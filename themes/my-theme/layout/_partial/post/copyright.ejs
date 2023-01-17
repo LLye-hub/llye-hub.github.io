@@ -1,3 +1,4 @@
+<!-- 版权声明 -->
 <blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     <% if (post.permalink) { %>
@@ -11,7 +12,8 @@
     </li>
   </ul>
 </blockquote>
-<% if(theme.profile && theme.profile.enabled) { %>
+<!-- 文末个人介绍 -->
+<% if(theme.profile && theme.profile.articleSelfBlock) { %>
 <% var profile = theme.profile; %>
 <div class="panel panel-default panel-badger">
   <div class="panel-body">

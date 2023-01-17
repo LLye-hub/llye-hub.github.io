@@ -16,7 +16,7 @@ menu_icons:
   categories: icon-folder
   tags: icon-tags
   repository: icon-project
-    #books: icon-book-fill
+  books: icon-book-fill
   links: icon-friendship
   about: icon-cup-fill
 
@@ -41,7 +41,7 @@ config:
   layout: main-center # 布局方式 main-left main-center main-right
   toc: true # 是否开启文章章节目录导航
   menu_highlight: true # 是否开启当前菜单高亮显示
-  thumbnail: false # enable posts thumbnail, options: true, false
+  thumbnail: false # 是否开启文章缩略图，enable posts thumbnail, options: true, false
   excerpt_link: Read More
   #New
   isNewTabLinks: true #是否链接打开新标签页
@@ -74,7 +74,7 @@ index_widgets:
 # - archive  
 
 # widget behavior
-archive_type: 'monthly'
+archive_type: 'monthly'     # 归档文章显示方式
 show_count: true
 
 # Fancybox
@@ -198,19 +198,19 @@ fb_app_id:
 # profile
 profile:
   enabled: true # Whether to show profile bar
-  articleSelfBlock: true # 关闭文章下方的自我介绍
+  articleSelfBlock: false # 是否开启文章下方的自我介绍
   avatar: images/avatar.jpeg
   gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
   author: 辣白菜的菜
   author_title: 数仓工程师
-  author_description: 个人简介
+  author_description: 持续成长的小白菜，搞钱要紧，早日退休 # 个人简介标语，可为null
   location: HangZhou, China
   follow: https://github.com/LLye-hub
   # Social Links
   social:
     links:
       github: https://github.com/LLye-hub
-    link_tooltip: true # enable the social link tooltip, options: true, false
+    link_tooltip: false # enable the social link tooltip, options: true, false
 
 
   # My Skills 
@@ -233,7 +233,7 @@ profile:
   # projects:
   #   cofess/gulp-startpro: https://github.com/cofess/gulp-startpro
   #   cofess/hexo-theme-pure: https://github.com/cofess/hexo-theme-pure
-  copyright: true # 底部版权信息
+  # copyright: false # 底部版权信息
   # My Personal Labels
   labels:
     - sql

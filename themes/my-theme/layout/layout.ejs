@@ -3,9 +3,11 @@
 <%- partial('_common/head', {post: page}) %>
 <% 
 	var bodyClass = 'main-center'; 
+  <!-- 主题布局 -->
 	if (theme.config.layout) {
-		bodyClass = theme.config.layout;
+		bodyClass = theme.config.layout;        
 	}
+  <!-- 主题颜色 -->
   if (theme.config.skin) {
     bodyClass += ' ' + theme.config.skin;
   }
@@ -17,6 +19,7 @@
     <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
   <% } %>
   <%- body %>
+  <!-- 版权信息 -->
   <%- partial('_common/footer', null, {cache: !config.relative_link}) %>
   <%- partial('_common/script', {post: page}) %>
 </body>

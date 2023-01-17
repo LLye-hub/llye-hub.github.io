@@ -1,8 +1,8 @@
 ---
-title: 关于
-description: 个人简介
+title: About Me
+description: 持续成长的小白菜，搞钱要紧，早日退休
 layout: about
 comments: false
 sidebar: custom
 ---
-个人详细介绍
+### 工作经历

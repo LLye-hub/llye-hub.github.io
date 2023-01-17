@@ -5,6 +5,7 @@
       <% if (post.link || post.title){ %>
         <%- partial('post/title', {class_name: 'article-title'}) %>
       <% } %>
+      <!-- 文章元数据：日期、分类、标签、访问统计 -->
       <div class="article-meta">
         <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
         <%- partial('post/category') %>
@@ -23,17 +24,21 @@
           </p>
         <% } %>
       <% } else { %>
+        <!-- 文章内容 -->
         <%- post.content %>
       <% } %>
     </div>
+    <!-- 版权声明 -->
     <div class="article-footer">
       <%- partial('post/copyright') %>
     </div>
   </article>
+  <!-- 文末评论 -->
   <% if (!index) { %>
     <%- partial('post/comment') %>
   <% } %>
 </div>
+
 <% if (!index){ %>
   <%- partial('post/nav') %>
   <%- partial('post/donate') %>
