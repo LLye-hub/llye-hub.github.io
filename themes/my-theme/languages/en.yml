@@ -10,8 +10,8 @@ menu:
   About: About
 nav:
   all: All
-  older: Older
-  newer: Newer
+  older: Next
+  newer: Last
 page:
   home: Home
   archive: Archive

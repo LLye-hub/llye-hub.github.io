@@ -7,10 +7,8 @@ tags:
   - ORC
 abbrlink: 1f69e18b
 date: 2022-12-16 17:56:46
+toc: true
 ---
-### 参考资料
-[SPARK查ORC格式HIVE数据报错NULLPOINTEREXCEPTION](https://www.freesion.com/article/8054484645/)
-[SparkSQL读取ORC表时遇到空文件](https://blog.csdn.net/weixin_45240507/article/details/124689323?spm=1001.2101.3001.6650.7&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-124689323-blog-100524131.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-124689323-blog-100524131.pc_relevant_default&utm_relevant_index=7)
 
 # 为什么碰到这个问题
 起因是在使用SparkSQL查询表时，遇到报错：java.lang.RuntimeException: serious problem at OrcInputFormat.generateSplitsInfo
@@ -19,22 +17,22 @@ date: 2022-12-16 17:56:46
 之后，换了hiveSQL执行成功，但这并不算排查成功，排查应尽可能追根究底，以后才能做到举一反三，所以基于网上资料和个人理解写了这篇博客
 
 # 问题分析
-#### 定位问题
+## 定位问题
 根据报错的java类名+方法名（OrcInputFormat.generateSplitsInfo），可以判断问题出现在读取orc文件阶段
 
-#### 查看HDFS文件
+## 查看HDFS文件
 查看表存储路径下的文件，发现有1个空文件
 ![AfjbE.png](https://i.328888.xyz/2022/12/19/AfjbE.png)
 
-#### 为什么会有空文件
+## 为什么会有空文件
 空文件是根据map个数产生的小文件，启动select 查询必然启动MR 那就避免不了Map阶段的产生
 
 
-#### 解决办法
+## 解决办法
 问题原因基本清晰了，就是读取空文件导致的报错，但是计算过程中无法避免空文件产生，如果非得用SparkSQL执行查询语句，这里提供几种解决方案：
-##### 1、修改表存储格式为parquet
+### 修改表存储格式为parquet
 这种方法是网上查询到的，但在实际数仓工作中，对于已在使用中的表来说，删表重建操作是不允许的，所以不推荐
-##### 2、参数设置：```set hive.exec.orc.split.strategy=ETL```
+### 参数设置：```set hive.exec.orc.split.strategy=ETL```
 既然已经定位到是空文件读取的问题，那就从文件读取层面解决。
 
 关于参数的[官方介绍](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)：
@@ -118,7 +116,7 @@ public List<SplitInfo> getSplits() throws IOException {
 ```sql
 set hive.exec.orc.split.strategy=ETL
 ```
-##### 3、参数设置：```spark.sql.hive.convertMetastoreOrc=true```
+### 参数设置：```spark.sql.hive.convertMetastoreOrc=true```
 关于参数的[官方介绍](https://spark.apache.org/docs/2.3.3/sql-programming-guide.html#orc-files)
 >Since Spark 2.3, Spark supports a vectorized ORC reader with a new ORC file format for ORC files. To do that, the following configurations are newly added. The vectorized reader is used for the native ORC tables (e.g., the ones created using the clause USING ORC) when spark.sql.orc.impl is set to native and spark.sql.orc.enableVectorizedReader is set to true. For the Hive ORC serde tables (e.g., the ones created using the clause USING HIVE OPTIONS (fileFormat 'ORC')), the vectorized reader is used when spark.sql.hive.convertMetastoreOrc is also set to true.
 
@@ -130,3 +128,7 @@ set hive.exec.orc.split.strategy=ETL
 ![Af23F.jpeg](https://i.328888.xyz/2022/12/19/Af23F.jpeg)
 hive.exec.orc.split.strategy参数控制在读取ORC表时生成split的策略。对于一些较大的ORC表，可能其footer较大，ETL策略可能会导致其从hdfs拉取大量的数据来切分split，甚至会导致driver端OOM，因此这类表的读取建议使用BI策略。对于一些较小的尤其有数据倾斜的表（这里的数据倾斜指大量stripe存储于少数文件中），建议使用ETL策略。
 另外，spark.hadoop.mapreduce.input.fileinputformat.split.minsize参数可以控制在ORC切分时stripe的合并处理。具体逻辑是，当几个stripe的大小小于spark.hadoop.mapreduce.input.fileinputformat.split.minsize时，会合并到一个task中处理。可以适当调小该值，以此增大读ORC表的并发。
+
+# 参考资料
+[SPARK查ORC格式HIVE数据报错NULLPOINTEREXCEPTION](https://www.freesion.com/article/8054484645/)
+[SparkSQL读取ORC表时遇到空文件](https://blog.csdn.net/weixin_45240507/article/details/124689323?spm=1001.2101.3001.6650.7&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-124689323-blog-100524131.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-7-124689323-blog-100524131.pc_relevant_default&utm_relevant_index=7)
