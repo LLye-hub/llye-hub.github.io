@@ -18,17 +18,17 @@
   
   
   <title>get_json_object在sql中的高级用法 | Hexo</title>
-  <meta name="description" content="get_json_object在sql中的高级用法语法介绍12get_json_object(String json_string, String path)-- return string get_json_object函数是用来根据指定路径提取json字符串中的json对象，并返回json对象的json字符串 现有困惑关于这个函数最常见的用法就是get_json_object(&#39;&amp;#1">
+  <meta name="description" content="语法介绍12get_json_object(String json_string, String path)-- return string get_json_object函数是用来根据指定路径提取json字符串中的json对象，并返回json对象的json字符串 现有困惑关于这个函数最常见的用法就是get_json_object(&#39;&amp;#123;&quot;a&quot;:&quot;b&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="get_json_object在sql中的高级用法">
 <meta property="og:url" content="https://llye-hub.github.io/posts/5f45fcd7.html">
 <meta property="og:site_name" content="LLye">
-<meta property="og:description" content="get_json_object在sql中的高级用法语法介绍12get_json_object(String json_string, String path)-- return string get_json_object函数是用来根据指定路径提取json字符串中的json对象，并返回json对象的json字符串 现有困惑关于这个函数最常见的用法就是get_json_object(&#39;&amp;#1">
+<meta property="og:description" content="语法介绍12get_json_object(String json_string, String path)-- return string get_json_object函数是用来根据指定路径提取json字符串中的json对象，并返回json对象的json字符串 现有困惑关于这个函数最常见的用法就是get_json_object(&#39;&amp;#123;&quot;a&quot;:&quot;b&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.328888.xyz/2023/01/17/2Pw2H.png">
 <meta property="article:published_time" content="2022-12-16T03:46:24.000Z">
-<meta property="article:modified_time" content="2023-01-17T03:30:22.453Z">
-<meta property="article:author" content="yuye">
+<meta property="article:modified_time" content="2023-01-17T07:14:05.963Z">
+<meta property="article:author" content="LLye">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.328888.xyz/2023/01/17/2Pw2H.png">
   <!-- Canonical links -->
@@ -56,14 +56,19 @@
       
       
       <div class="profile-block text-center">
+        <!-- 头像 -->
         <a id="avatar" href="https://github.com/LLye-hub" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.jpeg" width="200" height="200">
+          <img class="img-circle img-rotate" src="/images/avatar.jpeg" width="300" height="300">
         </a>
+        <!-- 昵称 -->
         <h2 id="name" class="hidden-xs hidden-sm">辣白菜的菜</h2>
+        <!-- 职位 -->
         <h3 id="title" class="hidden-xs hidden-sm hidden-md">数仓工程师</h3>
+        <!-- 定位 -->
         <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> HangZhou, China</small>
       </div>
       
+      <!-- 搜索 -->
       <div class="search" id="search-form-wrap">
 
     <form class="search-form sidebar-form">
@@ -95,6 +100,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+    <!-- 主菜单栏 -->
     </div>
     <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
       <ul class="nav navbar-nav main-nav menu-highlight">
@@ -154,7 +160,7 @@
 	
     <ul class="social-links">
     	
-        <li><a href="https://github.com/LLye-hub" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        <li><a href="https://github.com/LLye-hub" target="_blank" title="Github" ><i class="icon icon-github"></i></a></li>
         
     </ul>
 
@@ -182,7 +188,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -213,48 +219,80 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
+        <!-- 显示最新前5文章 -->
         
           <li>
+            <!-- 显示缩略图 -->
             
             <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/SQL/">SQL</a>
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-01-30T09:01:49.000Z" itemprop="datePublished">2023-01-30</time>
               </p>
+              <!-- 显示文章标题 -->
               <p class="item-title">
-                <a href="/posts/1f69e18b.html" class="title">SparkSQL无法处理hive表中的空ORC文件</a>
+                <a href="/posts/44d3528f.html" class="title">hive动态分区</a>
               </p>
+            </div>
+          </li>
+          
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/SQL/">SQL</a>
+              </p> -->
+              <!-- 显示文章日期 -->
               <p class="item-date">
                 <time datetime="2022-12-16T09:56:46.000Z" itemprop="datePublished">2022-12-16</time>
               </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/1f69e18b.html" class="title">SparkSQL无法处理hive表中的空ORC文件</a>
+              </p>
             </div>
           </li>
           
           <li>
+            <!-- 显示缩略图 -->
             
             <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/posts/76d5a95a.html" class="title">大数据相关资料</a>
-              </p>
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/SQL/">SQL</a>
+              </p> -->
+              <!-- 显示文章日期 -->
               <p class="item-date">
                 <time datetime="2022-12-16T03:46:24.000Z" itemprop="datePublished">2022-12-16</time>
               </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/SQL/">SQL</a>
-              </p>
+              <!-- 显示文章标题 -->
               <p class="item-title">
                 <a href="/posts/5f45fcd7.html" class="title">get_json_object在sql中的高级用法</a>
               </p>
+            </div>
+          </li>
+          
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                
+              </p> -->
+              <!-- 显示文章日期 -->
               <p class="item-date">
                 <time datetime="2022-12-16T03:46:24.000Z" itemprop="datePublished">2022-12-16</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/76d5a95a.html" class="title">大数据相关资料</a>
               </p>
             </div>
           </li>
@@ -284,6 +322,7 @@
   
 
       
+      <!-- 文章元数据：日期、分类、标签、访问统计 -->
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
@@ -316,7 +355,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/5f45fcd7.html#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 845(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 838(words)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 3(minutes)</span>
@@ -326,7 +365,8 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1><span id="get_json_object在sql中的高级用法">get_json_object在sql中的高级用法</span></h1><h2><span id="语法介绍">语法介绍</span></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get_json_object(String json_string, String path)</span><br><span class="line"><span class="comment">-- return string</span></span><br></pre></td></tr></table></figure>
+        <!-- 文章内容 -->
+        <h2><span id="语法介绍">语法介绍</span></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get_json_object(String json_string, String path)</span><br><span class="line"><span class="comment">-- return string</span></span><br></pre></td></tr></table></figure>
 <p>get_json_object函数是用来根据指定路径提取json字符串中的json对象，并返回json对象的json字符串</p>
 <h2><span id="现有困惑">现有困惑</span></h2><p>关于这个函数最常见的用法就是<code>get_json_object(&#39;&#123;&quot;a&quot;:&quot;b&quot;&#125;&#39;, &#39;$.a&#39;)</code>，返回结果<code>b</code><br>但<code>$.a</code>这种path写法仅适用于简单的多层嵌套json字符串解析，碰到嵌套层有json数组时就难以解析了<br>比如，要提取下面这段json中的所有<code>weight</code>对象的值</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;store&quot;</span><span class="punctuation">:</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">         <span class="attr">&quot;fruit&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;weight&quot;</span><span class="punctuation">:</span><span class="number">8</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;apple&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span><span class="attr">&quot;weight&quot;</span><span class="punctuation">:</span><span class="number">9</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;pear&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span>  <span class="comment">//json数组</span></span><br><span class="line">         <span class="attr">&quot;bicycle&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;price&quot;</span><span class="punctuation">:</span><span class="number">19.95</span><span class="punctuation">,</span><span class="attr">&quot;color&quot;</span><span class="punctuation">:</span><span class="string">&quot;red&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line">         <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line"> <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span><span class="string">&quot;amy@only_for_json_udf_test.net&quot;</span><span class="punctuation">,</span> </span><br><span class="line"> <span class="attr">&quot;owner&quot;</span><span class="punctuation">:</span><span class="string">&quot;amy&quot;</span> </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -342,8 +382,10 @@
 
       
     </div>
+    <!-- 版权声明 -->
     <div class="article-footer">
-      <blockquote class="mt-2x">
+      <!-- 版权声明 -->
+<blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     
     <li class="post-copyright-link hidden-xs">
@@ -356,27 +398,12 @@
     </li>
   </ul>
 </blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/LLye-hub" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpeg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/LLye-hub" target="_blank"><span class="text-dark">辣白菜的菜</span><small class="ml-1x">数仓工程师</small></a></h3>
-        <div>个人简介</div>
-      </div>
-    </figure>
-  </div>
-</div>
+<!-- 文末个人介绍 -->
 
 
     </div>
   </article>
+  <!-- 文末评论 -->
   
     
   <section id="comments">
@@ -389,15 +416,20 @@
   
 </div>
 
+
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
   
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/posts/76d5a95a.html" title="大数据相关资料"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+      <a href="/posts/1f69e18b.html" title="SparkSQL无法处理hive表中的空ORC文件"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
     </li>
     
+    
+    <li class="next">
+      <a href="/posts/76d5a95a.html" title="大数据相关资料"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
   </ul>
@@ -464,18 +496,19 @@
 
 </main>
 
+  <!-- 版权信息 -->
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
 	
 	
     <ul class="social-links">
     	
-        <li><a href="https://github.com/LLye-hub" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        <li><a href="https://github.com/LLye-hub" target="_blank" title="Github" ><i class="icon icon-github"></i></a></li>
         
     </ul>
 
     <div class="copyright">
     	
-        &copy; 2023 yuye
+        &copy; Copyright 2023 LLye
         
         <div class="publishby">
         	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
