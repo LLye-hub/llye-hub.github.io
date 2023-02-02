@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>hive命令之msck repair table</title>
+      <link href="/posts/940bc38d.html"/>
+      <url>/posts/940bc38d.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hadoop命令之distcp分布式拷贝</title>
+      <link href="/posts/bcc5bdf2.html"/>
+      <url>/posts/bcc5bdf2.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Shell set-e是什么意思</title>
+      <link href="/posts/ba81765c.html"/>
+      <url>/posts/ba81765c.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hadoop基本</title>
+      <link href="/posts/b24f0feb.html"/>
+      <url>/posts/b24f0feb.html</url>
+      
+        <content type="html"><![CDATA[<p>hadoop fs -cp<br>hadoop fs -rm -r<br>hadoop distcp -overwrite -delete -p<br>hadoop fs -mkdir -p</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hive动态分区</title>
       <link href="/posts/44d3528f.html"/>
       <url>/posts/44d3528f.html</url>

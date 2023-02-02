@@ -6,7 +6,7 @@
   <link href="https://llye-hub.github.io/atom.xml" rel="self"/>
   
   <link href="https://llye-hub.github.io/"/>
-  <updated>2023-01-30T09:05:39.955Z</updated>
+  <updated>2023-02-02T05:58:48.990Z</updated>
   <id>https://llye-hub.github.io/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hive命令之msck repair table</title>
+    <link href="https://llye-hub.github.io/posts/940bc38d.html"/>
+    <id>https://llye-hub.github.io/posts/940bc38d.html</id>
+    <published>2023-02-02T05:58:48.000Z</published>
+    <updated>2023-02-02T05:58:48.990Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hadoop命令之distcp分布式拷贝</title>
+    <link href="https://llye-hub.github.io/posts/bcc5bdf2.html"/>
+    <id>https://llye-hub.github.io/posts/bcc5bdf2.html</id>
+    <published>2023-02-01T02:06:03.000Z</published>
+    <updated>2023-02-02T05:51:40.461Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Shell set-e是什么意思</title>
+    <link href="https://llye-hub.github.io/posts/ba81765c.html"/>
+    <id>https://llye-hub.github.io/posts/ba81765c.html</id>
+    <published>2023-01-31T09:26:54.000Z</published>
+    <updated>2023-02-01T02:07:19.707Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hadoop基本</title>
+    <link href="https://llye-hub.github.io/posts/b24f0feb.html"/>
+    <id>https://llye-hub.github.io/posts/b24f0feb.html</id>
+    <published>2023-01-31T09:10:11.000Z</published>
+    <updated>2023-02-02T05:50:58.725Z</updated>
+    
+    <content type="html"><![CDATA[<p>hadoop fs -cp<br>hadoop fs -rm -r<br>hadoop distcp -overwrite -delete -p<br>hadoop fs -mkdir -p</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;hadoop fs -cp&lt;br&gt;hadoop fs -rm -r&lt;br&gt;hadoop distcp -overwrite -delete -p&lt;br&gt;hadoop fs -mkdir -p&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>hive动态分区</title>
