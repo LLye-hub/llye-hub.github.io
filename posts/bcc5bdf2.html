@@ -18,15 +18,15 @@
   
   
   <title>hadoop命令之distcp分布式拷贝 | Hexo</title>
-  <meta name="description" content="scsadad">
+  <meta name="description" content="distcp用途DistCp（分布式拷贝）是用于大规模集群内部和集群之间拷贝的工具。使用Map&#x2F;Reduce实现文件分发，错误处理和恢复，以及报告生成。DistCp将文件和目录的列表作为map任务的输入，每个任务会完成源列表中部分文件的拷贝。  distcp用法命令行中可以指定多个源目录 12# hadoop distcp source_dir1 [source_dir2 source_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hadoop命令之distcp分布式拷贝">
 <meta property="og:url" content="https://llye-hub.github.io/posts/bcc5bdf2.html">
 <meta property="og:site_name" content="LLye">
-<meta property="og:description" content="scsadad">
+<meta property="og:description" content="distcp用途DistCp（分布式拷贝）是用于大规模集群内部和集群之间拷贝的工具。使用Map&#x2F;Reduce实现文件分发，错误处理和恢复，以及报告生成。DistCp将文件和目录的列表作为map任务的输入，每个任务会完成源列表中部分文件的拷贝。  distcp用法命令行中可以指定多个源目录 12# hadoop distcp source_dir1 [source_dir2 source_">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-02-01T02:06:03.000Z">
-<meta property="article:modified_time" content="2023-02-02T05:51:40.461Z">
+<meta property="article:modified_time" content="2023-02-02T08:57:21.092Z">
 <meta property="article:author" content="LLye">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
@@ -186,7 +186,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -219,6 +219,25 @@
       <ul class="recent-post-list list-unstyled no-thumbnail">
         <!-- 显示最新前5文章 -->
         
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-02-02T06:02:26.000Z" itemprop="datePublished">2023-02-02</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/8a94c1da.html" class="title">hive命令之alter partition</a>
+              </p>
+            </div>
+          </li>
+          
           <li>
             <!-- 显示缩略图 -->
             
@@ -295,25 +314,6 @@
             </div>
           </li>
           
-          <li>
-            <!-- 显示缩略图 -->
-            
-            <div class="item-inner">
-              <!-- 显示文章分类 -->
-              <!-- <p class="item-category">
-                
-              </p> -->
-              <!-- 显示文章日期 -->
-              <p class="item-date">
-                <time datetime="2023-01-30T09:01:49.000Z" itemprop="datePublished">2023-01-30</time>
-              </p>
-              <!-- 显示文章标题 -->
-              <p class="item-title">
-                <a href="/posts/44d3528f.html" class="title">hive动态分区</a>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -329,7 +329,7 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">distcp用途</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">distcp用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">常用参数选项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">-overwrite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">-update</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">-delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">-p[rbugpcaxt]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">-m</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">应用实例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">表结构一致的两表互相拷贝数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">参考资料</span></a></li></ol>
     </nav>
   </div>
 </aside>
@@ -376,10 +376,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/bcc5bdf2.html#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 0(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 683(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
 	
 
       </div>
@@ -387,7 +387,78 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <!-- 文章内容 -->
-        
+        <h1><span id="distcp用途">distcp用途</span></h1><p>DistCp（分布式拷贝）是用于大规模集群内部和集群之间拷贝的工具。<br>使用Map&#x2F;Reduce实现文件分发，错误处理和恢复，以及报告生成。<br>DistCp将文件和目录的列表作为map任务的输入，每个任务会完成源列表中部分文件的拷贝。 </p>
+<h1><span id="distcp用法">distcp用法</span></h1><p>命令行中可以指定多个源目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">hadoop distcp source_dir1 [source_dir2 source_dir3……] target_dir</span><br></pre></td></tr></table></figure>
+<p>集群内拷贝</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">hadoop distcp [hdfs://nn:8020]/db/table_a/partition=1 [hdfs://nn:8020]/db/table_b/partition=1</span><br></pre></td></tr></table></figure>
+<p>不同集群间拷贝，DistCp必须运行在目标端集群上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">hadoop distcp hdfs://nn1:8020/db/table_a/partition=1 hdfs://nn2:8020/db/table_b/partition=1</span><br></pre></td></tr></table></figure>
+
+<h1><span id="常用参数选项">常用参数选项</span></h1><h2><span id="-overwrite">-overwrite</span></h2><p>源文件覆盖同名目标文件</p>
+<h2><span id="-update">-update</span></h2><p>拷贝目标目录下不存在而源目录下存在的文件，当文件大小不一致时，源文件覆盖同名目标文件</p>
+<h2><span id="-delete">-delete</span></h2><p>删除目标目录下存在，但源目录下不存在的文件，需要配合<code>-update</code>或<code>-overwrite</code>使用</p>
+<h2><span id="-prbugpcaxt">-p[rbugpcaxt]</span></h2><p>控制是否保留源文件的属性，<code>-p</code>默认全部保留，常用的为<code>-pbugp</code>。<br>修改次数不会被保留。并且当指定 -update 时，更新的状态不会 被同步，除非文件大小不同（比如文件被重新创建）。</p>
+<table>
+<thead>
+<tr>
+<th>标识</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>replication number</td>
+<td>文件副本数</td>
+</tr>
+<tr>
+<td>b</td>
+<td>block size</td>
+<td>文件块大小</td>
+</tr>
+<tr>
+<td>u</td>
+<td>user</td>
+<td>用户</td>
+</tr>
+<tr>
+<td>g</td>
+<td>group</td>
+<td>组</td>
+</tr>
+<tr>
+<td>p</td>
+<td>permission</td>
+<td>文件权限</td>
+</tr>
+<tr>
+<td>c</td>
+<td>checksum-type</td>
+<td>校验和类型</td>
+</tr>
+<tr>
+<td>a</td>
+<td>acl</td>
+<td></td>
+</tr>
+<tr>
+<td>x</td>
+<td>xattr</td>
+<td></td>
+</tr>
+<tr>
+<td>t</td>
+<td>timestamp</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+<h2><span id="-m">-m</span></h2><p>控制拷贝时的map任务最大个数<br>如果没使用-m选项，DistCp会尝试在调度工作时指定map数目&#x3D;min(total_bytes&#x2F;bytes.per.map,20*num_task_trackers)， 其中bytes.per.map默认是256MB。</p>
+<h1><span id="应用实例">应用实例</span></h1><h2><span id="表结构一致的两表互相拷贝数据">表结构一致的两表互相拷贝数据</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#********************************************************************************</span></span><br><span class="line"><span class="comment"># **  功能描述：通过hdfs文件路径拷贝的方式，实现表结构完全相同的表互相拷贝数据</span></span><br><span class="line"><span class="comment">#********************************************************************************</span></span><br><span class="line"><span class="comment"># 指定源路径、目标路径</span></span><br><span class="line">source_dir=/db/table_a/partition=1</span><br><span class="line">target_dir=/db/table_b/partition=1</span><br><span class="line">db_name=db_a</span><br><span class="line">target_tbl_name=db_a.table_b</span><br><span class="line"><span class="comment"># 判断源路径是否存在，不存在则返回</span></span><br><span class="line">hadoop fs -<span class="built_in">test</span> -e <span class="variable">$source_dir</span></span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;源路径<span class="variable">$source_dir</span>不存在&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 判断目标路径是否存在，不存在则创建</span></span><br><span class="line">hadoop fs -<span class="built_in">test</span> -e <span class="variable">$target_dir</span></span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></span><br><span class="line">  hadoop fs -<span class="built_in">mkdir</span> <span class="variable">$target_dir</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;目标路径<span class="variable">$target_dir</span>不存在，创建成功&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 开始拷贝</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;开始hdfs文件拷贝，source_dir=<span class="variable">$source_dir</span>，target_dir=<span class="variable">$target_dir</span>&quot;</span></span><br><span class="line">hadoop distcp -overwrite -delete -pbugp <span class="variable">$source_dir</span> <span class="variable">$target_dir</span></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;hdfs文件拷贝成功&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;hdfs文件拷贝失败&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> -1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 刷新目标表的metastore信息</span></span><br><span class="line">hive -database <span class="variable">$db_name</span> -v -e <span class="string">&quot;msck repair table <span class="variable">$target_tbl_name</span>;&quot;</span></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$target_tbl_name</span>表的metastore信息刷新成功&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+
+<h1><span id="参考资料">参考资料</span></h1><p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/r1.0.4/cn/distcp.html">DistCp使用指南</a><br><a target="_blank" rel="noopener" href="https://hadoop.org.cn/docs/hadoop-distcp/DistCp.html">Hadoop中文网：DistCp</a></p>
+
       
     </div>
     <!-- 版权声明 -->
