@@ -3,8 +3,11 @@ title: hadoop命令之distcp分布式拷贝
 toc: true
 abbrlink: bcc5bdf2
 date: 2023-02-01 10:06:03
-tags:
-categories:
+tags: 
+  - hadoop命令
+  - hdfs文件拷贝
+categories: 
+  - hadoop
 ---
 # distcp用途
 DistCp（分布式拷贝）是用于大规模集群内部和集群之间拷贝的工具。 
