@@ -1,0 +1,15 @@
+---
+title: hadoop基本
+toc: true
+abbrlink: b24f0feb
+date: 2023-01-31 17:10:11
+tags:
+categories:
+---
+
+
+
+hadoop fs -cp
+hadoop fs -rm -r
+hadoop distcp -overwrite -delete -p 
+hadoop fs -mkdir -p 
