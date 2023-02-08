@@ -6,7 +6,7 @@
   <link href="https://llye-hub.github.io/atom.xml" rel="self"/>
   
   <link href="https://llye-hub.github.io/"/>
-  <updated>2023-02-02T09:57:36.806Z</updated>
+  <updated>2023-02-08T08:03:36.233Z</updated>
   <id>https://llye-hub.github.io/</id>
   
   <author>
@@ -17,36 +17,88 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>hive命令之alter partition</title>
-    <link href="https://llye-hub.github.io/posts/8a94c1da.html"/>
-    <id>https://llye-hub.github.io/posts/8a94c1da.html</id>
-    <published>2023-02-02T06:02:26.000Z</published>
-    <updated>2023-02-02T09:57:36.806Z</updated>
+    <title>hiveSQL之生成连续数字</title>
+    <link href="https://llye-hub.github.io/posts/3ce3d37f.html"/>
+    <id>https://llye-hub.github.io/posts/3ce3d37f.html</id>
+    <published>2023-02-08T08:03:36.000Z</published>
+    <updated>2023-02-08T08:03:36.233Z</updated>
     
     
     
     
-    <category term="hive" scheme="https://llye-hub.github.io/categories/hive/"/>
-    
-    
-    <category term="hive命令" scheme="https://llye-hub.github.io/tags/hive%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
   <entry>
-    <title>hive命令之msck repair table</title>
-    <link href="https://llye-hub.github.io/posts/940bc38d.html"/>
-    <id>https://llye-hub.github.io/posts/940bc38d.html</id>
-    <published>2023-02-02T05:58:48.000Z</published>
-    <updated>2023-02-02T09:57:31.557Z</updated>
+    <title>SparkSQL的set参数</title>
+    <link href="https://llye-hub.github.io/posts/5e220c44.html"/>
+    <id>https://llye-hub.github.io/posts/5e220c44.html</id>
+    <published>2023-02-03T08:15:46.000Z</published>
+    <updated>2023-02-08T06:46:22.006Z</updated>
     
+    <content type="html"><![CDATA[<h1><span id="官方说明传送门"></span></h1><h2><span id="sparkkryoserializerbuffermaxx3d128m">spark.kryoserializer.buffer.max&#x3D;128M</span></h2><h2><span id="sparksqlshufflepartitionsx3d1000">spark.sql.shuffle.partitions&#x3D;1000</span></h2><h2><span id="sparksqlorccompressioncodecx3dzlib">spark.sql.orc.compression.codec&#x3D;zlib</span></h2><h2><span id="sparksqlfilesmaxpartitionbytesx3d65536">spark.sql.files.maxPartitionBytes&#x3D;65536</span></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;官方说明传送门&quot;&gt;&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;sparkkryoserializerbuffermaxx3d128m&quot;&gt;spark.kryoserializer.buffer.max&amp;#x3D;128M&lt;/span&gt;&lt;/h2&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="Spark" scheme="https://llye-hub.github.io/categories/Spark/"/>
+    
+    
+    <category term="运行参数" scheme="https://llye-hub.github.io/tags/%E8%BF%90%E8%A1%8C%E5%8F%82%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hive的set参数</title>
+    <link href="https://llye-hub.github.io/posts/4547a6e2.html"/>
+    <id>https://llye-hub.github.io/posts/4547a6e2.html</id>
+    <published>2023-02-03T08:14:57.000Z</published>
+    <updated>2023-02-08T06:45:58.458Z</updated>
+    
+    <content type="html"><![CDATA[<h1><span id="官方说明传送门"></span></h1><h2><span id="hivemergemapfiles">hive.merge.mapfiles</span></h2><p>Default Value: true<br>map-only任务结束时合并小文件</p><h2><span id="hivemergemapredfiles">hive.merge.mapredfiles</span></h2><p>Default Value: true<br>map-reduce任务结束时合并小文件</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;官方说明传送门&quot;&gt;&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;hivemergemapfiles&quot;&gt;hive.merge.mapfiles&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Default Value: true&lt;br&gt;map-only任务结束时合并</summary>
+      
     
     
     
     <category term="hive" scheme="https://llye-hub.github.io/categories/hive/"/>
     
     
-    <category term="hive命令" scheme="https://llye-hub.github.io/tags/hive%E5%91%BD%E4%BB%A4/"/>
+    <category term="运行参数" scheme="https://llye-hub.github.io/tags/%E8%BF%90%E8%A1%8C%E5%8F%82%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hiveSQL命令之alter partition</title>
+    <link href="https://llye-hub.github.io/posts/8a94c1da.html"/>
+    <id>https://llye-hub.github.io/posts/8a94c1da.html</id>
+    <published>2023-02-02T06:02:26.000Z</published>
+    <updated>2023-02-03T08:20:50.383Z</updated>
+    
+    <content type="html"><![CDATA[<p>msck repair table</p><p><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-ExchangePartition">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-ExchangePartition</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;msck repair table&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-ExchangePartition</summary>
+      
+    
+    
+    
+    <category term="hive" scheme="https://llye-hub.github.io/categories/hive/"/>
+    
+    
+    <category term="sql alter" scheme="https://llye-hub.github.io/tags/sql-alter/"/>
     
   </entry>
   
@@ -55,7 +107,7 @@
     <link href="https://llye-hub.github.io/posts/bcc5bdf2.html"/>
     <id>https://llye-hub.github.io/posts/bcc5bdf2.html</id>
     <published>2023-02-01T02:06:03.000Z</published>
-    <updated>2023-02-02T09:56:23.050Z</updated>
+    <updated>2023-02-08T06:27:57.857Z</updated>
     
     <content type="html"><![CDATA[<h1><span id="distcp用途">distcp用途</span></h1><p>DistCp（分布式拷贝）是用于大规模集群内部和集群之间拷贝的工具。<br>使用Map&#x2F;Reduce实现文件分发，错误处理和恢复，以及报告生成。<br>DistCp将文件和目录的列表作为map任务的输入，每个任务会完成源列表中部分文件的拷贝。 </p><h1><span id="distcp用法">distcp用法</span></h1><p>命令行中可以指定多个源目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">hadoop distcp source_dir1 [source_dir2 source_dir3……] target_dir</span><br></pre></td></tr></table></figure><p>集群内拷贝</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">hadoop distcp [hdfs://nn:8020]/db/table_a/partition=1 [hdfs://nn:8020]/db/table_b/partition=1</span><br></pre></td></tr></table></figure><p>不同集群间拷贝，DistCp必须运行在目标端集群上</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># </span></span><br><span class="line">hadoop distcp hdfs://nn1:8020/db/table_a/partition=1 hdfs://nn2:8020/db/table_b/partition=1</span><br></pre></td></tr></table></figure><h1><span id="常用参数选项">常用参数选项</span></h1><h2><span id="-overwrite">-overwrite</span></h2><p>源文件覆盖同名目标文件</p><h2><span id="-update">-update</span></h2><p>拷贝目标目录下不存在而源目录下存在的文件，当文件大小不一致时，源文件覆盖同名目标文件</p><h2><span id="-delete">-delete</span></h2><p>删除目标目录下存在，但源目录下不存在的文件，需要配合<code>-update</code>或<code>-overwrite</code>使用</p><h2><span id="-prbugpcaxt">-p[rbugpcaxt]</span></h2><p>控制是否保留源文件的属性，<code>-p</code>默认全部保留，常用的为<code>-pbugp</code>。<br>修改次数不会被保留。并且当指定 -update 时，更新的状态不会 被同步，除非文件大小不同（比如文件被重新创建）。</p><table><thead><tr><th>标识</th><th>含义</th><th>备注</th></tr></thead><tbody><tr><td>r</td><td>replication number</td><td>文件副本数</td></tr><tr><td>b</td><td>block size</td><td>文件块大小</td></tr><tr><td>u</td><td>user</td><td>用户</td></tr><tr><td>g</td><td>group</td><td>组</td></tr><tr><td>p</td><td>permission</td><td>文件权限</td></tr><tr><td>c</td><td>checksum-type</td><td>校验和类型</td></tr><tr><td>a</td><td>acl</td><td></td></tr><tr><td>x</td><td>xattr</td><td></td></tr><tr><td>t</td><td>timestamp</td><td>时间戳</td></tr></tbody></table><h2><span id="-m">-m</span></h2><p>控制拷贝时的map任务最大个数<br>如果没使用-m选项，DistCp会尝试在调度工作时指定map数目&#x3D;min(total_bytes&#x2F;bytes.per.map,20*num_task_trackers)， 其中bytes.per.map默认是256MB。</p><h1><span id="应用实例">应用实例</span></h1><h2><span id="表结构一致的两表互相拷贝数据">表结构一致的两表互相拷贝数据</span></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#********************************************************************************</span></span><br><span class="line"><span class="comment"># **  功能描述：通过hdfs文件路径拷贝的方式，实现表结构完全相同的表互相拷贝数据</span></span><br><span class="line"><span class="comment">#********************************************************************************</span></span><br><span class="line"><span class="comment"># 指定源路径、目标路径</span></span><br><span class="line">source_dir=/db/table_a/partition=1</span><br><span class="line">target_dir=/db/table_b/partition=1</span><br><span class="line">db_name=db_a</span><br><span class="line">target_tbl_name=db_a.table_b</span><br><span class="line"><span class="comment"># 判断源路径是否存在，不存在则返回</span></span><br><span class="line">hadoop fs -<span class="built_in">test</span> -e <span class="variable">$source_dir</span></span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;源路径<span class="variable">$source_dir</span>不存在&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 判断目标路径是否存在，不存在则创建</span></span><br><span class="line">hadoop fs -<span class="built_in">test</span> -e <span class="variable">$target_dir</span></span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></span><br><span class="line">  hadoop fs -<span class="built_in">mkdir</span> <span class="variable">$target_dir</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;目标路径<span class="variable">$target_dir</span>不存在，创建成功&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 开始拷贝</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;开始hdfs文件拷贝，source_dir=<span class="variable">$source_dir</span>，target_dir=<span class="variable">$target_dir</span>&quot;</span></span><br><span class="line">hadoop distcp -overwrite -delete -pbugp <span class="variable">$source_dir</span> <span class="variable">$target_dir</span></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;hdfs文件拷贝成功&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;hdfs文件拷贝失败&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> -1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># 刷新目标表的metastore信息</span></span><br><span class="line">hive -database <span class="variable">$db_name</span> -v -e <span class="string">&quot;msck repair table <span class="variable">$target_tbl_name</span>;&quot;</span></span><br><span class="line"><span class="keyword">if</span> [ $? -eq 0 ];<span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$target_tbl_name</span>表的metastore信息刷新成功&quot;</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure><h1><span id="参考资料">参考资料</span></h1><p><a href="https://hadoop.apache.org/docs/r1.0.4/cn/distcp.html">DistCp使用指南</a><br><a href="https://hadoop.org.cn/docs/hadoop-distcp/DistCp.html">Hadoop中文网：DistCp</a></p>]]></content>
     
@@ -81,20 +133,24 @@
     <link href="https://llye-hub.github.io/posts/ba81765c.html"/>
     <id>https://llye-hub.github.io/posts/ba81765c.html</id>
     <published>2023-01-31T09:26:54.000Z</published>
-    <updated>2023-02-02T09:30:32.876Z</updated>
+    <updated>2023-02-02T10:03:10.347Z</updated>
     
     
     
     
+    <category term="shell" scheme="https://llye-hub.github.io/categories/shell/"/>
+    
+    
+    <category term="shell命令" scheme="https://llye-hub.github.io/tags/shell%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
   <entry>
-    <title>hadoop基本</title>
+    <title>hadoop基本命令</title>
     <link href="https://llye-hub.github.io/posts/b24f0feb.html"/>
     <id>https://llye-hub.github.io/posts/b24f0feb.html</id>
     <published>2023-01-31T09:10:11.000Z</published>
-    <updated>2023-02-02T09:56:35.161Z</updated>
+    <updated>2023-02-03T08:21:33.709Z</updated>
     
     <content type="html"><![CDATA[<p>hadoop fs -cp<br>hadoop fs -rm -r<br>hadoop distcp -overwrite -delete -p<br>hadoop fs -mkdir -p</p>]]></content>
     
@@ -136,7 +192,7 @@
     <link href="https://llye-hub.github.io/posts/1f69e18b.html"/>
     <id>https://llye-hub.github.io/posts/1f69e18b.html</id>
     <published>2022-12-16T09:56:46.000Z</published>
-    <updated>2023-01-30T09:31:20.259Z</updated>
+    <updated>2023-02-08T06:27:40.205Z</updated>
     
     <content type="html"><![CDATA[<h1><span id="为什么碰到这个问题">为什么碰到这个问题</span></h1><p>起因是在使用SparkSQL查询表时，遇到报错：java.lang.RuntimeException: serious problem at OrcInputFormat.generateSplitsInfo<br><img src="https://i.328888.xyz/2022/12/19/AfHSH.png" alt="AfHSH.png"><br><img src="https://i.328888.xyz/2022/12/19/AfbiQ.png" alt="AfbiQ.png"><br>之后，换了hiveSQL执行成功，但这并不算排查成功，排查应尽可能追根究底，以后才能做到举一反三，所以基于网上资料和个人理解写了这篇博客</p><h1><span id="问题分析">问题分析</span></h1><h2><span id="定位问题">定位问题</span></h2><p>根据报错的java类名+方法名（OrcInputFormat.generateSplitsInfo），可以判断问题出现在读取orc文件阶段</p><h2><span id="查看hdfs文件">查看HDFS文件</span></h2><p>查看表存储路径下的文件，发现有1个空文件<br><img src="https://i.328888.xyz/2022/12/19/AfjbE.png" alt="AfjbE.png"></p><h2><span id="为什么会有空文件">为什么会有空文件</span></h2><p>空文件是根据map个数产生的小文件，启动select 查询必然启动MR 那就避免不了Map阶段的产生</p><h2><span id="解决办法">解决办法</span></h2><p>问题原因基本清晰了，就是读取空文件导致的报错，但是计算过程中无法避免空文件产生，如果非得用SparkSQL执行查询语句，这里提供几种解决方案：</p><h3><span id="修改表存储格式为parquet">修改表存储格式为parquet</span></h3><p>这种方法是网上查询到的，但在实际数仓工作中，对于已在使用中的表来说，删表重建操作是不允许的，所以不推荐</p><h3><span id="参数设置set-hiveexecorcsplitstrategyetl">参数设置：<code>set hive.exec.orc.split.strategy=ETL</code></span></h3><p>既然已经定位到是空文件读取的问题，那就从文件读取层面解决。</p><p>关于参数的<a href="https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties">官方介绍</a>：</p><blockquote><p><strong>hive.exec.orc.split.strategy</strong><br>Default Value: HYBRID<br>Added In: Hive 1.2.0 with HIVE-10114</p><p>What strategy ORC should use to create splits for execution. The available options are “BI”, “ETL” and “HYBRID”.<br>The HYBRID mode reads the footers for all files if there are fewer files than expected mapper count, switching over to generating 1 split per file if the average file sizes are smaller than the default HDFS blocksize. ETL strategy always reads the ORC footers before generating splits, while the BI strategy generates per-file splits fast without reading any data from HDFS.</p></blockquote><p>相关源码<code>Spark 2.12</code>：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(context.splitStrategyKind) &#123;</span><br><span class="line"><span class="keyword">case</span> BI:</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">OrcInputFormat</span>.BISplitStrategy(context, fs, dir, baseFiles, isOriginal, deltas, covered, allowSyntheticFileIds);</span><br><span class="line"><span class="keyword">case</span> ETL:</span><br><span class="line">    <span class="keyword">return</span> combineOrCreateETLStrategy(combinedCtx, context, fs, dir, baseFiles, deltas, covered, readerTypes, isOriginal, ugi, allowSyntheticFileIds);</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">if</span> (avgFileSize &lt;= context.maxSize &amp;&amp; totalFiles &gt; context.etlFileThreshold) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">OrcInputFormat</span>.BISplitStrategy(context, fs, dir, baseFiles, isOriginal, deltas, covered, allowSyntheticFileIds);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> combineOrCreateETLStrategy(combinedCtx, context, fs, dir, baseFiles, deltas, covered, readerTypes, isOriginal, ugi, allowSyntheticFileIds);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>也就是说，默认是HYBRID（混合模式读取，根据平均文件大小和文件个数选择ETL还是BI模式）。</p><ul><li>BI策略以文件为粒度进行split划分</li><li>ETL策略会将文件进行切分，多个stripe组成一个split</li><li>HYBRID策略为：当文件的平均大小大于hadoop最大split值（默认256 * 1024 * 1024）时使用ETL策略，否则使用BI策略。</li></ul><p>ETLSplitStrategy和BISplitStrategy两种策略在对getSplits方法采用了不同的实现方式，BISplitStrategy在面对空文件时会出现空指针异常，ETLSplitStrategy则帮我们过滤了空文件。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// org.apache.hadoop.hive.ql.io.orc.OrcInputFormat.BISplitStrategy#getSplits</span></span><br><span class="line"><span class="keyword">public</span> List&lt;OrcSplit&gt; <span class="title function_">getSplits</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">  List&lt;OrcSplit&gt; splits = Lists.newArrayList();</span><br><span class="line">  <span class="keyword">for</span> (FileStatus fileStatus : fileStatuses) &#123;</span><br><span class="line">    String[] hosts = SHIMS</span><br><span class="line">        .getLocationsWithOffset(fs, fileStatus) <span class="comment">// 对空文件会返回一个空的TreeMap</span></span><br><span class="line">        .firstEntry()  <span class="comment">// null</span></span><br><span class="line">        .getValue()    <span class="comment">// NPE</span></span><br><span class="line">        .getHosts();</span><br><span class="line">    <span class="type">OrcSplit</span> <span class="variable">orcSplit</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OrcSplit</span>(fileStatus.getPath(), <span class="number">0</span>, fileStatus.getLen(), hosts,</span><br><span class="line">                                     <span class="literal">null</span>, isOriginal, <span class="literal">true</span>, deltas, -<span class="number">1</span>);</span><br><span class="line">    splits.add(orcSplit);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// add uncovered ACID delta splits</span></span><br><span class="line">  splits.addAll(<span class="built_in">super</span>.getSplits());</span><br><span class="line">  <span class="keyword">return</span> splits;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// org.apache.hadoop.hive.ql.io.orc.OrcInputFormat.ETLSplitStrategy#getSplits</span></span><br><span class="line"><span class="keyword">public</span> List&lt;SplitInfo&gt; <span class="title function_">getSplits</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    List&lt;SplitInfo&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(files.size());</span><br><span class="line">    ……</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; files.size(); ++i) &#123;</span><br><span class="line">        ……</span><br><span class="line">        <span class="comment">// Ignore files eliminated by PPD, or of 0 length.（此处对空文件做了过滤）</span></span><br><span class="line">        <span class="keyword">if</span> (ppdResult != FooterCache.NO_SPLIT_AFTER_PPD &amp;&amp; file.getFileStatus().getLen() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> <span class="title class_">SplitInfo</span>(context, dir.fs, file, orcTail, readerTypes,</span><br><span class="line">            isOriginal, deltas, <span class="literal">true</span>, dir.dir, covered, ppdResult));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">dirIx</span> <span class="operator">=</span> -<span class="number">1</span>, fileInDirIx = -<span class="number">1</span>, filesInDirCount = <span class="number">0</span>;</span><br><span class="line">    <span class="type">ETLDir</span> <span class="variable">dir</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span> (HdfsFileStatusWithId file : files) &#123;</span><br><span class="line">        ……</span><br><span class="line">        <span class="comment">// ignore files of 0 length（此处对空文件做了过滤）</span></span><br><span class="line">        <span class="keyword">if</span> (file.getFileStatus().getLen() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> <span class="title class_">Sp</span> litInfo(context, dir.fs, file, <span class="literal">null</span>, readerTypes,</span><br><span class="line">            isOriginal, deltas, <span class="literal">true</span>, dir.dir, covered, <span class="literal">null</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p> 本质上是一个Hive的BUG，Spark2.4版本中解决了这个问题。<br>知道读取数据的策略，那么就设置避免混合模式使用根据文件大小分割读取，不根据文件来读取</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.exec.orc.split.strategy<span class="operator">=</span>ETL</span><br></pre></td></tr></table></figure><h3><span id="参数设置sparksqlhiveconvertmetastoreorctrue">参数设置：<code>spark.sql.hive.convertMetastoreOrc=true</code></span></h3><p>关于参数的<a href="https://spark.apache.org/docs/2.3.3/sql-programming-guide.html#orc-files">官方介绍</a></p><blockquote><p>Since Spark 2.3, Spark supports a vectorized ORC reader with a new ORC file format for ORC files. To do that, the following configurations are newly added. The vectorized reader is used for the native ORC tables (e.g., the ones created using the clause USING ORC) when spark.sql.orc.impl is set to native and spark.sql.orc.enableVectorizedReader is set to true. For the Hive ORC serde tables (e.g., the ones created using the clause USING HIVE OPTIONS (fileFormat ‘ORC’)), the vectorized reader is used when spark.sql.hive.convertMetastoreOrc is also set to true.</p></blockquote><p>最后的最后，以上3种解决方案仅供参考，为笔者对问题剖析之后，再结合网上资料整理的，尚未经过实际检验。笔者对这个问题的解决方法就是不用SparkSQL查就好，hiveSQL不会有此问题。</p><h1><span id="补充知识">补充知识</span></h1><p><img src="https://i.328888.xyz/2022/12/19/Af23F.jpeg" alt="Af23F.jpeg"><br>hive.exec.orc.split.strategy参数控制在读取ORC表时生成split的策略。对于一些较大的ORC表，可能其footer较大，ETL策略可能会导致其从hdfs拉取大量的数据来切分split，甚至会导致driver端OOM，因此这类表的读取建议使用BI策略。对于一些较小的尤其有数据倾斜的表（这里的数据倾斜指大量stripe存储于少数文件中），建议使用ETL策略。<br>另外，spark.hadoop.mapreduce.input.fileinputformat.split.minsize参数可以控制在ORC切分时stripe的合并处理。具体逻辑是，当几个stripe的大小小于spark.hadoop.mapreduce.input.fileinputformat.split.minsize时，会合并到一个task中处理。可以适当调小该值，以此增大读ORC表的并发。</p><h1><span id="参考资料">参考资料</span></h1><p><a href="https://www.freesion.com/article/8054484645/">SPARK查ORC格式HIVE数据报错NULLPOINTEREXCEPTION</a><br><a href="https://blog.csdn.net/weixin_45240507/article/details/124689323?spm=1001.2101.3001.6650.7&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-124689323-blog-100524131.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-7-124689323-blog-100524131.pc_relevant_default&utm_relevant_index=7">SparkSQL读取ORC表时遇到空文件</a></p>]]></content>
     
@@ -158,11 +214,26 @@
   </entry>
   
   <entry>
+    <title>大数据相关资料</title>
+    <link href="https://llye-hub.github.io/posts/76d5a95a.html"/>
+    <id>https://llye-hub.github.io/posts/76d5a95a.html</id>
+    <published>2022-12-16T03:46:24.000Z</published>
+    <updated>2022-12-20T06:59:07.096Z</updated>
+    
+    
+    
+    
+    
+    <category term="大数据" scheme="https://llye-hub.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>get_json_object在sql中的高级用法</title>
     <link href="https://llye-hub.github.io/posts/5f45fcd7.html"/>
     <id>https://llye-hub.github.io/posts/5f45fcd7.html</id>
     <published>2022-12-16T03:46:24.000Z</published>
-    <updated>2023-01-30T09:48:21.057Z</updated>
+    <updated>2023-02-08T06:27:13.267Z</updated>
     
     <content type="html"><![CDATA[<h2><span id="语法介绍">语法介绍</span></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get_json_object(String json_string, String path)</span><br><span class="line"><span class="comment">-- return string</span></span><br></pre></td></tr></table></figure><p>get_json_object函数是用来根据指定路径提取json字符串中的json对象，并返回json对象的json字符串</p><h2><span id="现有困惑">现有困惑</span></h2><p>关于这个函数最常见的用法就是<code>get_json_object(&#39;&#123;&quot;a&quot;:&quot;b&quot;&#125;&#39;, &#39;$.a&#39;)</code>，返回结果<code>b</code><br>但<code>$.a</code>这种path写法仅适用于简单的多层嵌套json字符串解析，碰到嵌套层有json数组时就难以解析了<br>比如，要提取下面这段json中的所有<code>weight</code>对象的值</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;store&quot;</span><span class="punctuation">:</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">         <span class="attr">&quot;fruit&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="punctuation">&#123;</span><span class="attr">&quot;weight&quot;</span><span class="punctuation">:</span><span class="number">8</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;apple&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span><span class="attr">&quot;weight&quot;</span><span class="punctuation">:</span><span class="number">9</span><span class="punctuation">,</span><span class="attr">&quot;type&quot;</span><span class="punctuation">:</span><span class="string">&quot;pear&quot;</span><span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span>  <span class="comment">//json数组</span></span><br><span class="line">         <span class="attr">&quot;bicycle&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;price&quot;</span><span class="punctuation">:</span><span class="number">19.95</span><span class="punctuation">,</span><span class="attr">&quot;color&quot;</span><span class="punctuation">:</span><span class="string">&quot;red&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line">         <span class="punctuation">&#125;</span><span class="punctuation">,</span> </span><br><span class="line"> <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span><span class="string">&quot;amy@only_for_json_udf_test.net&quot;</span><span class="punctuation">,</span> </span><br><span class="line"> <span class="attr">&quot;owner&quot;</span><span class="punctuation">:</span><span class="string">&quot;amy&quot;</span> </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><p>通过<code>$.store.fruit.weight</code>路径是无法提取的，<code>$.store.fruit[0].weight</code>这种写法仅能获取json数组中第一个json字符串中<code>weight</code>对象的值，也总不能用<code>[0]、[1]、[2]……</code>的方式无穷尽取值吧</p><p>到这里思维就限制住了，遇到这种情况时，以前的方式是通过正则表达式处理<br>具体实现如下：<br>首先将<code>item_properties</code>按指定分隔符split为array数组，再利用explode函数将array数组的元素逐行输出，最终得到的<code>item_propertie</code>即为单个json字符串，可根据<code>$.</code>提取指定json对象的值，</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- item_properties = [&#123;&quot;id&quot;:42,&quot;name&quot;:&quot;包装&quot;,&quot;sort&quot;:0,&quot;type&quot;:1&#125;</span></span><br><span class="line"><span class="comment">--                   ,&#123;&quot;id&quot;:43,&quot;name&quot;:&quot;种类&quot;,&quot;sort&quot;:0,&quot;type&quot;:1&#125;</span></span><br><span class="line"><span class="comment">--                   ,&#123;&quot;id&quot;:44,&quot;name&quot;:&quot;规格&quot;,&quot;sort&quot;:0,&quot;type&quot;:2&#125;</span></span><br><span class="line"><span class="comment">--                   ,&#123;&quot;id&quot;:63,&quot;name&quot;:&quot;保质期(天)&quot;,&quot;sort&quot;:0,&quot;type&quot;:2&#125;</span></span><br><span class="line"><span class="comment">--                   ,&#123;&quot;id&quot;:100,&quot;name&quot;:&quot;适用年龄&quot;,&quot;sort&quot;:0,&quot;type&quot;:2&#125;</span></span><br><span class="line"><span class="comment">--                   ,&#123;&quot;id&quot;:101,&quot;name&quot;:&quot;储存条件&quot;,&quot;sort&quot;:0,&quot;type&quot;:2&#125;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> get_json_object(item_propertie,<span class="string">&#x27;$.id&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> table_a</span><br><span class="line"><span class="keyword">lateral</span> <span class="keyword">view</span> explode(split(regexp_replace(substr(item_properties,<span class="number">2</span>,length(item_properties)<span class="number">-2</span>),<span class="string">&#x27;\\&#125;\\,\\&#123;&#x27;</span>,<span class="string">&#x27;\\&#125;\\|\\|\\&#123;&#x27;</span>),<span class="string">&#x27;\\|\\|&#x27;</span>)) tmp <span class="keyword">as</span> item_propertie</span><br></pre></td></tr></table></figure><p>但上面这种处理方式存在bug，将json数据split为array数组时，必须保证指定分隔符不出现在单个json字符串中，比如上述case中是用<code>&#125;,&#123;</code>替换为<code>&#125;||&#123;</code>，再以<code>||</code>作为分隔符split，如若在单个json字符串中也出现了<code>&#125;,&#123;</code>或是<code>||</code>就会导致解析失败</p><h2><span id="怎么高级了">怎么高级了</span></h2><p>突然有一天在翻看<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF?spm=a2c4g.11186623.0.0.3c267254Ka3fUh#LanguageManualUDF-get_json_object">hive官方文档</a>时发现path支持的通配符<code>*</code><br><a href="https://imgloc.com/i/2Pw2H"><img src="https://i.328888.xyz/2023/01/17/2Pw2H.png" alt="2Pw2H.png"></a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ : 表示根节点</span><br><span class="line">. : 表示子节点</span><br><span class="line">[] : [number]表示数组下标，从0开始</span><br><span class="line">* : []的通配符，返回整个数组</span><br></pre></td></tr></table></figure><p>所以，一开始的问题应该按如下解法：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- jsonArray = &#123;&quot;store&quot;:</span></span><br><span class="line"><span class="comment">--                     &#123;</span></span><br><span class="line"><span class="comment">--                     &quot;fruit&quot;:[&#123;&quot;weight&quot;:8,&quot;type&quot;:&quot;apple&quot;&#125;, &#123;&quot;weight&quot;:9,&quot;type&quot;:&quot;pear&quot;&#125;],</span></span><br><span class="line"><span class="comment">--                     &quot;bicycle&quot;:&#123;&quot;price&quot;:19.95,&quot;color&quot;:&quot;red&quot;&#125;</span></span><br><span class="line"><span class="comment">--                     &#125;, </span></span><br><span class="line"><span class="comment">--             &quot;email&quot;:&quot;amy@only_for_json_udf_test.net&quot;, </span></span><br><span class="line"><span class="comment">--             &quot;owner&quot;:&quot;amy&quot;&#125;</span></span><br><span class="line"><span class="keyword">select</span> get_json_object(jsonArray, <span class="string">&#x27;$.store.fruit[*].weight&#x27;</span>);</span><br><span class="line"><span class="comment">-- return [8,9]</span></span><br></pre></td></tr></table></figure><p>笔者个人认为，高级之处在于写法极其清爽，按照以前用正则表达式的处理方法，需要多道处理才能得到结果<code>[8,9]</code>，而且其中还有隐性风险，但是现在<code>$.store.fruit[*].weight</code>这种极简语法既避免了风险，又清晰易理解</p>]]></content>
     
@@ -177,24 +248,7 @@
     <category term="SQL" scheme="https://llye-hub.github.io/categories/SQL/"/>
     
     
-    <category term="SQL" scheme="https://llye-hub.github.io/tags/SQL/"/>
-    
-    <category term="高级语法" scheme="https://llye-hub.github.io/tags/%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>大数据相关资料</title>
-    <link href="https://llye-hub.github.io/posts/76d5a95a.html"/>
-    <id>https://llye-hub.github.io/posts/76d5a95a.html</id>
-    <published>2022-12-16T03:46:24.000Z</published>
-    <updated>2022-12-20T06:59:07.096Z</updated>
-    
-    
-    
-    
-    
-    <category term="大数据" scheme="https://llye-hub.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    <category term="SQL高级语法" scheme="https://llye-hub.github.io/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/"/>
     
   </entry>
   
