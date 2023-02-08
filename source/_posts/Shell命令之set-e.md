@@ -4,5 +4,7 @@ toc: true
 abbrlink: ba81765c
 date: 2023-01-31 17:26:54
 tags:
+    - shell命令
 categories:
+    - shell
 ---
