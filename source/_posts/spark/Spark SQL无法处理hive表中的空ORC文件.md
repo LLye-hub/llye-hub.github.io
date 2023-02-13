@@ -25,7 +25,11 @@ toc: true
 ![AfjbE.png](https://i.328888.xyz/2022/12/19/AfjbE.png)
 
 ## 为什么会有空文件
-空文件是根据map个数产生的小文件，启动select 查询必然启动MR 那就避免不了Map阶段的产生
+
+表写入数据时，sql最后做了distribute by操作，导致sparkSQL生成的hive表有空文件，但是
+
+sparksql读取空文件的时候，因为表是orc格式的，导致sparkSQL解析orc文件出错。但是用hive却可以正常读取。
+
 
 
 ## 解决办法
@@ -34,14 +38,6 @@ toc: true
 这种方法是网上查询到的，但在实际数仓工作中，对于已在使用中的表来说，删表重建操作是不允许的，所以不推荐
 ### 参数设置：```set hive.exec.orc.split.strategy=ETL```
 既然已经定位到是空文件读取的问题，那就从文件读取层面解决。
-
-关于参数的[官方介绍](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)：
->**hive.exec.orc.split.strategy**
-Default Value: HYBRID
-Added In: Hive 1.2.0 with HIVE-10114
->
->What strategy ORC should use to create splits for execution. The available options are "BI", "ETL" and "HYBRID".
-The HYBRID mode reads the footers for all files if there are fewer files than expected mapper count, switching over to generating 1 split per file if the average file sizes are smaller than the default HDFS blocksize. ETL strategy always reads the ORC footers before generating splits, while the BI strategy generates per-file splits fast without reading any data from HDFS.
 
 相关源码```Spark 2.12```：
 ```java
@@ -119,6 +115,8 @@ set hive.exec.orc.split.strategy=ETL
 ### 参数设置：```spark.sql.hive.convertMetastoreOrc=true```
 关于参数的[官方介绍](https://spark.apache.org/docs/2.3.3/sql-programming-guide.html#orc-files)
 >Since Spark 2.3, Spark supports a vectorized ORC reader with a new ORC file format for ORC files. To do that, the following configurations are newly added. The vectorized reader is used for the native ORC tables (e.g., the ones created using the clause USING ORC) when spark.sql.orc.impl is set to native and spark.sql.orc.enableVectorizedReader is set to true. For the Hive ORC serde tables (e.g., the ones created using the clause USING HIVE OPTIONS (fileFormat 'ORC')), the vectorized reader is used when spark.sql.hive.convertMetastoreOrc is also set to true.
+
+需要搭配spark.sql.orc.impl=native使用。
 
 最后的最后，以上3种解决方案仅供参考，为笔者对问题剖析之后，再结合网上资料整理的，尚未经过实际检验。笔者对这个问题的解决方法就是不用SparkSQL查就好，hiveSQL不会有此问题。
 
