@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://i.328888.xyz/2022/12/19/AfjbE.png">
 <meta property="og:image" content="https://i.328888.xyz/2022/12/19/Af23F.jpeg">
 <meta property="article:published_time" content="2022-12-16T09:56:46.000Z">
-<meta property="article:modified_time" content="2023-02-14T03:51:19.228Z">
+<meta property="article:modified_time" content="2023-02-14T04:06:44.750Z">
 <meta property="article:author" content="LLye">
 <meta property="article:tag" content="HDFS">
 <meta property="article:tag" content="ORC">
@@ -405,7 +405,7 @@
       
         <!-- 文章内容 -->
         <h1><span id="为什么碰到这个问题">为什么碰到这个问题</span></h1><p>起因是在使用SparkSQL查询表时，遇到报错：java.lang.RuntimeException: serious problem at OrcInputFormat.generateSplitsInfo<br><img src="https://i.328888.xyz/2022/12/19/AfHSH.png" alt="AfHSH.png"><br><img src="https://i.328888.xyz/2022/12/19/AfbiQ.png" alt="AfbiQ.png"><br>之后，换了hiveSQL执行成功，但这并不算排查成功，排查应尽可能追根究底，以后才能做到举一反三，所以基于网上资料和个人理解写了这篇博客</p>
-<h1><span id="问题分析">问题分析</span></h1><h2><span id="定位问题">定位问题</span></h2><p>根据报错的java类名+方法名（OrcInputFormat.generateSplitsInfo），可以判断问题出现在读取orc文件阶段</p>
+<h1><span id="问题分析">问题分析</span></h1><h2><span id="定位问题">定位问题</span></h2><p>根据报错的java类名+方法名（OrcInputFormat.generateSplitsInfo），可以判断问题出现在读取orc文件阶段。</p>
 <h2><span id="查看hdfs文件">查看HDFS文件</span></h2><p>查看表存储路径下的文件，发现有1个空文件<br><img src="https://i.328888.xyz/2022/12/19/AfjbE.png" alt="AfjbE.png"></p>
 <h2><span id="为什么会有空文件待详细补充">为什么会有空文件（待详细补充）</span></h2><p>1、sparkSQL建表<br>2、表写入数据时，sql最后做了distribute by操作，产生了空文件</p>
 <p>sparksql读取空文件的时候，因为表是orc格式的，导致sparkSQL解析orc文件出错。但是用hive却可以正常读取。</p>
