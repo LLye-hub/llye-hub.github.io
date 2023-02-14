@@ -73,7 +73,7 @@ HIVE_ORC_SPLIT_STRATEGY("hive.exec.orc.split.strategy", "HYBRID", new StringSet(
 也就是说，默认是HYBRID（混合模式读取，根据平均文件大小和文件个数选择ETL还是BI模式）。
 + BI策略以文件为粒度进行split划分
 + ETL策略会将文件进行切分，多个stripe组成一个split
-+ HYBRID策略为：当文件的平均大小大于hadoop最大split值（默认256 * 1024 * 1024）时使用ETL策略，否则使用BI策略。
++ HYBRID策略为：当文件的平均大小大于hadoop最大split值（默认256 * 1024 * 1024）时使用ETL策略，否则使用BI策略。 
 
 ETLSplitStrategy和BISplitStrategy两种策略在对getSplits方法采用了不同的实现方式，BISplitStrategy在面对空文件时会出现空指针异常，ETLSplitStrategy则帮我们过滤了空文件。
 ```java
