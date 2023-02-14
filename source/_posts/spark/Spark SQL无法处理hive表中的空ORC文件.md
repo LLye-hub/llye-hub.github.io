@@ -30,29 +30,45 @@ toc: true
 
 sparksql读取空文件的时候，因为表是orc格式的，导致sparkSQL解析orc文件出错。但是用hive却可以正常读取。
 
-## 解决办法
+## 网上搜罗的解决办法
 问题原因基本清晰了，就是读取空文件导致的报错，如果非得用SparkSQL执行查询语句，这里提供几种解决方案：
 
-### 修改表存储格式为parquet
+#### 1、修改表存储格式为parquet
 这种方法是网上查询到的，但在实际数仓工作中，对于已在使用中的表来说，删表重建操作是不允许的，所以不推荐
 
-### 参数设置：```set hive.exec.orc.split.strategy=ETL```
+#### 2、参数设置：`set hive.exec.orc.split.strategy=ETL`
 既然已经定位到是空文件读取的问题，那就从文件读取层面解决。
 
-相关源码```Spark 2.12```：
+自建集群`Spark`源码：
 ```java
+// org/apache/hadoop/hive/ql/io/orc/OrcInputFormat.java
 switch(context.splitStrategyKind) {
-case BI:
-    return new OrcInputFormat.BISplitStrategy(context, fs, dir, baseFiles, isOriginal, deltas, covered, allowSyntheticFileIds);
-case ETL:
-    return combineOrCreateETLStrategy(combinedCtx, context, fs, dir, baseFiles, deltas, covered, readerTypes, isOriginal, ugi, allowSyntheticFileIds);
-default:
-    if (avgFileSize <= context.maxSize && totalFiles > context.etlFileThreshold) {
-        return new OrcInputFormat.BISplitStrategy(context, fs, dir, baseFiles, isOriginal, deltas, covered, allowSyntheticFileIds);
+    case BI:
+    // BI strategy requested through config
+    splitStrategy = new BISplitStrategy(context, fs, dir, children, isOriginal,
+        deltas, covered);
+    break;
+    case ETL:
+    // ETL strategy requested through config
+    splitStrategy = new ETLSplitStrategy(context, fs, dir, children, isOriginal,
+        deltas, covered);
+    break;
+    default:
+    // HYBRID strategy
+    if (avgFileSize > context.maxSize) {
+        splitStrategy = new ETLSplitStrategy(context, fs, dir, children, isOriginal, deltas,
+            covered);
     } else {
-        return combineOrCreateETLStrategy(combinedCtx, context, fs, dir, baseFiles, deltas, covered, readerTypes, isOriginal, ugi, allowSyntheticFileIds);
+        splitStrategy = new BISplitStrategy(context, fs, dir, children, isOriginal, deltas,
+            covered);
     }
+    break;
 }
+
+// ./repository/org/spark-project/hive/hive-exec/1.2.1.spark2/hive-exec-1.2.1.spark2.jar!/org/apache/hadoop/hive/conf/HiveConf.class
+HIVE_ORC_SPLIT_STRATEGY("hive.exec.orc.split.strategy", "HYBRID", new StringSet(new String[]{"HYBRID", "BI", "ETL"}), "This is not a user level config. BI strategy is used when the requirement is to spend less time in split generation as opposed to query execution (split generation does not read or cache file footers). ETL strategy is used when spending little more time in split generation is acceptable (split generation reads and caches file footers). HYBRID chooses between the above strategies based on heuristics.")      
+  
+
 ```
 也就是说，默认是HYBRID（混合模式读取，根据平均文件大小和文件个数选择ETL还是BI模式）。
 + BI策略以文件为粒度进行split划分
@@ -74,7 +90,6 @@ public List<OrcSplit> getSplits() throws IOException {
                                      null, isOriginal, true, deltas, -1);
     splits.add(orcSplit);
   }
- 
   // add uncovered ACID delta splits
   splits.addAll(super.getSplits());
   return splits;
@@ -82,43 +97,52 @@ public List<OrcSplit> getSplits() throws IOException {
 
 // org.apache.hadoop.hive.ql.io.orc.OrcInputFormat.ETLSplitStrategy#getSplits
 public List<SplitInfo> getSplits() throws IOException {
-    List<SplitInfo> result = new ArrayList<>(files.size());
-    ……
-    for (int i = 0; i < files.size(); ++i) {
-        ……
-        // Ignore files eliminated by PPD, or of 0 length.（此处对空文件做了过滤）
-        if (ppdResult != FooterCache.NO_SPLIT_AFTER_PPD && file.getFileStatus().getLen() > 0) {
-        result.add(new SplitInfo(context, dir.fs, file, orcTail, readerTypes,
-            isOriginal, deltas, true, dir.dir, covered, ppdResult));
-        }
+    List<SplitInfo> result = Lists.newArrayList();
+    for (FileStatus file : files) {
+    FileInfo info = null;
+    if (context.cacheStripeDetails) {
+        info = verifyCachedFileInfo(file);
     }
-    } else {
-    int dirIx = -1, fileInDirIx = -1, filesInDirCount = 0;
-    ETLDir dir = null;
-    for (HdfsFileStatusWithId file : files) {
-        ……
-        // ignore files of 0 length（此处对空文件做了过滤）
-        if (file.getFileStatus().getLen() > 0) {
-        result.add(new Sp litInfo(context, dir.fs, file, null, readerTypes,
-            isOriginal, deltas, true, dir.dir, covered, null));
-        }
+    // ignore files of 0 length（此处对空文件做了过滤）
+    if (file.getLen() > 0) {
+        result.add(new SplitInfo(context, fs, file, info, isOriginal, deltas, true, dir, covered));
     }
     }
     return result;
 }
 ```
- 本质上是一个Hive的BUG，Spark2.4版本中解决了这个问题。
-知道读取数据的策略，那么就设置避免混合模式使用根据文件大小分割读取，不根据文件来读取
+ 本质上是一个BUG，`Spark2.4`版本中解决了这个问题。
+```java
+// org.apache.hadoop.hive.ql.io.orc.OrcInputFormat.BISplitStrategy#getSplits
+public List<OrcSplit> getSplits() throws IOException {
+    List<OrcSplit> splits = Lists.newArrayList();
+    for (FileStatus fileStatus : fileStatuses) {
+    String[] hosts = SHIMS.getLocationsWithOffset(fs, fileStatus).firstEntry().getValue()
+        .getHosts();
+    OrcSplit orcSplit = new OrcSplit(fileStatus.getPath(), 0, fileStatus.getLen(), hosts,
+        null, isOriginal, true, deltas, -1);
+    splits.add(orcSplit);
+    }
+
+    // add uncovered ACID delta splits
+    splits.addAll(super.getSplits());
+    return splits;
+}
+```
+了解了spark读取orc文件策略，那么就设置避免混合模式使用根据文件大小分割读取，不根据文件来读取
 ```sql
 set hive.exec.orc.split.strategy=ETL
 ```
-### 参数设置：```spark.sql.hive.convertMetastoreOrc=true```
+经测试无效。原因分析：
+1、参数未生效
+2、hdfs文件有两个，大小为49B和7.45G，文件的平均大小肯定是大于256M的，所以按默认HYBRID策略规则应本就是采取的ETL策略split ORC文件
+
+#### 3、参数设置：`spark.sql.hive.convertMetastoreOrc=true`
 关于参数的[官方介绍](https://spark.apache.org/docs/2.3.3/sql-programming-guide.html#orc-files)
 >Since Spark 2.3, Spark supports a vectorized ORC reader with a new ORC file format for ORC files. To do that, the following configurations are newly added. The vectorized reader is used for the native ORC tables (e.g., the ones created using the clause USING ORC) when spark.sql.orc.impl is set to native and spark.sql.orc.enableVectorizedReader is set to true. For the Hive ORC serde tables (e.g., the ones created using the clause USING HIVE OPTIONS (fileFormat 'ORC')), the vectorized reader is used when spark.sql.hive.convertMetastoreOrc is also set to true.
 
-需要搭配spark.sql.orc.impl=native使用。
+经测试有效。若仍报错，可尝试搭配spark.sql.orc.impl=native使用。
 
-最后的最后，以上3种解决方案仅供参考，为笔者对问题剖析之后，再结合网上资料整理的，尚未经过实际检验。笔者对这个问题的解决方法就是不用SparkSQL查就好，hiveSQL不会有此问题。
 
 
 # 补充知识
