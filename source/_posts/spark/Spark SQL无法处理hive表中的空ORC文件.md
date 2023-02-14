@@ -18,7 +18,7 @@ toc: true
 
 # 问题分析
 ## 定位问题
-根据报错的java类名+方法名（OrcInputFormat.generateSplitsInfo），可以判断问题出现在读取orc文件阶段
+根据报错的java类名+方法名（OrcInputFormat.generateSplitsInfo），可以判断问题出现在读取orc文件阶段。
 
 ## 查看HDFS文件
 查看表存储路径下的文件，发现有1个空文件
