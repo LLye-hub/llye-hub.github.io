@@ -248,29 +248,6 @@
   </entry>
   
   <entry>
-    <title>大数据相关资料</title>
-    <link href="https://llye-hub.github.io/posts/76d5a95a.html"/>
-    <id>https://llye-hub.github.io/posts/76d5a95a.html</id>
-    <published>2022-12-16T03:46:24.000Z</published>
-    <updated>2023-02-15T03:05:16.640Z</updated>
-    
-    <content type="html"><![CDATA[<h1><span id="sparksql">SparkSQL</span></h1><p><a href="https://cloud.tencent.com/developer/article/1348071">Spark SQL Limit 介绍及优化</a></p><h1><span id="大数据笔记">大数据笔记</span></h1><p><a href="https://github.com/heibaiying/BigData-Notes">大数据入门指南</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;sparksql&quot;&gt;SparkSQL&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer/article/1348071&quot;&gt;Spark SQL Limit 介绍及优化&lt;/a&gt;&lt;/p&gt;
-&lt;</summary>
-      
-    
-    
-    
-    
-    <category term="大数据" scheme="https://llye-hub.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-  </entry>
-  
-  <entry>
     <title>get_json_object在sql中的高级用法</title>
     <link href="https://llye-hub.github.io/posts/5f45fcd7.html"/>
     <id>https://llye-hub.github.io/posts/5f45fcd7.html</id>
@@ -291,6 +268,29 @@
     
     
     <category term="SQL高级语法" scheme="https://llye-hub.github.io/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>资料汇总</title>
+    <link href="https://llye-hub.github.io/posts/76d5a95a.html"/>
+    <id>https://llye-hub.github.io/posts/76d5a95a.html</id>
+    <published>2022-12-16T03:46:24.000Z</published>
+    <updated>2023-02-16T03:30:54.152Z</updated>
+    
+    <content type="html"><![CDATA[<h1><span id="sparksql">SparkSQL</span></h1><p><a href="https://cloud.tencent.com/developer/article/1348071">Spark SQL Limit 介绍及优化</a></p><h1><span id="大数据笔记">大数据笔记</span></h1><p><a href="https://github.com/heibaiying/BigData-Notes">大数据入门指南</a></p><h1><span id="数据结构与算法">数据结构与算法</span></h1><p><a href="https://programmercarl.com/other/algo_pdf.html">代码随想录</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;sparksql&quot;&gt;SparkSQL&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer/article/1348071&quot;&gt;Spark SQL Limit 介绍及优化&lt;/a&gt;&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="资料" scheme="https://llye-hub.github.io/categories/%E8%B5%84%E6%96%99/"/>
+    
     
   </entry>
   
