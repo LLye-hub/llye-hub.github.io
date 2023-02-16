@@ -1,3 +1,4 @@
+https://llye-hub.github.io/posts/d6cdfd6a.html
 https://llye-hub.github.io/posts/76d5a95a.html
 https://llye-hub.github.io/posts/bcc5bdf2.html
 https://llye-hub.github.io/posts/1f69e18b.html
@@ -32,3 +33,4 @@ https://llye-hub.github.io/categories/hive/
 https://llye-hub.github.io/categories/SQL%E4%BC%98%E5%8C%96/
 https://llye-hub.github.io/categories/SQL/
 https://llye-hub.github.io/categories/%E8%B5%84%E6%96%99/
+https://llye-hub.github.io/categories/LeetCode/

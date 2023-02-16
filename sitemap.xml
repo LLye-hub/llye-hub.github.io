@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://llye-hub.github.io/posts/d6cdfd6a.html</loc>
+    
+    <lastmod>2023-02-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://llye-hub.github.io/posts/76d5a95a.html</loc>
     
     <lastmod>2023-02-16</lastmod>
@@ -272,6 +281,13 @@
   
   <url>
     <loc>https://llye-hub.github.io/categories/%E8%B5%84%E6%96%99/</loc>
+    <lastmod>2023-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://llye-hub.github.io/categories/LeetCode/</loc>
     <lastmod>2023-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

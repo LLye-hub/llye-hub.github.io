@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>解题思路之动态规划</title>
+      <link href="/posts/d6cdfd6a.html"/>
+      <url>/posts/d6cdfd6a.html</url>
+      
+        <content type="html"><![CDATA[<h1><span id="什么是动态规划">什么是动态规划</span></h1><p>动态规划，英文：Dynamic Programming，简称DP。<br>简单理解，动态规划的每一个状态都能由上一个状态推导而来</p><h1><span id="解题步骤">解题步骤</span></h1><p>以斐波那契数列为例，动态规划问题可以拆解为五步曲：</p><p>1、确定dp数组和下标含义：第n个斐波那契数是<code>dp[n]</code></p><p>2、确定递推公式（也可叫状态转移方程）：<code>dp[n] = dp[n-1] + dp[n-2]</code></p><p>3、dp数组初始化：<code>dp[0] = 0; dp[1] = 1</code></p><p>4、确定遍历顺序：从前到后遍历，<code>dp[n]</code>依赖<code>dp[n-1]</code>和<code>dp[n-2]</code></p><p>5、举例推导dp数组：当<code>n=10</code>时，dp数组应该为：<code>0 1 1 2 3 5 8 13 21 34 55</code></p><h1><span id="参考资料">参考资料</span></h1><p><a href="https://programmercarl.com/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">代码随想录之动态规划</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SparkSQL优化之数据倾斜</title>
       <link href="/posts/faab1ad7.html"/>
       <url>/posts/faab1ad7.html</url>
