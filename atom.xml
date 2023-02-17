@@ -6,7 +6,7 @@
   <link href="https://llye-hub.github.io/atom.xml" rel="self"/>
   
   <link href="https://llye-hub.github.io/"/>
-  <updated>2023-02-16T09:29:13.184Z</updated>
+  <updated>2023-02-17T08:43:06.374Z</updated>
   <id>https://llye-hub.github.io/</id>
   
   <author>
@@ -17,11 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>mysql和hiveSQL的语法差别</title>
+    <link href="https://llye-hub.github.io/posts/e912f2da.html"/>
+    <id>https://llye-hub.github.io/posts/e912f2da.html</id>
+    <published>2023-02-17T08:06:16.000Z</published>
+    <updated>2023-02-17T08:43:06.374Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在牛客网上刷sql题，但编程语言居然只支持mysql，一些函数用法上与平时工作使用的hiveSQL有较大差别，所以在这篇博客中整理一下两种语法的函数使用差异</p><p><a href>mysql内置函数</a></p><p><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF?spm=a2c4g.11186623.0.0.3c267254Ka3fUh#LanguageManualUDF-get_json_object">hive内置函数</a></p><h1><span id="日期-时间函数">日期、时间函数</span></h1><table><thead><tr><th>函数用途</th><th>mysql函数</th><th>mysql用法</th><th>hive函数</th><th>hiveSQL用法</th></tr></thead><tbody><tr><td>日期、时间格式化</td><td>date_format</td><td>date_format(‘2008-08-08 22:23:01’, ‘%Y%m%d%H%i%s’)</td><td>date_format</td><td>date_format(‘2008-08-08 22:23:01’, ‘yyyyMMddHHmmss’)</td></tr><tr><td>日期、时间加</td><td>date_add</td><td>date_add(‘2008-08-08 22:23:01’,interval 1 day&#x2F;hour&#x2F;minute&#x2F;second&#x2F;microsecond&#x2F;week&#x2F;month&#x2F;quarter&#x2F;year)，返回dateTime格式</td><td>date_add</td><td>date_add(‘2008-08-08 22:23:01’,1)，只加days，返回date格式</td></tr><tr><td>日期、时间减</td><td>date_sub</td><td>date_sub(‘2008-08-08 22:23:01’,interval 1 day&#x2F;hour&#x2F;minute&#x2F;second&#x2F;microsecond&#x2F;week&#x2F;month&#x2F;quarter&#x2F;year)，返回dateTime格式</td><td>date_sub</td><td>date_sub(‘2008-08-08 22:23:01’,1)，只加days，返回date格式</td></tr><tr><td>日期相差</td><td>datediff</td><td>datediff(‘2008-08-08 22:22:00’,’2008-08-07 22:23:00’)</td><td>datediff</td><td>datediff(‘2008-08-08 22:22:00’,’2008-08-07 22:23:00’)</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;最近在牛客网上刷sql题，但编程语言居然只支持mysql，一些函数用法上与平时工作使用的hiveSQL有较大差别，所以在这篇博客中整理一下两种语法的函数使用差异&lt;/p&gt;
+&lt;p&gt;&lt;a href&gt;mysql内置函数&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cwi</summary>
+      
+    
+    
+    
+    <category term="SQL" scheme="https://llye-hub.github.io/categories/SQL/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>排序算法</title>
+    <link href="https://llye-hub.github.io/posts/735e5788.html"/>
+    <id>https://llye-hub.github.io/posts/735e5788.html</id>
+    <published>2023-02-17T05:46:19.000Z</published>
+    <updated>2023-02-17T05:59:36.946Z</updated>
+    
+    <content type="html"><![CDATA[<p>整理一些数据结构中常用的排序算法原理和java实现</p><h1><span id="快速排序">快速排序</span></h1><h2><span id="原理">原理</span></h2><p>在数组中找到一个基准值<code>t</code>，将小于<code>t</code>的值放它前面，大于<code>t</code>的值放它后面，再以此方法对子数组递归进行快速排序</p><h2><span id="java代码">java代码</span></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;整理一些数据结构中常用的排序算法原理和java实现&lt;/p&gt;
+&lt;h1&gt;&lt;span id=&quot;快速排序&quot;&gt;快速排序&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;原理&quot;&gt;原理&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;在数组中找到一个基准值&lt;code&gt;t&lt;/code&gt;，将小于&lt;code&gt;t</summary>
+      
+    
+    
+    
+    <category term="刷题" scheme="https://llye-hub.github.io/categories/%E5%88%B7%E9%A2%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>解题思路之动态规划</title>
     <link href="https://llye-hub.github.io/posts/d6cdfd6a.html"/>
     <id>https://llye-hub.github.io/posts/d6cdfd6a.html</id>
     <published>2023-02-16T09:11:19.000Z</published>
-    <updated>2023-02-16T09:29:13.184Z</updated>
+    <updated>2023-02-17T05:49:10.623Z</updated>
     
     <content type="html"><![CDATA[<h1><span id="什么是动态规划">什么是动态规划</span></h1><p>动态规划，英文：Dynamic Programming，简称DP。<br>简单理解，动态规划的每一个状态都能由上一个状态推导而来</p><h1><span id="解题步骤">解题步骤</span></h1><p>以斐波那契数列为例，动态规划问题可以拆解为五步曲：</p><p>1、确定dp数组和下标含义：第n个斐波那契数是<code>dp[n]</code></p><p>2、确定递推公式（也可叫状态转移方程）：<code>dp[n] = dp[n-1] + dp[n-2]</code></p><p>3、dp数组初始化：<code>dp[0] = 0; dp[1] = 1</code></p><p>4、确定遍历顺序：从前到后遍历，<code>dp[n]</code>依赖<code>dp[n-1]</code>和<code>dp[n-2]</code></p><p>5、举例推导dp数组：当<code>n=10</code>时，dp数组应该为：<code>0 1 1 2 3 5 8 13 21 34 55</code></p><h1><span id="参考资料">参考资料</span></h1><p><a href="https://programmercarl.com/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">代码随想录之动态规划</a></p>]]></content>
     
@@ -34,8 +81,10 @@
     
     
     
-    <category term="LeetCode" scheme="https://llye-hub.github.io/categories/LeetCode/"/>
+    <category term="刷题" scheme="https://llye-hub.github.io/categories/%E5%88%B7%E9%A2%98/"/>
     
+    
+    <category term="LeetCode" scheme="https://llye-hub.github.io/tags/LeetCode/"/>
     
   </entry>
   
