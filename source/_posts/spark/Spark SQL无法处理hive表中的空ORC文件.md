@@ -3,14 +3,13 @@ title: SparkSQL无法处理hive表中的空ORC文件
 categories:
   - SQL
 tags:
-  - HDFS
   - ORC
 abbrlink: 1f69e18b
 date: 2022-12-16 17:56:46
 toc: true
 ---
 
-# 为什么碰到这个问题
+# 碰到了什么问题
 起因是在使用SparkSQL查询表时，遇到报错：java.lang.RuntimeException: serious problem at OrcInputFormat.generateSplitsInfo
 ![AfHSH.png](https://i.328888.xyz/2022/12/19/AfHSH.png)
 ![AfbiQ.png](https://i.328888.xyz/2022/12/19/AfbiQ.png)
@@ -24,7 +23,7 @@ toc: true
 查看表存储路径下的文件，发现有1个空文件
 ![AfjbE.png](https://i.328888.xyz/2022/12/19/AfjbE.png)
 
-## 为什么会有空文件（待详细补充）
+## 为什么会有空文件
 1、sparkSQL建表
 2、表写入数据时，sql最后做了distribute by操作，产生了空文件
 

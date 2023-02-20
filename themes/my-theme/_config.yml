@@ -200,9 +200,9 @@ profile:
   enabled: true # Whether to show profile bar
   articleSelfBlock: false # 是否开启文章下方的自我介绍
   avatar: images/avatar.jpeg
-  gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
+  gravatar:  # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
   author: 辣白菜的菜
-  author_title: 数仓工程师
+  author_title: 数仓开发工程师
   author_description: 持续成长的小白菜，搞钱要紧，早日退休 # 个人简介标语，可为null
   location: HangZhou, China
   follow: https://github.com/LLye-hub
