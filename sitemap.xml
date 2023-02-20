@@ -20,15 +20,6 @@
   </url>
   
   <url>
-    <loc>https://llye-hub.github.io/posts/bcc5bdf2.html</loc>
-    
-    <lastmod>2023-02-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://llye-hub.github.io/posts/1f69e18b.html</loc>
     
     <lastmod>2023-02-20</lastmod>
@@ -227,13 +218,6 @@
   
   <url>
     <loc>https://llye-hub.github.io/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2023-02-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://llye-hub.github.io/tags/hdfs%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D/</loc>
     <lastmod>2023-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
