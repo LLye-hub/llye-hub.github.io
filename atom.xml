@@ -6,7 +6,7 @@
   <link href="https://llye-hub.github.io/atom.xml" rel="self"/>
   
   <link href="https://llye-hub.github.io/"/>
-  <updated>2023-02-20T03:35:00.592Z</updated>
+  <updated>2023-02-17T08:43:06.374Z</updated>
   <id>https://llye-hub.github.io/</id>
   
   <author>
@@ -15,32 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://llye-hub.github.io/posts/0.html"/>
-    <id>https://llye-hub.github.io/posts/0.html</id>
-    <published>2023-02-20T03:35:00.063Z</published>
-    <updated>2023-02-20T03:35:00.592Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://llye-hub.github.io/posts/0.html"/>
-    <id>https://llye-hub.github.io/posts/0.html</id>
-    <published>2023-02-20T03:29:03.268Z</published>
-    <updated>2023-02-20T03:29:03.810Z</updated>
-    
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>mysql和hiveSQL的语法差别</title>
@@ -188,18 +162,18 @@
   </entry>
   
   <entry>
-    <title>hive的set参数</title>
+    <title>hiveSQL之set参数</title>
     <link href="https://llye-hub.github.io/posts/4547a6e2.html"/>
     <id>https://llye-hub.github.io/posts/4547a6e2.html</id>
     <published>2023-02-03T08:14:57.000Z</published>
-    <updated>2023-02-20T03:40:11.828Z</updated>
+    <updated>2023-02-20T07:52:21.554Z</updated>
     
-    <content type="html"><![CDATA[<h1><span id="官方说明传送门"></span></h1><h2><span id="hivemergemapfiles">hive.merge.mapfiles</span></h2><p>Default Value: true<br>map-only任务结束时合并小文件</p><h2><span id="hivemergemapredfiles">hive.merge.mapredfiles</span></h2><p>Default Value: true<br>map-reduce任务结束时合并小文件</p>]]></content>
+    <content type="html"><![CDATA[<h1><span id="官方传送门"></span></h1><h2><span id="hivemergemapfiles">hive.merge.mapfiles</span></h2><p>Default Value: true<br>map-only任务结束时合并小文件</p><h2><span id="hivemergemapredfiles">hive.merge.mapredfiles</span></h2><p>Default Value: true<br>map-reduce任务结束时合并小文件</p><h2><span id="hiveoptimizectematerializethreshold">hive.optimize.cte.materialize.threshold</span></h2><p>默认情况下是-1（关闭）；当开启（大于0），比如设置为2，则如果with..as语句被引用2次及以上时，会把with..as语句生成的table物化，从而做到with..as语句只执行一次，来提高效率</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;官方说明传送门&quot;&gt;&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;hivemergemapfiles&quot;&gt;hive.merge.mapfiles&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Default Value: true&lt;br&gt;map-only任务结束时合并</summary>
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;官方传送门&quot;&gt;&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;hivemergemapfiles&quot;&gt;hive.merge.mapfiles&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Default Value: true&lt;br&gt;map-only任务结束时合并小文</summary>
       
     
     
