@@ -8,14 +8,8 @@
       <link href="/posts/e912f2da.html"/>
       <url>/posts/e912f2da.html</url>
       
-        <content type="html"><![CDATA[<p>最近在牛客网上刷sql题，但编程语言居然只支持mysql，一些函数用法上与平时工作使用的hiveSQL有较大差别，所以在这篇博客中整理一下两种语法的函数使用差异</p><p><a href>mysql内置函数</a></p><p><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF?spm=a2c4g.11186623.0.0.3c267254Ka3fUh#LanguageManualUDF-get_json_object">hive内置函数</a></p><h1><span id="日期-时间函数">日期、时间函数</span></h1><table><thead><tr><th>函数用途</th><th>mysql函数</th><th>mysql用法</th><th>hive函数</th><th>hiveSQL用法</th></tr></thead><tbody><tr><td>日期、时间格式化</td><td>date_format</td><td>date_format(‘2008-08-08 22:23:01’, ‘%Y%m%d%H%i%s’)</td><td>date_format</td><td>date_format(‘2008-08-08 22:23:01’, ‘yyyyMMddHHmmss’)</td></tr><tr><td>日期、时间加</td><td>date_add</td><td>date_add(‘2008-08-08 22:23:01’,interval 1 day&#x2F;hour&#x2F;minute&#x2F;second&#x2F;microsecond&#x2F;week&#x2F;month&#x2F;quarter&#x2F;year)，返回dateTime格式</td><td>date_add</td><td>date_add(‘2008-08-08 22:23:01’,1)，只加days，返回date格式</td></tr><tr><td>日期、时间减</td><td>date_sub</td><td>date_sub(‘2008-08-08 22:23:01’,interval 1 day&#x2F;hour&#x2F;minute&#x2F;second&#x2F;microsecond&#x2F;week&#x2F;month&#x2F;quarter&#x2F;year)，返回dateTime格式</td><td>date_sub</td><td>date_sub(‘2008-08-08 22:23:01’,1)，只加days，返回date格式</td></tr><tr><td>日期相差</td><td>datediff</td><td>datediff(‘2008-08-08 22:22:00’,’2008-08-07 22:23:00’)</td><td>datediff</td><td>datediff(‘2008-08-08 22:22:00’,’2008-08-07 22:23:00’)</td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
-      
-      <categories>
-          
-          <category> SQL </category>
-          
-      </categories>
       
       
     </entry>
