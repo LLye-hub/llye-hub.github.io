@@ -2,9 +2,8 @@
 title: hive的set参数
 toc: true
 tags:
-  - 运行参数
 categories:
-  - hive
+  - SQL
 abbrlink: 4547a6e2
 date: 2023-02-03 16:14:57
 ---

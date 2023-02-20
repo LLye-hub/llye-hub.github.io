@@ -10,6 +10,9 @@ date: 2023-02-03 16:15:46
 ---
 # [官方说明传送门]()
 
+# 广播相关
+## spark.sql.broadcastTimeout
+--conf spark.sql.broadcastTimeout=1000 \
 
 ## spark.kryoserializer.buffer.max=128M 
 ## spark.sql.shuffle.partitions=1000 
