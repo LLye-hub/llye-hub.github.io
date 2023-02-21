@@ -4,9 +4,9 @@ toc: true
 abbrlink: 8a94c1da
 date: 2023-02-02 14:02:26
 tags: 
-  - sql alter
+  - 改分区
 categories: 
-  - hive
+  - SQL
 ---
 msck repair table
 

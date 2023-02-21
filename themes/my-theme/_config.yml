@@ -97,7 +97,7 @@ donate:
     qrcode: images/donate/alipayimg.jpeg
     title: 支付宝
 
-# Share
+# Share 文章分享
 # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
 share:
   enable: true  # 是否启用分享
