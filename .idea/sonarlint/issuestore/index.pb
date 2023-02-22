@@ -1,8 +1,6 @@
 
 E
 _config.landscape.yml,6/2/6232c75193367237d39c36efa52d0fe20d5ca72c
-;
-_config.yml,c/d/cd089ae45ce870c45e434019e8f1ed4f066cd425
 O
 themes/my-theme/layout/post.ejs,7/d/7d9e94858bcd6c7294efc09c0a538be23b5790d0
 ]
@@ -33,8 +31,6 @@ V
 &source/_posts/hive/hive动态分区.md,0/0/006fe3a64f3b59c1872fb29aca871601cb749113
 c
 3source/_posts/刷题/解题思路之动态规划.md,8/1/812e6378461a25ff32bd1255a57f842586272dfa
-M
-source/_posts/资料汇总.md,b/0/b0759f8c63f1b05dee7a70429a977e91e1974689
 S
 #themes/next/source/css/_colors.styl,a/f/af1ea43e6ed1b839ec9c4bdb1fe90cc66fd8a08e
 ]
@@ -53,3 +49,11 @@ A
 0themes/my-theme/layout/_partial/post/gallery.ejs,7/9/79fde5b183ed8cc5527c89c13aeb28b496efb47f
 a
 1themes/my-theme/layout/_partial/post/category.ejs,9/4/9412d4802bdcddaf7877fbf3ce8b81f08d544bc7
+a
+1themes/my-theme/layout/_partial/sidebar-about.ejs,9/9/99217bedb0832a9290acd21fa31e9d701e0a9020
+\
+,themes/my-theme/layout/_partial/post/tag.ejs,2/2/228e9689a3c0be717539d9373b7dc1dc26798447
+[
++themes/my-theme/layout/_partial/sidebar.ejs,1/c/1c9707bb7fdedc21ac9e0a7e605bec208271d791
+^
+.themes/my-theme/layout/_partial/pagination.ejs,8/c/8ccaecd65a95bd033f489288e2a69c22b0c11d20

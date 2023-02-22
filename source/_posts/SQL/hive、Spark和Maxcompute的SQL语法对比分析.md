@@ -21,7 +21,7 @@ from order
 having trd_amt_std>0
 ```
 
-以上sql在hive中可以运行，但是在maxcomputer中会提示错误，错误如下
+以上sql在hive中可以运行，但是在maxcomputer中会提示错误，错误如下：
 ![gtHTp.png](https://i.328888.xyz/2023/02/21/gtHTp.png)
 
 
@@ -45,42 +45,27 @@ maxcomputer 的cross join，在条数超过一定数据量后，会提示笛卡�
 
 #### 举例
 ```sql
-select a.*
-,b.shop_id
+select a.*,b.*
 from
-(select *
-from ytdw.dwd_shop_user_d
-where dayid='${v_date}'
+(select * from table_a
 ) a
 cross join
-(select *
-from ytdw.dwd_shop_user_d
-where dayid='${v_date}'
-limit 1000
+(select * from table_b
 ) b
 ```
 
 以上sql在hive中可以运行，但是在maxcomputer中会提示错误，错误如下：
-![gt893.png](https://i.328888.xyz/2023/02/21/gt893.png)
-
+![xfOrA.png](https://i.328888.xyz/2023/02/22/xfOrA.png)
 
 #### 替换方案
 在左右笛卡尔积表中新增常量字段，用于关联
 ```sql
-select a.*
-,b.shop_id
+select a.*,b.*
 from
-(select *
-,1 as cro_col
-from ytdw.dwd_shop_user_d
-where dayid='${v_date}'
+(select *,1 as cro_col from table_a
 ) a
 cross join
-(select *
-,1 as cro_col
-from ytdw.dwd_shop_user_d
-where dayid='${v_date}'
-limit 1000
+(select *,1 as cro_col from table_b
 ) b
 on a.cro_col=b.cro_col
 ```
@@ -119,14 +104,13 @@ select table_a.id_a
 ,table_b.value_b
 from  table_a
 left join table_b
-on table_a.id_a<table_b.id_b
+on table_a.id_a < table_b.id_b
 ```
 sql说明 :该sql准备了两张表table_a和table_b用于连接测试
 使用left join on语法，但是关联关系使用的是 < 不等值关联符号
 
 **maxcomputer运行结果**
-![gtcZZ.png](https://i.328888.xyz/2023/02/21/gtcZZ.png)
-
+![xfcBz.png](https://i.328888.xyz/2023/02/22/xfcBz.png)
 maxcomputer会报异常：  FAILED: ODPS-0130071:[15,4] Semantic analysis exception - expect equality expression (i.e., only use '=' and 'AND') for join condition without mapjoin hint
 
 提示的是期望join的是等值表达式
@@ -146,7 +130,8 @@ hive会报错： Error while compiling statement: FAILED: SemanticException [Err
 hive 2.2.0+版本顺利得到正确结果
 
 **spark运行结果**
-![gtBTQ.png](https://i.328888.xyz/2023/02/21/gtBTQ.png)
+
+![xfGXy.png](https://i.328888.xyz/2023/02/22/xfGXy.png) 
 
 spark2.3也顺利得到结果
 
@@ -285,7 +270,7 @@ select array_contains(split("1,2,3,4",","),1)
 split后的array对象为一个string数组，而判断被包含的数字【1】为一个int 对象
 
 **maxcomputer运行结果**
-![gtGZc.png](https://i.328888.xyz/2023/02/21/gtGZc.png)
+![xf5D8.png](https://i.328888.xyz/2023/02/22/xf5D8.png)
 maxcomputer会报异常：  FAILED: ODPS-0130071:[1,44] Semantic analysis exception - invalid type INT of argument 2 for function array_contains, expect STRING, implicit conversion is not allowed
 
 提示的是array_contains第二个参数期望的是string，但是传入的是int，隐式类型转换不支持
@@ -298,11 +283,13 @@ hive会报错： Error while compiling statement: FAILED: SemanticException [Err
 提示的是array_contains函数期望的是string，但是传入的是int，类型不匹配
 
 **spark运行结果**
-![gt5aN.png](https://i.328888.xyz/2023/02/21/gt5aN.png)
+
+![xf1DJ.png](https://i.328888.xyz/2023/02/22/xf1DJ.png)
 
 spark能顺利产出结果，结果为true，那么为什么spark可以成功呢？
 
 大概率是spark智能的将1从int转换为了string类型，使得类型得以匹配，通过explain查看物理执行计划来验证
+
 ![gtJAq.png](https://i.328888.xyz/2023/02/21/gtJAq.png)
 
 在上图标红的地方可以看到，spark在物理执行计划层面，将int的1隐式的转换为了string类型，验证了我们一开始的猜想。
@@ -326,20 +313,23 @@ select cast(array(1, 2, 3, 4) as string) as array_to_string;
 ```
 
 **maxcompute运行结果**
-![gtKrz.png](https://i.328888.xyz/2023/02/21/gtKrz.png)
+
+![xfQ3c.png](https://i.328888.xyz/2023/02/22/xfQ3c.png)
 
 maxcompute报异常：FAILED: ODPS-0130141:[1,8] Illegal implicit type cast - cannot cast from ARRAY<INT> to STRING
 
 提示的是 ARRAY<>类型字段  不能强制转换为 STRING 类型
 
 **hive运行结果**
-![gtL5w.png](https://i.328888.xyz/2023/02/21/gtL5w.png)
+
+![xyi6V.png](https://i.328888.xyz/2023/02/22/xyi6V.png)
 
 hive报异常：SQL语义错误: Error while compiling statement: FAILED: ClassCastException org.apache.hadoop.hive.serde2.typeinfo.ListTypeInfo cannot be cast to org.apache.hadoop.hive.serde2.typeinfo.PrimitiveTypeInfo
 
 提示的是不同类型不能强转
 
 **spark运行结果**
+
 ![gtPZa.png](https://i.328888.xyz/2023/02/21/gtPZa.png)
 
 spark能顺利产出结果
