@@ -1,3 +1,4 @@
+https://llye-hub.github.io/posts/76a5661e.html
 https://llye-hub.github.io/posts/e6b1209.html
 https://llye-hub.github.io/posts/76d5a95a.html
 https://llye-hub.github.io/posts/e912f2da.html
@@ -30,6 +31,8 @@ https://llye-hub.github.io/tags/ORC/
 https://llye-hub.github.io/tags/LeetCode/
 https://llye-hub.github.io/tags/Maxcompute/
 https://llye-hub.github.io/tags/%E6%94%B9%E5%88%86%E5%8C%BA/
+https://llye-hub.github.io/tags/java/
+https://llye-hub.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/
 https://llye-hub.github.io/categories/shell/
 https://llye-hub.github.io/categories/hadoop/
 https://llye-hub.github.io/categories/hive/
