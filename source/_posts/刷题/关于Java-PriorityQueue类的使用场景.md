@@ -45,7 +45,7 @@ PriorityQueue<int[]> win = new PriorityQueue<int[]>(new Comparator<int[]>() {
         }});
 ```
 
-## 插入元素
+## 插入元素：add、offer
 ```java
 class Main {
 	public static void main(String[] args) {
@@ -74,7 +74,7 @@ class Main {
 
 ```
 
-## 访问元素
+## 访问元素：peek
 ```java
 //使用 peek() 方法
 int number = nums.peek();
@@ -86,7 +86,7 @@ System.out.println("访问元素: " + number);
  */
 ```
 
-## 删除元素
+## 删除元素：remove、poll
 ```java
 //使用remove()方法，从队列中删除指定的元素
 boolean result = numbers.remove(2);
@@ -103,7 +103,7 @@ System.out.println("使用poll()删除的元素: " + number);
  */
 ```
 
-## 是否包含元素
+## 是否包含元素：contains
 ```java
 //使用contains()方法，从队列中搜索指定的元素，找到则返回true，否则false。
 boolean result = numbers.contains(4);
