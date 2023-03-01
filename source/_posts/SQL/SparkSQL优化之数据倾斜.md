@@ -4,7 +4,7 @@ toc: true
 tags:
   - 数据倾斜
 categories:
-  - SQL优化
+  - SQL
 abbrlink: faab1ad7
 date: 2023-02-09 10:19:52
 ---
