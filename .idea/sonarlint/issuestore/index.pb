@@ -75,8 +75,6 @@ M
 source/_posts/资料汇总.md,b/0/b0759f8c63f1b05dee7a70429a977e91e1974689
 Z
 *source/_posts/SQL/SparkSQL之conf参数.md,8/2/82d1a730cd6059466ad8b0f7fc612316508cf2ca
-c
-3source/_posts/SQL/mysql和hiveSQL的语法差别.md,c/2/c2c9de87de8ff82f9f9aefd0d209e67932515df0
 d
 4source/_posts/SQL/hiveSQL命令之alter-partition.md,9/3/93c1a03f23ae01b7c901127f50c6c06c8c7eb7ec
 v

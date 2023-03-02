@@ -9,7 +9,7 @@ categories:
 ---
 最近在牛客网上刷sql题，但编程语言居然只支持mysql，一些函数用法上与平时工作使用的hiveSQL有较大差别，所以在这篇博客中整理一下两种语法的函数使用差异
 
-[mysql内置函数]()
+[mysql内置函数](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html)
 
 [hive内置函数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF?spm=a2c4g.11186623.0.0.3c267254Ka3fUh#LanguageManualUDF-get_json_object)
 
