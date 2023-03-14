@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>终端免密登录mysql</title>
+      <link href="/posts/b31f5f52.html"/>
+      <url>/posts/b31f5f52.html</url>
+      
+        <content type="html"><![CDATA[<p>参考资料：<a href="https://aijishu.com/a/1060000000088457">Mysql Shell免密登录的思考及实际应用案例</a></p><p>常见终端登录mysql的方式是通过命令<code>mysql -u&#123;user&#125; -p&#123;password&#125;</code>，每次登录都需要输入一长串命令和参数，我觉得麻烦，且这种方式下密码直接暴露出来是不安全的</p><p>虽然也可用命令<code>mysql -u&#123;user&#125; -p</code> + 手动输入密码，也是麻烦的，而且还要记密码</p><p>所以，如果仅用命令<code>mysql</code>即可实现登录，那得多方便</p><p>从网上搜索后发现，可以通过明文配置文件的方式实现mysql免密登录</p><p>具体命令如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编辑配置文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">[mysql]</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">user=xxx</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">password=xxx</span></span><br><span class="line">sudo vi /etc/my.cnf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看文件内容</span></span><br><span class="line">cat  /etc/my.cnf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定mysql server仅从这个配置文件读取参数</span></span><br><span class="line">mysql --defaults-file=/etc/my.cnf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">验证读取配置情况</span></span><br><span class="line">mysql --defaults-file=/etc/my.cnf --print-defaults</span><br></pre></td></tr></table></figure><p><img src="https://i.328888.xyz/2023/03/14/9EVXa.png" alt="9EVXa.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> shell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 免密登录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sql练习之连续登录问题</title>
+      <link href="/posts/67cc9ac.html"/>
+      <url>/posts/67cc9ac.html</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://mp.weixin.qq.com/s?__biz=MzU5NTc1NzE2OA==&mid=2247484833&idx=1&sn=2a965091ec5ec09fe10185fecbf92779&chksm=fe6c54bec91bdda83229a33ceefb0358f408ed24ac5048eb48dbe6911b795b1536971a98ab57&scene=21#wechat_redirect">题目来源</a></p><h1 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h1><p>求出连续3天登录的用户id</p><h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> if <span class="keyword">not</span> <span class="keyword">exists</span> one.user_login(</span><br><span class="line">     id <span class="type">int</span> COMMENT <span class="string">&#x27;用户主键&#x27;</span>,</span><br><span class="line">     dt <span class="type">varchar</span>(<span class="number">20</span>) COMMENT <span class="string">&#x27;登录日期&#x27;</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1001</span>,<span class="string">&#x27;2021-12-12&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1002</span>,<span class="string">&#x27;2021-12-12&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1001</span>,<span class="string">&#x27;2021-12-13&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1001</span>,<span class="string">&#x27;2021-12-14&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1001</span>,<span class="string">&#x27;2021-12-16&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1002</span>,<span class="string">&#x27;2021-12-16&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1001</span>,<span class="string">&#x27;2021-12-19&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1002</span>,<span class="string">&#x27;2021-12-17&#x27;</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span>  user_login <span class="keyword">values</span>(<span class="number">1001</span>,<span class="string">&#x27;2021-12-20&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure><h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><h2 id="解法一：自关联"><a href="#解法一：自关联" class="headerlink" title="解法一：自关联"></a>解法一：自关联</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line"><span class="keyword">distinct</span> id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">a.id ,</span><br><span class="line">a.dt <span class="keyword">as</span> dt1 ,</span><br><span class="line">b.dt <span class="keyword">as</span> dt2</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">user_login a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> user_login b <span class="keyword">on</span></span><br><span class="line">a.id <span class="operator">=</span> b.id</span><br><span class="line"><span class="keyword">and</span> (b.dt <span class="keyword">between</span> DATE_SUB(a.dt, <span class="type">interval</span> <span class="number">2</span> <span class="keyword">day</span>) <span class="keyword">and</span> a.dt)</span><br><span class="line">) tmp1</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">id,</span><br><span class="line">dt1</span><br><span class="line"><span class="keyword">having</span></span><br><span class="line"><span class="built_in">count</span>(<span class="number">1</span>) <span class="operator">=</span> <span class="number">3</span></span><br><span class="line">)tmp2</span><br><span class="line">;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题集 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql练习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SQL之窗口函数的边界</title>
       <link href="/posts/5af52219.html"/>
       <url>/posts/5af52219.html</url>
@@ -38,7 +88,7 @@
       
       <categories>
           
-          <category> 刷题 </category>
+          <category> 题集 </category>
           
       </categories>
       
@@ -104,12 +154,12 @@
       <link href="/posts/735e5788.html"/>
       <url>/posts/735e5788.html</url>
       
-        <content type="html"><![CDATA[<p>整理一些数据结构中常用的排序算法原理和java实现</p><h1><span id="快速排序">快速排序</span></h1><h2><span id="原理">原理</span></h2><p>在数组中找到一个基准值<code>t</code>，将小于<code>t</code>的值放它前面，大于<code>t</code>的值放它后面，再以此方法对子数组递归进行快速排序</p><h2><span id="java代码">java代码</span></h2>]]></content>
+        <content type="html"><![CDATA[<p>整理一些数据结构中常用的排序算法原理和java实现</p><h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>在数组中找到一个基准值<code>t</code>，将小于<code>t</code>的值放它前面，大于<code>t</code>的值放它后面，再以此方法对子数组递归进行快速排序</p><h2 id="java代码"><a href="#java代码" class="headerlink" title="java代码"></a>java代码</h2>]]></content>
       
       
       <categories>
           
-          <category> 刷题 </category>
+          <category> 题集 </category>
           
       </categories>
       
@@ -123,12 +173,12 @@
       <link href="/posts/d6cdfd6a.html"/>
       <url>/posts/d6cdfd6a.html</url>
       
-        <content type="html"><![CDATA[<h1><span id="什么是动态规划">什么是动态规划</span></h1><p>动态规划，英文：Dynamic Programming，简称DP。<br>简单理解，动态规划的每一个状态都能由上一个状态推导而来</p><h1><span id="解题步骤">解题步骤</span></h1><p>以斐波那契数列为例，动态规划问题可以拆解为五步曲：</p><p>1、确定dp数组和下标含义：第n个斐波那契数是<code>dp[n]</code></p><p>2、确定递推公式（也可叫状态转移方程）：<code>dp[n] = dp[n-1] + dp[n-2]</code></p><p>3、dp数组初始化：<code>dp[0] = 0; dp[1] = 1</code></p><p>4、确定遍历顺序：从前到后遍历，<code>dp[n]</code>依赖<code>dp[n-1]</code>和<code>dp[n-2]</code></p><p>5、举例推导dp数组：当<code>n=10</code>时，dp数组应该为：<code>0 1 1 2 3 5 8 13 21 34 55</code></p><h1><span id="参考资料">参考资料</span></h1><p><a href="https://programmercarl.com/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">代码随想录之动态规划</a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="什么是动态规划"><a href="#什么是动态规划" class="headerlink" title="什么是动态规划"></a>什么是动态规划</h1><p>动态规划，英文：Dynamic Programming，简称DP。<br>简单理解，动态规划的每一个状态都能由上一个状态推导而来</p><h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><p>以斐波那契数列为例，动态规划问题可以拆解为五步曲：</p><p>1、确定dp数组和下标含义：第n个斐波那契数是<code>dp[n]</code></p><p>2、确定递推公式（也可叫状态转移方程）：<code>dp[n] = dp[n-1] + dp[n-2]</code></p><p>3、dp数组初始化：<code>dp[0] = 0; dp[1] = 1</code></p><p>4、确定遍历顺序：从前到后遍历，<code>dp[n]</code>依赖<code>dp[n-1]</code>和<code>dp[n-2]</code></p><p>5、举例推导dp数组：当<code>n=10</code>时，dp数组应该为：<code>0 1 1 2 3 5 8 13 21 34 55</code></p><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://programmercarl.com/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92">代码随想录之动态规划</a></p>]]></content>
       
       
       <categories>
           
-          <category> 刷题 </category>
+          <category> 题集 </category>
           
       </categories>
       
