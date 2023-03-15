@@ -1,3 +1,6 @@
+https://llye-hub.github.io/posts/2cb81866.html
+https://llye-hub.github.io/posts/47d5b7b0.html
+https://llye-hub.github.io/posts/84fddb38.html
 https://llye-hub.github.io/posts/b31f5f52.html
 https://llye-hub.github.io/posts/67cc9ac.html
 https://llye-hub.github.io/posts/735e5788.html
@@ -39,6 +42,8 @@ https://llye-hub.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/
 https://llye-hub.github.io/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/
 https://llye-hub.github.io/tags/sql%E7%BB%83%E4%B9%A0/
 https://llye-hub.github.io/tags/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/
+https://llye-hub.github.io/tags/hive%E5%AE%89%E8%A3%85/
+https://llye-hub.github.io/tags/hadoop%E5%AE%89%E8%A3%85/
 https://llye-hub.github.io/categories/shell/
 https://llye-hub.github.io/categories/hadoop/
 https://llye-hub.github.io/categories/hive/
