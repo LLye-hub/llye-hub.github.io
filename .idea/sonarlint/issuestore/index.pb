@@ -25,8 +25,6 @@ l
 <source/_posts/hadoop/hadoop命令之distcp分布式拷贝.md,6/c/6c8c8ca926552cedd00f0735910e91a245aa15b1
 Z
 *source/_posts/hadoop/hadoop基本命令.md,b/6/b6f9df6ded39b09cd31e599117593f51a4f646f3
-Z
-*source/_posts/shell/Shell命令之set-e.md,1/c/1ce0a22e5df3d368157dc0bc6b0fc81c50559d44
 V
 &source/_posts/hive/hive动态分区.md,0/0/006fe3a64f3b59c1872fb29aca871601cb749113
 S
@@ -69,8 +67,6 @@ Z
 *source/_posts/SQL/SparkSQL之conf参数.md,8/2/82d1a730cd6059466ad8b0f7fc612316508cf2ca
 d
 4source/_posts/SQL/hiveSQL命令之alter-partition.md,9/3/93c1a03f23ae01b7c901127f50c6c06c8c7eb7ec
-v
-Fsource/_posts/SQL/hive、Spark和Maxcompute的SQL语法对比分析.md,8/c/8cec1644d7be9820ea7a64c93fcae0749fd178c6
 a
 1source/_posts/SQL/hiveSQL之生成连续数字.md,6/6/664b9eca1a37d9a92c24dd7823b8f4cfc811b863
 l
