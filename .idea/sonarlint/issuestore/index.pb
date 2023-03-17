@@ -5,12 +5,6 @@ O
 themes/my-theme/layout/post.ejs,7/d/7d9e94858bcd6c7294efc09c0a538be23b5790d0
 ]
 -themes/my-theme/layout/_partial/item-post.ejs,c/e/ced27525da194a922abc6f5605724931351fc3a8
-G
-themes/next/_config.yml,4/7/47d5c4fada3e4f80db5321fdb553d916d7bc8467
-R
-"themes/next/layout/_macro/post.njk,4/9/49fa11a145a7347c88e760e7513d2d970e1531fd
-_
-/themes/next/layout/_partials/post/post-meta.njk,6/e/6e089c30638817199c50c5e7a17b13aff8e3a6ab
 ?
 source/index.md,1/b/1bf08b5759a2771b509bd38597da41fd5fdd80d4
 `
@@ -27,10 +21,6 @@ Z
 *source/_posts/hadoop/hadoop基本命令.md,b/6/b6f9df6ded39b09cd31e599117593f51a4f646f3
 V
 &source/_posts/hive/hive动态分区.md,0/0/006fe3a64f3b59c1872fb29aca871601cb749113
-S
-#themes/next/source/css/_colors.styl,a/f/af1ea43e6ed1b839ec9c4bdb1fe90cc66fd8a08e
-]
--themes/next/source/css/_variables/Gemini.styl,0/c/0c6cd979336a960aeadc119f177e1b1d9c130561
 <
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 B

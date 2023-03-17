@@ -135,7 +135,7 @@ hdfs namenode -format
 
 **启动**
 ```shell
-$HADOOP_HOME/sbin/start-dfs.sh
+$HADOOP_HOME/sbin/start-dfs.sh &
 $HADOOP_HOME/sbin/start-yarn.sh
 ```
 
@@ -211,6 +211,6 @@ hadoop fs -cat /wordcount/output/part-r-00000
 
 **停止**
 ```shell
-$HADOOP_HOME/sbin/stop-dfs.sh
+$HADOOP_HOME/sbin/stop-dfs.sh &
 $HADOOP_HOME/sbin/stop-yarn.sh
 ```
