@@ -218,8 +218,13 @@ $HADOOP_HOME/sbin/start-dfs.sh &
 $HADOOP_HOME/sbin/start-yarn.sh 
 ```
 
-**启动hiveserver2**
+**启动metastore**
+配置了hive的环境变量，任意文件夹下执行即可
+```shell
+hive --service metastore
+```
 
+**启动hiveserver2**
 配置了hive的环境变量，任意文件夹下执行即可
 ```shell
 hiveservice2
@@ -241,5 +246,13 @@ beeline -u jdbc:hive2://localhost:10000/default
 [Hive JDBC：Permission denied: user=anonymous, access=EXECUTE, inode=”/tmp”](https://developer.aliyun.com/article/606803)
 
 # 客户端jdbc连接hive库
+**启动metastore和hiveserver2**
+```shell
+hive --service metastore
+
+hiveservice2
+# 或
+hive --service hiveservice2
+```
 
 `DBeaver`连接，设置jdbc URL：`jdbc:hive2://localhost:10000/default`
