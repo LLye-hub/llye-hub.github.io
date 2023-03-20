@@ -14,6 +14,8 @@ date: 2023-03-15 10:49:23
 
 [Hive安装超详细教程](https://juejin.cn/post/7114252763621490719)
 
+[Hive架构与源码分析](https://www.cnblogs.com/swordfall/p/13426569.html#auto_id_14)
+
 # 下载安装
 
 [下载地址](https://dlcdn.apache.org/hive/)
@@ -212,10 +214,8 @@ cd $HADOOP_HOME/etc/hadoop
 
 **重启hadoop**
 ```shell
-$HADOOP_HOME/sbin/stop-dfs.sh &
-$HADOOP_HOME/sbin/stop-yarn.sh &
-$HADOOP_HOME/sbin/start-dfs.sh &
-$HADOOP_HOME/sbin/start-yarn.sh 
+$HADOOP_HOME/sbin/stop-all.sh &
+$HADOOP_HOME/sbin/start-all.sh 
 ```
 
 **启动metastore**
