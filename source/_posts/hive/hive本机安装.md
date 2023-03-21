@@ -16,11 +16,13 @@ date: 2023-03-15 10:49:23
 
 [Hive架构与源码分析](https://www.cnblogs.com/swordfall/p/13426569.html#auto_id_14)
 
+[Hive:源码解析之本地环境搭建](https://datavalley.github.io/2015/10/16/Hive%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E4%B9%8B%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
+
 # 下载安装
 
 [下载地址](https://dlcdn.apache.org/hive/)
 
-* 解压安装包
+**解压安装包**
 ```shell
 tar -zxvf apache-hive-2.3.9-bin.tar.gz
 ```
@@ -219,18 +221,22 @@ $HADOOP_HOME/sbin/start-all.sh
 ```
 
 **启动metastore**
+
 配置了hive的环境变量，任意文件夹下执行即可
 ```shell
 hive --service metastore
 ```
 
 **启动hiveserver2**
+
 配置了hive的环境变量，任意文件夹下执行即可
 ```shell
-hiveservice2
+hiveserver2
 # 或
-hive --service hiveservice2
+hive --service hiveserver2
 ```
+
+若启动失败，检查1000端口是否被占用，命令`lsof -i:10000`和`kill -9 xxx`
 
 **beeline连接**
 ```shell
@@ -242,7 +248,9 @@ beeline -u jdbc:hive2://localhost:10000/default
 
 
 遇到报错问题的参考：
+
 [beeline连接hiveserver2报错：User: root is not allowed to impersonate root](https://blog.csdn.net/qq_16633405/article/details/82190440)
+
 [Hive JDBC：Permission denied: user=anonymous, access=EXECUTE, inode=”/tmp”](https://developer.aliyun.com/article/606803)
 
 # 客户端jdbc连接hive库
@@ -252,7 +260,76 @@ hive --service metastore
 
 hiveservice2
 # 或
-hive --service hiveservice2
+hive --service hiveserver2
 ```
 
 `DBeaver`连接，设置jdbc URL：`jdbc:hive2://localhost:10000/default`
+
+
+# hive源码编译
+**解压安装包**
+```shell
+tar -zxvf apache-hive-2.3.9-src.tar.gz
+```
+
+**编译源码**
+
+进入解压目录
+```shell
+mvn clean package -DskipTests -Phadoop-2 -Pdist
+```
+
+编译过程中报错`An error has occurred in JavaDocs report generation:Exit code: 1 -
+javadoc: error - invalid flag: -author`，[解决方案](https://stackoverflow.com/questions/19181236/an-error-has-occurred-in-javadocs-report-generationexit-code-1-javadoc-erro):
+```xml
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>${maven.javadoc.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>resourcesdoc.xml</id>
+            <goals>
+              <goal>javadoc</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <encoding>${project.build.sourceEncoding}</encoding>
+              <verbose>true</verbose>
+              <show>public</show>
+              <doclet>com.sun.jersey.wadl.resourcedoc.ResourceDoclet</doclet>
+              <docletArtifacts>
+                ……
+              </docletArtifacts>
+              <additionalparam>-output ${project.build.outputDirectory}/resourcedoc.xml</additionalparam>
+              <!--  pom文件中加上此项配置  -->
+              <useStandardDocletOptions>false</useStandardDocletOptions>   
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+```
+
+**导入idea**
+
+从hive的解压目录中选择pom.xml文件导入
+
+**调试代码**
+
+进入解压目录
+```shell
+cd  packaging/target/apache-hive-2.3.9-bin/apache-hive-2.3.9-bin
+
+hive --debug -hiveconf hive.root.logger=DEBUG,console
+```
+成功时，界面出现：
+```shell
+Listening for transport dt_socket at address: 8000
+```
+JVM会监听8000端口，等待客户端调试连接。
+
+进入idea配置远程连接如下：
+![Pz9vq.png](https://i.328888.xyz/2023/03/20/Pz9vq.png)
+
+hive的CLI的入口类为：`src/java/org/apache/hadoop/hive/cli/CliDriver.java`，断点调试成功如下：
+![PFA3q.png](https://i.328888.xyz/2023/03/20/PFA3q.png)
