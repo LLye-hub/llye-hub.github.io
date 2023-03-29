@@ -214,6 +214,62 @@ class Solution {
 	}
 }
 ```
+
+## [数据流中的中位数](https://leetcode.cn/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/solution/shu-ju-liu-zhong-de-zhong-wei-shu-by-lee-um4f/)
+```java
+/* 解题思路：优先队列
+* 利用优先队列的特性实现，队头是最大值
+* */
+class MedianFinder {
+
+    // 初始化两个优先队列，分别存放 小于等于 和 大于 中位数的数值
+    PriorityQueue<Integer> queueMin;
+    PriorityQueue<Integer> queueMax;
+
+    /** initialize your data structure here. */
+    public MedianFinder() {
+        // queueMin队头为队列最大值，queueMax对头为队列最小值
+        queueMin = new PriorityQueue<Integer>((a,b) ->(b-a));
+        queueMax = new PriorityQueue<Integer>((a,b) ->(a-b));
+    }
+    
+    public void addNum(int num) {
+        // num小于等于中位数，则num放入queueMin队列；num大于中位数，则num放入queueMax队列
+        // 注意if条件语句的先后顺序很重要
+        if (queueMin.isEmpty() || num <= queueMin.peek()) {
+            queueMin.add(num);
+            // queueMin队列大小超出，则将max(queueMin)元素放入queueMax队列
+            if (queueMin.size() > queueMax.size() + 1) {
+                queueMax.add(queueMin.poll());
+            }
+        } else {
+            queueMax.add(num);
+            // queueMax队列大小超出，则将min(queueMin)元素放入queueMin队列
+            if (queueMax.size() > queueMin.size()) {
+                queueMin.add(queueMax.poll());
+            }
+        }
+    }
+    
+    public double findMedian() {
+        // 从数据流中读出奇数个数值
+        if (queueMin.size() > queueMax.size()) {
+            return queueMin.peek();
+        }
+        // 从数据流中读出偶数个数值
+        return (queueMin.peek() + queueMax.peek()) / 2.0;
+    }
+}
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.addNum(num);
+ * double param_2 = obj.findMedian();
+ */
+```
+
+
 # 参考资料
 [数据结构与算法(4)——优先队列和堆](https://zhuanlan.zhihu.com/p/39615266) 
 

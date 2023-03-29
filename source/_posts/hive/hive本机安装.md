@@ -18,6 +18,10 @@ date: 2023-03-15 10:49:23
 
 [Hive:源码解析之本地环境搭建](https://datavalley.github.io/2015/10/16/Hive%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E4%B9%8B%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
 
+
+# 环境准备
+jdk8 + Hadoop3.3.1
+
 # 下载安装
 
 [下载地址](https://dlcdn.apache.org/hive/)
