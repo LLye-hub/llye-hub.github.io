@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>hive、Spark和Maxcompute的SQL语法对比分析 | Hexo</title>
+  <meta name="description" content="having 差异差异点hive和spark支持窗口函数后带havingmaxcomputer 的having语法只支持 在 group 和 distinct 后使用 举例1234select order_id,sum(trd_amt) over(partition by province) as trd_amt_stdfrom orderhaving trd_amt_std&gt;0  以上sq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive、Spark和Maxcompute的SQL语法对比分析">
+<meta property="og:url" content="https://llye-hub.github.io/posts/e6b1209.html">
+<meta property="og:site_name" content="LLye">
+<meta property="og:description" content="having 差异差异点hive和spark支持窗口函数后带havingmaxcomputer 的having语法只支持 在 group 和 distinct 后使用 举例1234select order_id,sum(trd_amt) over(partition by province) as trd_amt_stdfrom orderhaving trd_amt_std&gt;0  以上sq">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtHTp.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/22/xfOrA.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtrN5.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gt3h8.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/22/xfcBz.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtmHF.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtpeH.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/22/xfGXy.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gt79P.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gteAX.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gt6hJ.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/22/xf5D8.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtdOA.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/22/xf1DJ.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtJAq.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/22/xfQ3c.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/22/xyi6V.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtPZa.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtTOx.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtazk.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gt1aL.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtY0p.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtqXU.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gtuJv.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWiD3.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gW4i8.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWt0Q.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWWXE.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWkKC.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWCDP.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWHiJ.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWObc.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWb6A.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWICN.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWNgV.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWmSz.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWBVw.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWXba.png">
+<meta property="og:image" content="https://i.328888.xyz/2023/02/21/gWegp.png">
+<meta property="article:published_time" content="2023-02-21T02:33:16.000Z">
+<meta property="article:modified_time" content="2023-02-22T06:42:32.480Z">
+<meta property="article:author" content="LLye">
+<meta property="article:tag" content="Maxcompute">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.328888.xyz/2023/02/21/gtHTp.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://llye-hub.github.io/posts/e6b1209.html">
+  
+    <link rel="alternate" href="/atom.xml" title="LLye" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="images/avatar.jpeg" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <!-- 头像 -->
+        <a id="avatar" href="https://github.com/LLye-hub" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpeg" width="300" height="300">
+        </a>
+        <!-- 昵称 -->
+        <h2 id="name" class="hidden-xs hidden-sm">辣白菜的菜</h2>
+        <!-- 职位 -->
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">数仓开发工程师</h3>
+        <!-- 定位 -->
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> HangZhou, China</small>
+      </div>
+      
+      <!-- 搜索 -->
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <!-- 主菜单栏 -->
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/LLye-hub" target="_blank" title="Github" ><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop/">hadoop</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hive/">hive</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99/">资料</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E9%9B%86/">题集</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maxcompute/" rel="tag">Maxcompute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORC/" rel="tag">ORC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/" rel="tag">SQL高级语法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%91%BD%E4%BB%A4/" rel="tag">hadoop命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%AE%89%E8%A3%85/" rel="tag">hadoop安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D/" rel="tag">hdfs文件拷贝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hiveSQL/" rel="tag">hiveSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%AE%89%E8%A3%85/" rel="tag">hive安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell%E5%91%BD%E4%BB%A4/" rel="tag">shell命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark-on-yarn/" rel="tag">spark on yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql%E7%BB%83%E4%B9%A0/" rel="tag">sql练习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" rel="tag">免密登录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" rel="tag">内置函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%99UDF/" rel="tag">写UDF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/" rel="tag">动态分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B9%E5%88%86%E5%8C%BA/" rel="tag">改分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/" rel="tag">数仓建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C/" rel="tag">数据倾斜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        <!-- 显示最新前5文章 -->
+        
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-04-14T09:02:13.000Z" itemprop="datePublished">2023-04-14</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/49066d40.html" class="title">为什么要建设数据仓库</a>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-04-14T08:56:16.000Z" itemprop="datePublished">2023-04-14</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/bbbc8dfb.html" class="title">数仓建模之关于流量域模型的一些想法</a>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/hive/">hive</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-04-11T09:04:03.000Z" itemprop="datePublished">2023-04-11</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/cafe49d7.html" class="title">在hive中嵌入自定义数据处理函数-UDF函数</a>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/SQL/">SQL</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-03-31T02:46:52.000Z" itemprop="datePublished">2023-03-31</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/ed2327bc.html" class="title">hiveSQL之全面认识窗口函数</a>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-03-29T06:31:37.000Z" itemprop="datePublished">2023-03-29</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/4142350a.html" class="title">读书笔记之数据仓库工具箱维度建模权威指南(第3版)</a>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h1 class="toc-title">Catalogue</h1>
+        <!--  侧边栏目录样式，辅助函数toc介绍：https://hexo.io/zh-cn/docs/helpers.html  -->
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#having-%E5%B7%AE%E5%BC%82"><span class="toc-text">having 差异</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#maxcomputer-cross-join-%E8%B6%85%E8%BF%87%E4%B8%80%E5%AE%9A%E6%9D%A1%E6%95%B0%E5%90%8E%EF%BC%8C%E4%BE%9D%E7%84%B6%E4%BC%9A%E6%8F%90%E7%A4%BA%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF%E9%A3%8E%E9%99%A9"><span class="toc-text">maxcomputer - cross join 超过一定条数后，依然会提示笛卡尔积风险</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E7%AD%89%E5%80%BCjoin-%E5%B7%AE%E5%BC%82"><span class="toc-text">不等值join 差异</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#array-contains-%E5%B7%AE%E5%BC%82"><span class="toc-text">array_contains 差异</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-ARRAY-lt-gt-to-STRING"><span class="toc-text">字段类型转换 ARRAY&lt;&gt; to STRING</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8Fto-date-%E2%80%98xxx%E2%80%99-%E2%80%99yyyyMMddHHmmss%E2%80%99"><span class="toc-text">日期格式to_date(‘xxx’,’yyyyMMddHHmmss’)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#date%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-text">date日期函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#from-unixtime%E5%87%BD%E6%95%B0"><span class="toc-text">from_unixtime函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#concat-ws%E5%B7%AE%E5%BC%82"><span class="toc-text">concat_ws差异</span></a></li></ol>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-SQL/hive、Spark和Maxcompute的SQL语法对比分析" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hive、Spark和Maxcompute的SQL语法对比分析
+    </h1>
+  
+
+      
+      <!-- 文章元数据：日期、分类、标签、访问统计 -->
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/e6b1209.html" class="article-date">
+	  <time datetime="2023-02-21T02:33:16.000Z" itemprop="datePublished">2023-02-21</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Maxcompute/" rel="tag">Maxcompute</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/posts/e6b1209.html" class="leancloud_visitors"  data-flag-title="hive、Spark和Maxcompute的SQL语法对比分析">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/e6b1209.html#comments" class="article-comment-link">Comments</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 2.8k(words)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 12(minutes)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <!-- 文章内容 -->
+        <h1 id="having-差异"><a href="#having-差异" class="headerlink" title="having 差异"></a>having 差异</h1><h4 id="差异点"><a href="#差异点" class="headerlink" title="差异点"></a>差异点</h4><p>hive和spark支持窗口函数后带having<br>maxcomputer 的having语法只支持 在 group 和 distinct 后使用</p>
+<h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> order_id</span><br><span class="line">,<span class="built_in">sum</span>(trd_amt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> province) <span class="keyword">as</span> trd_amt_std</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">order</span></span><br><span class="line"><span class="keyword">having</span> trd_amt_std<span class="operator">&gt;</span><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>以上sql在hive中可以运行，但是在maxcomputer中会提示错误，错误如下：<br><img src="https://i.328888.xyz/2023/02/21/gtHTp.png" alt="gtHTp.png"></p>
+<h4 id="替换方案"><a href="#替换方案" class="headerlink" title="替换方案"></a>替换方案</h4><p>在语句中使用子查询，将having替换为where</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> order_id</span><br><span class="line">,<span class="built_in">sum</span>(trd_amt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> province) <span class="keyword">as</span> trd_amt_std</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">order</span></span><br><span class="line">) a</span><br><span class="line"><span class="keyword">where</span> a.trd_amt_std<span class="operator">&gt;</span><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="maxcomputer-cross-join-超过一定条数后，依然会提示笛卡尔积风险"><a href="#maxcomputer-cross-join-超过一定条数后，依然会提示笛卡尔积风险" class="headerlink" title="maxcomputer - cross join 超过一定条数后，依然会提示笛卡尔积风险"></a>maxcomputer - cross join 超过一定条数后，依然会提示笛卡尔积风险</h1><h4 id="差异点-1"><a href="#差异点-1" class="headerlink" title="差异点"></a>差异点</h4><p>hive可以使用 cross join语法来表示笛卡尔积关联<br>maxcomputer 的cross join，在条数超过一定数据量后，会提示笛卡尔积风险</p>
+<h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="operator">*</span>,b.<span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> table_a</span><br><span class="line">) a</span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span></span><br><span class="line">(<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> table_b</span><br><span class="line">) b</span><br></pre></td></tr></table></figure>
+
+<p>以上sql在hive中可以运行，但是在maxcomputer中会提示错误，错误如下：<br><img src="https://i.328888.xyz/2023/02/22/xfOrA.png" alt="xfOrA.png"></p>
+<h4 id="替换方案-1"><a href="#替换方案-1" class="headerlink" title="替换方案"></a>替换方案</h4><p>在左右笛卡尔积表中新增常量字段，用于关联</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.<span class="operator">*</span>,b.<span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> <span class="operator">*</span>,<span class="number">1</span> <span class="keyword">as</span> cro_col <span class="keyword">from</span> table_a</span><br><span class="line">) a</span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span></span><br><span class="line">(<span class="keyword">select</span> <span class="operator">*</span>,<span class="number">1</span> <span class="keyword">as</span> cro_col <span class="keyword">from</span> table_b</span><br><span class="line">) b</span><br><span class="line"><span class="keyword">on</span> a.cro_col<span class="operator">=</span>b.cro_col</span><br></pre></td></tr></table></figure>
+<h1 id="不等值join-差异"><a href="#不等值join-差异" class="headerlink" title="不等值join 差异"></a>不等值join 差异</h1><h4 id="差异点-2"><a href="#差异点-2" class="headerlink" title="差异点"></a>差异点</h4><p>1、spark 支持不等值join语法<br>2、hive 2.2.0版本之前不支持不等值语法，<a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Joins">2.2.0及以后支持不等值join语法</a><br><img src="https://i.328888.xyz/2023/02/21/gtrN5.png" alt="gtrN5.png"><br>3、<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/73783.html">maxcomputer不支持不等值语法</a><br><img src="https://i.328888.xyz/2023/02/21/gt3h8.png" alt="gt3h8.png"></p>
+<h4 id="举例-2"><a href="#举例-2" class="headerlink" title="举例"></a>举例</h4><p>测试sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> table_a <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> id_a</span><br><span class="line">,<span class="string">&#x27;testa&#x27;</span> <span class="keyword">as</span> value_a</span><br><span class="line"></span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">select</span> <span class="number">4</span> <span class="keyword">as</span> id_a</span><br><span class="line">    ,<span class="string">&#x27;testd&#x27;</span> <span class="keyword">as</span> value_a</span><br><span class="line">)</span><br><span class="line">,table_b <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">3</span> <span class="keyword">as</span> id_b</span><br><span class="line">,<span class="string">&#x27;testc&#x27;</span> <span class="keyword">as</span> value_b</span><br><span class="line"></span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">select</span> <span class="number">2</span> <span class="keyword">as</span> id_b</span><br><span class="line">    ,<span class="string">&#x27;testb&#x27;</span> <span class="keyword">as</span> value_b</span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> table_a.id_a</span><br><span class="line">,table_a.value_a</span><br><span class="line">,table_b.id_b</span><br><span class="line">,table_b.value_b</span><br><span class="line"><span class="keyword">from</span>  table_a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> table_b</span><br><span class="line"><span class="keyword">on</span> table_a.id_a <span class="operator">&lt;</span> table_b.id_b</span><br></pre></td></tr></table></figure>
+<p>sql说明 :该sql准备了两张表table_a和table_b用于连接测试<br>使用left join on语法，但是关联关系使用的是 &lt; 不等值关联符号</p>
+<p><strong>maxcomputer运行结果</strong><br><img src="https://i.328888.xyz/2023/02/22/xfcBz.png" alt="xfcBz.png"><br>maxcomputer会报异常：  FAILED: ODPS-0130071:[15,4] Semantic analysis exception - expect equality expression (i.e., only use ‘&#x3D;’ and ‘AND’) for join condition without mapjoin hint</p>
+<p>提示的是期望join的是等值表达式</p>
+<p><strong>hive1.2.1运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gtmHF.png" alt="gtmHF.png"></p>
+<p>hive会报错： Error while compiling statement: FAILED: SemanticException [Error 10017]: line 15:3 Both left and right aliases encountered in JOIN ‘id_b’</p>
+<p>提示的是在join中遇到左右别名</p>
+<p>不得不说，hive的错误信息有点云里雾里，其实就是不等值join造成的。</p>
+<p><strong>hive2.2.3运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gtpeH.png" alt="gtpeH.png"></p>
+<p>hive 2.2.0+版本顺利得到正确结果</p>
+<p><strong>spark运行结果</strong></p>
+<p><img src="https://i.328888.xyz/2023/02/22/xfGXy.png" alt="xfGXy.png"> </p>
+<p>spark2.3也顺利得到结果</p>
+<h4 id="替换方案-2"><a href="#替换方案-2" class="headerlink" title="替换方案"></a>替换方案</h4><p>针对不等值join的替换方案有两种</p>
+<p>1、针对小表，使用mapjoin，避免join操作</p>
+<p>2、将on的不等值关联语句放入where语句中</p>
+<p>由于mapjoin避免shuffle，性能较好，再可以的情况下，优先使用方案1</p>
+<p><strong>1、针对小表，使用mapjoin，避免join操作</strong><br>maxcomputer中的mapjoin hint语法为： &#x2F;*+ mapjoin(<table_name>) *&#x2F; ，详情请查看<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/73785.htm?spm=a2c4g.11186623.0.0.534268c4fHc5iD#concept-bf5-tkb-wdb">mapjoin hint</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> table_a <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> id_a</span><br><span class="line">,<span class="string">&#x27;testa&#x27;</span> <span class="keyword">as</span> value_a</span><br><span class="line">)</span><br><span class="line">,table_b <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">2</span> <span class="keyword">as</span> id_b</span><br><span class="line">,<span class="string">&#x27;testb&#x27;</span> <span class="keyword">as</span> value_b</span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> <span class="comment">/*+ mapjoin(table_b) */</span></span><br><span class="line">table_a.id_a</span><br><span class="line">,table_a.value_a</span><br><span class="line">,table_b.id_b</span><br><span class="line">,table_b.value_b</span><br><span class="line"><span class="keyword">from</span>  table_a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> table_b</span><br><span class="line"><span class="keyword">on</span> table_a.id_a<span class="operator">&lt;</span>table_b.id_b</span><br></pre></td></tr></table></figure>
+<p>可以看到，使用mapjoin hint语法后，sql在maxcomputer中运行正确，顺利拿到了预期结果<br><img src="https://i.328888.xyz/2023/02/21/gt79P.png" alt="gt79P.png"></p>
+<p><strong>2、将on的不等值关联语句放入where语句中</strong><br>inner join 比较简单</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> table_a <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> id_a</span><br><span class="line">,<span class="string">&#x27;testa&#x27;</span> <span class="keyword">as</span> value_a</span><br><span class="line">,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line"></span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">select</span> <span class="number">4</span> <span class="keyword">as</span> id_a</span><br><span class="line">    ,<span class="string">&#x27;testd&#x27;</span> <span class="keyword">as</span> value_a</span><br><span class="line">    ,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line">)</span><br><span class="line">,table_b <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">2</span> <span class="keyword">as</span> id_b</span><br><span class="line">,<span class="string">&#x27;testb&#x27;</span> <span class="keyword">as</span> value_b</span><br><span class="line">,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line"></span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">select</span> <span class="number">3</span> <span class="keyword">as</span> id_b</span><br><span class="line">    ,<span class="string">&#x27;testc&#x27;</span> <span class="keyword">as</span> value_b</span><br><span class="line">    ,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">table_a.id_a</span><br><span class="line">,table_a.value_a</span><br><span class="line">,table_b.id_b</span><br><span class="line">,table_b.value_b</span><br><span class="line"><span class="keyword">from</span>  table_a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> table_b</span><br><span class="line"><span class="keyword">on</span> table_a.join_col<span class="operator">=</span>table_b.join_col</span><br><span class="line"><span class="keyword">where</span> table_a.id_a<span class="operator">&lt;</span>table_b.id_b</span><br></pre></td></tr></table></figure>
+<p>可以看到，将&lt;判断语句放入where后，sql在maxcomputer运行正确，顺利拿到了预期结果<br><img src="https://i.328888.xyz/2023/02/21/gteAX.png" alt="gteAX.png"></p>
+<p>left join 比较复杂，建议使用map hint，实在没办法在使用此方案</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> table_a <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">1</span> <span class="keyword">as</span> id_a</span><br><span class="line">,<span class="string">&#x27;testa&#x27;</span> <span class="keyword">as</span> value_a</span><br><span class="line">,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line"></span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">select</span> <span class="number">4</span> <span class="keyword">as</span> id_a</span><br><span class="line">    ,<span class="string">&#x27;testd&#x27;</span> <span class="keyword">as</span> value_a</span><br><span class="line">    ,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line">)</span><br><span class="line">,table_b <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span> <span class="number">2</span> <span class="keyword">as</span> id_b</span><br><span class="line">,<span class="string">&#x27;testb&#x27;</span> <span class="keyword">as</span> value_b</span><br><span class="line">,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line"></span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">select</span> <span class="number">3</span> <span class="keyword">as</span> id_b</span><br><span class="line">    ,<span class="string">&#x27;testc&#x27;</span> <span class="keyword">as</span> value_b</span><br><span class="line">    ,<span class="number">1</span> <span class="keyword">as</span> join_col</span><br><span class="line">)</span><br><span class="line"><span class="comment">-- 能关联上的部分</span></span><br><span class="line">,join_part <span class="keyword">as</span> (</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">table_a.id_a</span><br><span class="line">,table_a.value_a</span><br><span class="line">,table_b.id_b</span><br><span class="line">,table_b.value_b</span><br><span class="line"><span class="keyword">from</span>  table_a</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> table_b</span><br><span class="line"><span class="keyword">on</span> table_a.join_col<span class="operator">=</span>table_b.join_col</span><br><span class="line"><span class="keyword">where</span> table_a.id_a<span class="operator">&lt;</span>table_b.id_b</span><br><span class="line">)</span><br><span class="line"><span class="comment">-- 以自己为主表，left join能关联上的部分，实现 left join不等值效果</span></span><br><span class="line"><span class="keyword">select</span> table_a.id_a</span><br><span class="line">,table_a.value_a</span><br><span class="line">,join_part.id_b</span><br><span class="line">,join_part.value_b</span><br><span class="line"><span class="keyword">from</span>  table_a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> join_part</span><br><span class="line"><span class="keyword">on</span> table_a.id_a<span class="operator">=</span>join_part.id_a</span><br></pre></td></tr></table></figure>
+<p>可以看到，将&lt;判断语句放入where后，sql在maxcomputer运行正确，顺利拿到了预期结果<br><img src="https://i.328888.xyz/2023/02/21/gt6hJ.png" alt="gt6hJ.png"></p>
+<h1 id="array-contains-差异"><a href="#array-contains-差异" class="headerlink" title="array_contains 差异"></a>array_contains 差异</h1><h4 id="差异点-3"><a href="#差异点-3" class="headerlink" title="差异点"></a>差异点</h4><p>spark的array_contains支持类型的隐式转换<br>hive和maxcomputer array_contains不支持，只支持同类型使用</p>
+<h4 id="举例-3"><a href="#举例-3" class="headerlink" title="举例"></a>举例</h4><p>测试sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> array_contains(split(&quot;1,2,3,4&quot;,&quot;,&quot;),<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>sql说明</strong><br>该sql首先使用split一个字符串获取一个array对象用于测试，之后使用array_contains函数进行判断<br>split后的array对象为一个string数组，而判断被包含的数字【1】为一个int 对象</p>
+<p><strong>maxcomputer运行结果</strong><br><img src="https://i.328888.xyz/2023/02/22/xf5D8.png" alt="xf5D8.png"><br>maxcomputer会报异常：  FAILED: ODPS-0130071:[1,44] Semantic analysis exception - invalid type INT of argument 2 for function array_contains, expect STRING, implicit conversion is not allowed</p>
+<p>提示的是array_contains第二个参数期望的是string，但是传入的是int，隐式类型转换不支持</p>
+<p><strong>hive运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gtdOA.png" alt="gtdOA.png"></p>
+<p>hive会报错： Error while compiling statement: FAILED: SemanticException [Error 10016]: line 1:43 Argument type mismatch ‘1’: “string” expected at function ARRAY_CONTAINS, but “int” is found</p>
+<p>提示的是array_contains函数期望的是string，但是传入的是int，类型不匹配</p>
+<p><strong>spark运行结果</strong></p>
+<p><img src="https://i.328888.xyz/2023/02/22/xf1DJ.png" alt="xf1DJ.png"></p>
+<p>spark能顺利产出结果，结果为true，那么为什么spark可以成功呢？</p>
+<p>大概率是spark智能的将1从int转换为了string类型，使得类型得以匹配，通过explain查看物理执行计划来验证</p>
+<p><img src="https://i.328888.xyz/2023/02/21/gtJAq.png" alt="gtJAq.png"></p>
+<p>在上图标红的地方可以看到，spark在物理执行计划层面，将int的1隐式的转换为了string类型，验证了我们一开始的猜想。</p>
+<h4 id="替换方案-3"><a href="#替换方案-3" class="headerlink" title="替换方案"></a>替换方案</h4><p>既然知道了在hive和maxcomputer中是类型不匹配导致的array_contains函数报错，那么只需要显示的将类型进行转换即可</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> array_contains(split(&quot;1,2,3,4&quot;,&quot;,&quot;),<span class="built_in">cast</span>(<span class="number">1</span> <span class="keyword">as</span> string))</span><br></pre></td></tr></table></figure>
+
+<h1 id="字段类型转换-ARRAY-lt-gt-to-STRING"><a href="#字段类型转换-ARRAY-lt-gt-to-STRING" class="headerlink" title="字段类型转换 ARRAY&lt;&gt; to STRING"></a>字段类型转换 ARRAY&lt;&gt; to STRING</h1><h4 id="差异点-4"><a href="#差异点-4" class="headerlink" title="差异点"></a>差异点</h4><p>spark的array_contains支持类型的隐式转换</p>
+<p>hive和maxcomputer array_contains不支持，只支持同类型使用</p>
+<h4 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h4><p>测试sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">cast</span>(<span class="keyword">array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="keyword">as</span> string) <span class="keyword">as</span> array_to_string;</span><br></pre></td></tr></table></figure>
+
+<p><strong>maxcompute运行结果</strong></p>
+<p><img src="https://i.328888.xyz/2023/02/22/xfQ3c.png" alt="xfQ3c.png"></p>
+<p>maxcompute报异常：FAILED: ODPS-0130141:[1,8] Illegal implicit type cast - cannot cast from ARRAY<INT> to STRING</p>
+<p>提示的是 ARRAY&lt;&gt;类型字段  不能强制转换为 STRING 类型</p>
+<p><strong>hive运行结果</strong></p>
+<p><img src="https://i.328888.xyz/2023/02/22/xyi6V.png" alt="xyi6V.png"></p>
+<p>hive报异常：SQL语义错误: Error while compiling statement: FAILED: ClassCastException org.apache.hadoop.hive.serde2.typeinfo.ListTypeInfo cannot be cast to org.apache.hadoop.hive.serde2.typeinfo.PrimitiveTypeInfo</p>
+<p>提示的是不同类型不能强转</p>
+<p><strong>spark运行结果</strong></p>
+<p><img src="https://i.328888.xyz/2023/02/21/gtPZa.png" alt="gtPZa.png"></p>
+<p>spark能顺利产出结果</p>
+<p><strong>替换方案</strong><br>使用 <a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/293597.htm?spm=a2c4g.11186623.0.0.5be36f60Wo6eDb#section-pc4-90e-0rl">array_join函数</a> 将array的元素拼接成字符串，再在首尾加上 ‘[ ‘ 和 ‘]’ 字符可以还原spark上的运行结果</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> concat(<span class="string">&#x27;[&#x27;</span>,array_join(<span class="keyword">array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>),<span class="string">&#x27;,&#x27;</span>),<span class="string">&#x27;]&#x27;</span>) <span class="keyword">as</span> array_to_string;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.328888.xyz/2023/02/21/gtTOx.png" alt="gtTOx.png"></p>
+<p>📢注意<br>macxcompute的array_join函数默认会忽略null元素，可在array_join函数中设置 nullreplacement 参数替代NULL元素<br><img src="https://i.328888.xyz/2023/02/21/gtazk.png" alt="gtazk.png"><br><img src="https://i.328888.xyz/2023/02/21/gt1aL.png" alt="gt1aL.png"></p>
+<h1 id="日期格式to-date-‘xxx’-’yyyyMMddHHmmss’"><a href="#日期格式to-date-‘xxx’-’yyyyMMddHHmmss’" class="headerlink" title="日期格式to_date(‘xxx’,’yyyyMMddHHmmss’)"></a>日期格式to_date(‘xxx’,’yyyyMMddHHmmss’)</h1><h4 id="差异点-5"><a href="#差异点-5" class="headerlink" title="差异点"></a>差异点</h4><p>hive语法中，to_date函数用法为：to_date(string timestamp)，返回DATE类型，格式为 yyyy-mm-dd ，仅有一个参数，支持用format格式解析</p>
+<p>spark语法中，to_date函数用法为：to_date(date_str[, fmt]) ，返回DATE类型，格式为 yyyy-mm-dd ，支持用format格式解析日期</p>
+<p>maxcompute语法中，to_date函数用法为：to_date(string <date>, string <format>)，返回DATETIME类型，格式为 yyyy-mm-dd hh:mi:ss ，支持用format格式解析日期</p>
+<p>📢这里要注意的是，虽然spark和maxcompute中，to_date函数都支持用format格式解析日期，format格式是有差异的，主要表现在 分钟 位的格式</p>
+<p>spark的format格式：yyyy为4位数的年，MM为2位数的月，dd为2位数的日，HH为24小时制的时，mm为2位数的分钟，ss为2位数的秒，ff3为3位精度毫秒<br>maxcompute的format格式：yyyy为4位数的年，mm为2位数的月，dd为2位数的日，hh为24小时制的时，mi为2位数的分钟，ss为2位数的秒，ff3为3位精度毫秒</p>
+<h4 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h4><p>测试sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> to_date(<span class="string">&#x27;20221118123456&#x27;</span>,<span class="string">&#x27;yyyyMMddHHmmss&#x27;</span>),to_date(<span class="string">&#x27;2022-11-18 12:34:56&#x27;</span>,<span class="string">&#x27;yyyy-MM-dd HH:mm:ss&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>maxcompute运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gtY0p.png" alt="gtY0p.png"></p>
+<p>maxcompute报异常： FAILED: ODPS-0121095:Invalid arguments - format string has second part, but doesn’t have minute part : yyyyMMddHHmmss</p>
+<p><strong>hive运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gtqXU.png" alt="gtqXU.png"></p>
+<p>hive报异常： Arguments length mismatch ‘’yyyyMMddhhmmss’’: to_date() requires 1 argument, got 2</p>
+<p>提示的是to_date函数仅有1个参数</p>
+<p>去掉format参数后的运行结果为：<br><img src="https://i.328888.xyz/2023/02/21/gtuJv.png" alt="gtuJv.png"></p>
+<p>从结果可以看到，to_date不能解析 yyyyMMddhhmmss 和 yyyyMMdd 格式</p>
+<p><strong>spark运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWiD3.png" alt="gWiD3.png"></p>
+<p>spark能顺利产出结果</p>
+<h4 id="替换方案-4"><a href="#替换方案-4" class="headerlink" title="替换方案"></a>替换方案</h4><p>format格式修改：yyyy为4位数的年，mm为2位数的月，dd为2位数的日，hh为24小时制的时，mi为2位数的分钟，ss为2位数的秒，ff3为3位精度毫秒</p>
+<p>修改后的能正常产出结果：<br><img src="https://i.328888.xyz/2023/02/21/gW4i8.png" alt="gW4i8.png"></p>
+<p>另，常见使用to_date报错sql为 date_format(date_add(to_date(pay_time,’yyyyMMddHHmmss’),2),’yyyyMMddHHmmss’) ，解读sql的作用是对 pay_time 加 2 天，建议用 UDF 修改这段sql为 yt_date_add(pay_time,2)，修改后简洁明了</p>
+<h1 id="date日期函数"><a href="#date日期函数" class="headerlink" title="date日期函数"></a>date日期函数</h1><h4 id="差异点-6"><a href="#差异点-6" class="headerlink" title="差异点"></a>差异点</h4><p>spark和hive的date函数支持将标准的日期string转换为date类型</p>
+<p>maxcomputer date函数只支持标准的日期string，带时分秒的时间string不支持</p>
+<h4 id="举例-6"><a href="#举例-6" class="headerlink" title="举例"></a>举例</h4><p>测试sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="type">date</span>(<span class="string">&#x27;2022-12-21&#x27;</span>),<span class="type">date</span>(<span class="string">&#x27;2022-12-21 01:22:01&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>maxcompute运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWt0Q.png" alt="gWt0Q.png"></p>
+<p>maxcomputer对标准的日期string【2022-12-21】转换正确</p>
+<p>但是对带时分秒的string转为错误，直接为null</p>
+<p><strong>hive运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWWXE.png" alt="gWWXE.png"></p>
+<p>结果符合预期</p>
+<p><strong>spark运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWkKC.png" alt="gWkKC.png"></p>
+<p>spark能顺利产出结果</p>
+<h4 id="替换方案-5"><a href="#替换方案-5" class="headerlink" title="替换方案"></a>替换方案</h4><p>如果是为了格式转换，使用自定义 yt_date_format 函数</p>
+<p>如果是为了获取date类型，使用 to_date函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> yt_date_format(<span class="string">&#x27;2022-12-21 01:22:01&#x27;</span>,<span class="string">&#x27;yyyy-MM-dd&#x27;</span>)</span><br><span class="line">,to_date(<span class="string">&#x27;2022-12-21 01:22:01&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.328888.xyz/2023/02/21/gWCDP.png" alt="gWCDP.png"></p>
+<h1 id="from-unixtime函数"><a href="#from-unixtime函数" class="headerlink" title="from_unixtime函数"></a>from_unixtime函数</h1><h4 id="差异点-7"><a href="#差异点-7" class="headerlink" title="差异点"></a>差异点</h4><p>spark和hive的from_unixtime函数将时间戳转换成格式化string类型，当时间戳为负数时，正常转换</p>
+<p>maxcomputer from_unixtime函数转换负数时间戳时，存在时间便宜</p>
+<h4 id="举例-7"><a href="#举例-7" class="headerlink" title="举例"></a>举例</h4><p>测试sql<br>select ‘1018-10-15 00:00:00’  – yyyyMMddHHmmss 时间戳<br>,unix_timestamp(‘1018-10-15 00:00:00’) –时间戳<br>,from_unixtime(unix_timestamp(‘1018-10-15 00:00:00’),’yyyyMMddHHmmss’) –转换格式</p>
+<p><strong>maxcompute运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWHiJ.png" alt="gWHiJ.png"></p>
+<p>可以看到，原先日期为 ‘1018-10-15 00:00:00’,转换成yyyyMMddHHmmss格式原本期望为  10181015000000</p>
+<p>但是实际结果为10181008235417,和预期不符合</p>
+<p><strong>hive运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWObc.png" alt="gWObc.png"></p>
+<p>hive结果符合预期</p>
+<p><strong>spark运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWb6A.png" alt="gWb6A.png"></p>
+<p>spark产出结果正确</p>
+<h4 id="替换方案-6"><a href="#替换方案-6" class="headerlink" title="替换方案"></a>替换方案</h4><p>使用自定义 yt_date_format 函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="string">&#x27;1018-10-15 00:00:00&#x27;</span> <span class="comment">-- yyyyMMddHHmmss 时间戳</span></span><br><span class="line">,unix_timestamp(<span class="string">&#x27;1018-10-15 00:00:00&#x27;</span>) <span class="comment">--时间戳</span></span><br><span class="line">,yt_date_format(<span class="string">&#x27;1018-10-15 00:00:00&#x27;</span>,<span class="string">&#x27;yyyyMMddHHmmss&#x27;</span>) <span class="comment">--转换格式</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.328888.xyz/2023/02/21/gWICN.png" alt="gWICN.png"><br>使用自定义udf后正确</p>
+<h1 id="concat-ws差异"><a href="#concat-ws差异" class="headerlink" title="concat_ws差异"></a>concat_ws差异</h1><h4 id="差异点-8"><a href="#差异点-8" class="headerlink" title="差异点"></a>差异点</h4><p>spark的concat_ws会支持类型的隐式转换</p>
+<p>hive和maxcomputer concat_ws不支持，只支持同类型使用</p>
+<h4 id="举例-8"><a href="#举例-8" class="headerlink" title="举例"></a>举例</h4><p>测试sql</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> concat_ws(&quot;,&quot;,<span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<p><strong>maxcompute运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWNgV.png" alt="gWNgV.png"></p>
+<p>报错提示数据类型不对，concat_ws只能处理ARRAY<STRING>数据类型，而sql中是ARRAY<INT>数据类型，<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/455513.html?spm=a2c4g.11186623.0.0.28686fd3N35cvE">官方文档</a> 中有详细说明<br><img src="https://i.328888.xyz/2023/02/21/gWmSz.png" alt="gWmSz.png"></p>
+<p><strong>hive运行结果</strong><br><img src="https://i.328888.xyz/2023/02/21/gWBVw.png" alt="gWBVw.png"></p>
+<p>报错提示数据类型不对，与maxcompute一个意思，concat_ws传入数组必须是Array<int>类型</p>
+<p><strong>spark运行结果</strong></p>
+<p><img src="https://i.328888.xyz/2023/02/21/gWXba.png" alt="gWXba.png"></p>
+<p>spark执行结果符合预期</p>
+<h4 id="替换方案-7"><a href="#替换方案-7" class="headerlink" title="替换方案"></a>替换方案</h4><p>使用阿里云提供的array_join函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> array_join(<span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>),&quot;,&quot;);</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.328888.xyz/2023/02/21/gWegp.png" alt="gWegp.png"></p>
+
+      
+    </div>
+    <!-- 版权声明 -->
+    <div class="article-footer">
+      <!-- 版权声明 -->
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://llye-hub.github.io/posts/e6b1209.html" title="hive、Spark和Maxcompute的SQL语法对比分析" target="_blank" rel="external">https://llye-hub.github.io/posts/e6b1209.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+<!-- 文末个人介绍 -->
+
+
+    </div>
+  </article>
+  <!-- 文末评论 -->
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+
+  <!-- 文章底部栏信息 -->
+<nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    <!-- 前一篇 -->
+    
+    <li class="prev">
+      <a href="/posts/76a5661e.html" title="关于Java PriorityQueue类的使用场景"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Last</span></a>
+    </li>
+    
+    <!-- 后一篇 -->
+    
+    <li class="next">
+      <a href="/posts/e912f2da.html" title="mysql和hiveSQL的语法差别"><span>Next&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    <!-- 文章目录 -->
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+
+    <!--  打赏相关  -->
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+
+  <!-- 文章分享 -->
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.jpeg" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.jpeg" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <!-- 版权信息 -->
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/LLye-hub" target="_blank" title="Github" ><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; Copyright 2023 LLye
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:llye-hub.github.io ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'j0NAwHf3A34KzcPo5xsl4eNQ-gzGzoHsz',
+    appKey: 'VLwhImvGCHAwwqQ18j9mlE0G',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '5' || 10,
+    visitor: true
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
