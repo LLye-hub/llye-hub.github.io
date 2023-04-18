@@ -46,9 +46,9 @@
     <link href="https://llye-hub.github.io/posts/bbbc8dfb.html"/>
     <id>https://llye-hub.github.io/posts/bbbc8dfb.html</id>
     <published>2023-04-14T08:56:16.000Z</published>
-    <updated>2023-04-18T07:53:59.814Z</updated>
+    <updated>2023-04-18T08:06:54.803Z</updated>
     
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="7a79925839fa7fdda9dfa526727e44c97eccd5977802ece12e90da754aa4905e">0ae7e196f2221a75e5346dcbb7e124f36deed831076312fa04e0c81d58c043c1df62ffbe6a273ec95f53038b311e862cf068b7bf679bb836d0ba5f591d62585d3babe455b4b6e19c870974166d2b13662b44fab7caeb9c35159493cba611b2e708b1f50ea228c69590fe6ff63a1c48e953f452a49d0ec43e5dbd66b5585f81e450f078c81dffe25e9ec0aa20e86de2b7549a64337d363b894adc10d995f734f02ee123cbdee7e7e52d3ab37b54c589cc1e60f91b3b7519a07233415a77def29f9e7c151dc5f9620557e3a0516c330f21d37b374abe68c402c466f1612a4e684ce1854eedc9d24bee28c8b978b9daa30545d1b4e3ee8ad983554a84cf913fc8d2cb06e8b2d2f58297764ae066533822d9ece3c129a8802b1a99736f2e1eaa443d9ec71ecfed2538cdbdc941048ee22764580815e004042b0e1be8ad7a24bdc98f4980a1558c92307407b979f7ece3829399401fc0349f4e11acab3a4593cb77d119d129a372cf7bba2d92b62c2cd839d4db9f29493f710e2edd175cbdfbfeebd39617ed44c28e0ff007ff7b7886f68f18f2845f11ba01051b56d145f38b5dcd81d952ec0e97847d70cdf8cbc3ad51e8cc2494a2bad92a77cff70bae201b891bb59495a88661ff82bdfdf1823821cf920e248facae013c60fb597b8aac60c6f082526daa1f2dfffbbc55870401949164bfa1caa47307acf71483744ba42c369fd133bce4d9b55249370a23d1b20408bbf56af431c9715c3273872c1b922bacc3c4141e44dbf8aa89b662c14ab481a9d1d30d40f1012832d829e13f5eb312d690bd</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="4f2fa0670b869d791d182abfc78a3015284ac2f7c4e7e7841f52957474817890">0ae7e196f2221a75e5346dcbb7e124f3a273828722568f616125477033531497</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <summary type="html">这是一篇加密文章，需要密码才能继续阅读。</summary>
@@ -111,15 +111,12 @@
     <link href="https://llye-hub.github.io/posts/4142350a.html"/>
     <id>https://llye-hub.github.io/posts/4142350a.html</id>
     <published>2023-03-29T06:31:37.000Z</published>
-    <updated>2023-03-31T09:48:37.146Z</updated>
+    <updated>2023-04-18T08:14:08.029Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="第1章-数据仓库、商业智能及维度建模初步"><a href="#第1章-数据仓库、商业智能及维度建模初步" class="headerlink" title="第1章 数据仓库、商业智能及维度建模初步"></a>第1章 数据仓库、商业智能及维度建模初步</h1><p>操作型系统保存数据，DW&#x2F;BI系统使用数据。<br>对照数据库来看，后端应用使用mysql数据库用来保存用户行为数据，数据仓库则从mysql抽取并使用这些用户行为数据。</p><p>DW&#x2F;BI系统特点：数据直观易理解、数据质量高、指标口径一致、扩展性强、数据加工快、数据保密性、数据能支持业务决策、业务认可。<br>其中，数据能支持业务决策和业务认可是最能体现 DW&#x2F;BI 系统价值的两点，也是从事数据相关行业的最终价值目标，但现实工作中的高认可度很难达到，更是一直被忽略</p><h2 id="维度建模"><a href="#维度建模" class="headerlink" title="维度建模"></a>维度建模</h2><p>维度建模的特点：</p><ul><li>1、模型设计简单，易于用户理解</li><li>2、业务过程清晰，查询性能高</li></ul>]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="93586fbbd0ab6c82b2591a75497ca77970d9eb468c97c1d6138115597881834f">0ae7e196f2221a75e5346dcbb7e124f36deed831076312fa04e0c81d58c043c17806a367438824993e46b7303f74bdc06899039d442f1dff272c683baf86367d59975bd53c314a0a26cfb344bcaf0955fd1a96949fb90881a89c5466d073ccf3079528444191ba3b7975eb10c9892b3ab87a1929db01e83c2ced373629ea7d7b522274fa000b87cbb1ffc5f4cd0a2163692baf3198603c83fc2017ad663911086721b10335c346a0f7fa2fadf30bd4c89202939bc8ffdcaf64e0a8ce53a189fe98c981745ad7eff591794f0cefa3a43f3fa324a7a2c59eb4d187890612f49878d875f5d86f7f51a0adf3d7f4f62b57fb731c41d84cdc101787047618a756d65ad2bfc23c712c164a546439dcdf8fe9b32e47048cec51c77ab5be1657afa01891096e4fa678407c3894b49d1d43838862456520602e2832caabca4d3ec23903474a238253c1a7356aed30504b0eec8b9602131d82fb13828b25f262868f79bf5baee19d9ec3e9b1b3d1f2efab941c00c67d8fd0e7b6497868fd0334099418a396114716ac39e9b5c029f03b5d7872b3a3dec09a89637e468b00b611ff1209ad2dd7eae404346a4ff5a2fa571d47bb07dd9b4d8175dc7833db210e83f319c574dc3e1b6a6ef57cb4ec5a70b6e69a4df2026c547420a466aad158a57bfea4377243fe9e885efdf5de9e09b1029e9fcb0f19dae7de5f0738f1435ff397a3f57f08839923b0722399cd188f93a2fe43a68a12721d59fc924e9689c79645ed2e117e7e84d8f3765ba91ef99618d4d97a993ff05161ffafc35224bbbd9a3bc198c4c255f2d23dbe5b6363018bf8266f5168caa43e52201da907d9f185486b1e57a235f0bb02ad3e31e7611ae0723933d3443d7ed76af0ce8ce9def98be4717e1dab1b43df75cdfa4fa71a255977400a083a9a64e4bdd0f58e144452cb1043037e405fdd207e7f67fb9b3245d7a05b65e56da62026a7daeeb8f590388f0eed293daef43a192573d49d7270dc388dd31be65b27cb605eed5a6962df4298e846905d69f75cec5782bc4d2be875124baccc0db637587499ca209c37b5549aa0d158aefb40a8ec294d8264672de482211ae49fdd7e39f0c44e5dddbc0a9282091168693532c3273a7c73105807272e4b230b350ef638c53f003f4233539713da341a897ed2aa3cf86e12bc041a5dee723066d818412b426f2f08a5af56b8a979266c285da7f139854c82cd795ecdf6cc4c41b8f1ee1e3ba195ffb05ae923851807af515411ea30e58e404ba846501e68f3c3a3fae3a6f82b97a105eda1c162553a2b8e4b8d7c3eb57900f9b5cc9a9a94fa4b46cf82faacf18c4d9b8d7bc97551c3d2e4c47885ce23950d5ab3ee714750843e0bb4a2f68103da7f6a5d7559910c4cc3dbe952a0aaad169968b45110450987c1e36c8c702c7fd70ec40f9190f2001e327dc73e2cbf41d581a29fff80ece3e0b342486aab761d851649b5e6fad43b1c37c7ebfd18c1a489a121812d4b01e84bbc443920b8a540e7f08d9d07dfac01ab4fab2e78b0a534beaa090299fcfecd2fe0851c0568d25158b9436d0a53ae309b64698b6242506a8087cb9cfffd00b6b7a067beb29be108e936578b799560213f672d2691ff1f7baecdd0a236d6b81e4ad1e58789f8ca345c98b1ca0903c053c36dbb14a3e8e9a7f8b87c060db3f954cbb134f98309b247be77c256195dca13651bd62f137f</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h1 id=&quot;第1章-数据仓库、商业智能及维度建模初步&quot;&gt;&lt;a href=&quot;#第1章-数据仓库、商业智能及维度建模初步&quot; class=&quot;headerlink&quot; title=&quot;第1章 数据仓库、商业智能及维度建模初步&quot;&gt;&lt;/a&gt;第1章 数据仓库、商业智能及维度建模初步&lt;/h1&gt;&lt;</summary>
-      
+    <summary type="html">这是一篇加密文章，需要密码才能继续阅读。</summary>
     
     
     
@@ -127,6 +124,8 @@
     
     
     <category term="读书笔记" scheme="https://llye-hub.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="private" scheme="https://llye-hub.github.io/tags/private/"/>
     
   </entry>
   
