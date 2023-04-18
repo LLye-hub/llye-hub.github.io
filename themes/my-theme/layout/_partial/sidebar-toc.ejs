@@ -4,7 +4,11 @@
     <nav id="toc" class="article-toc">
       <h1 class="toc-title"><%= __('article.catalogue') %></h1>
         <!--  侧边栏目录样式，辅助函数toc介绍：https://hexo.io/zh-cn/docs/helpers.html  -->
-      <%- toc(post.content, {list_number: false, max_depth: 3}) %>
+      <% if (page.encrypt) { %>
+        <%- toc(post.origin, {list_number: false, max_depth: 3}) %>
+      <% } else { %>
+        <%- toc(post.content, {list_number: false, max_depth: 3}) %>
+      <% } %>
     </nav>
   </div>
 </aside>
