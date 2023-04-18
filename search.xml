@@ -4,6 +4,77 @@
   
     
     <entry>
+      <title>为什么要建设数据仓库</title>
+      <link href="/posts/49066d40.html"/>
+      <url>/posts/49066d40.html</url>
+      
+        <content type="html"><![CDATA[<p>数据仓库解决什么问题？</p><p>1、减少由于业务定义变化带来的维护成本</p><p>2、统一数据指标口径</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据仓库 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数仓建模之关于流量域模型的一些想法</title>
+      <link href="/posts/bbbc8dfb.html"/>
+      <url>/posts/bbbc8dfb.html</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="7a79925839fa7fdda9dfa526727e44c97eccd5977802ece12e90da754aa4905e">0ae7e196f2221a75e5346dcbb7e124f36deed831076312fa04e0c81d58c043c1df62ffbe6a273ec95f53038b311e862cf068b7bf679bb836d0ba5f591d62585d3babe455b4b6e19c870974166d2b13662b44fab7caeb9c35159493cba611b2e708b1f50ea228c69590fe6ff63a1c48e953f452a49d0ec43e5dbd66b5585f81e450f078c81dffe25e9ec0aa20e86de2b7549a64337d363b894adc10d995f734f02ee123cbdee7e7e52d3ab37b54c589cc1e60f91b3b7519a07233415a77def29f9e7c151dc5f9620557e3a0516c330f21d37b374abe68c402c466f1612a4e684ce1854eedc9d24bee28c8b978b9daa30545d1b4e3ee8ad983554a84cf913fc8d2cb06e8b2d2f58297764ae066533822d9ece3c129a8802b1a99736f2e1eaa443d9ec71ecfed2538cdbdc941048ee22764580815e004042b0e1be8ad7a24bdc98f4980a1558c92307407b979f7ece3829399401fc0349f4e11acab3a4593cb77d119d129a372cf7bba2d92b62c2cd839d4db9f29493f710e2edd175cbdfbfeebd39617ed44c28e0ff007ff7b7886f68f18f2845f11ba01051b56d145f38b5dcd81d952ec0e97847d70cdf8cbc3ad51e8cc2494a2bad92a77cff70bae201b891bb59495a88661ff82bdfdf1823821cf920e248facae013c60fb597b8aac60c6f082526daa1f2dfffbbc55870401949164bfa1caa47307acf71483744ba42c369fd133bce4d9b55249370a23d1b20408bbf56af431c9715c3273872c1b922bacc3c4141e44dbf8aa89b662c14ab481a9d1d30d40f1012832d829e13f5eb312d690bd</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据仓库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数仓建模 </tag>
+            
+            <tag> private </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>在hive中嵌入自定义数据处理函数-UDF函数</title>
+      <link href="/posts/cafe49d7.html"/>
+      <url>/posts/cafe49d7.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> hive </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 写UDF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hiveSQL之全面认识窗口函数</title>
       <link href="/posts/ed2327bc.html"/>
       <url>/posts/ed2327bc.html</url>
@@ -638,7 +709,7 @@
       <link href="/posts/76d5a95a.html"/>
       <url>/posts/76d5a95a.html</url>
       
-        <content type="html"><![CDATA[<h1 id="SparkSQL"><a href="#SparkSQL" class="headerlink" title="SparkSQL"></a>SparkSQL</h1><p><a href="https://cloud.tencent.com/developer/article/1348071">Spark SQL Limit 介绍及优化</a></p><p><a href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html">Spark性能优化指南——基础篇</a></p><p><a href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html">Spark性能优化指南——高级篇</a></p><h1 id="大数据笔记"><a href="#大数据笔记" class="headerlink" title="大数据笔记"></a>大数据笔记</h1><p><a href="https://github.com/heibaiying/BigData-Notes">大数据入门指南</a></p><h1 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h1><p><a href="https://programmercarl.com/other/algo_pdf.html">代码随想录</a></p><h1 id="数据治理"><a href="#数据治理" class="headerlink" title="数据治理"></a>数据治理</h1><p><a href="https://www.infoq.cn/article/mBgvbc3bQWAbavwmBhXR">存储和计算资源都节省 30%，网易云音乐数据治理实践</a></p><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a href="https://www.infoq.cn/article/0rSVq2VIfUE0YLedLe5o">数据库内核杂谈系列</a></p><h1 id="乱七八糟的"><a href="#乱七八糟的" class="headerlink" title="乱七八糟的"></a>乱七八糟的</h1><p><a href="https://mp.weixin.qq.com/s/g5aQVHMUVkSrEO6QWDI1yw">2万字揭秘阿里巴巴数据治理平台建设经验</a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="SparkSQL"><a href="#SparkSQL" class="headerlink" title="SparkSQL"></a>SparkSQL</h1><p><a href="https://cloud.tencent.com/developer/article/1348071">Spark SQL Limit 介绍及优化</a></p><p><a href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html">Spark性能优化指南——基础篇</a></p><p><a href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html">Spark性能优化指南——高级篇</a></p><h1 id="大数据笔记"><a href="#大数据笔记" class="headerlink" title="大数据笔记"></a>大数据笔记</h1><p><a href="https://github.com/heibaiying/BigData-Notes">大数据入门指南</a></p><h1 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h1><p><a href="https://programmercarl.com/other/algo_pdf.html">代码随想录</a></p><h1 id="数据治理"><a href="#数据治理" class="headerlink" title="数据治理"></a>数据治理</h1><p><a href="https://www.infoq.cn/article/mBgvbc3bQWAbavwmBhXR">存储和计算资源都节省 30%，网易云音乐数据治理实践</a></p><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a href="https://www.infoq.cn/article/0rSVq2VIfUE0YLedLe5o">数据库内核杂谈系列</a></p><h1 id="流量数仓"><a href="#流量数仓" class="headerlink" title="流量数仓"></a>流量数仓</h1><p><a href="https://juejin.cn/post/6930083471037562893">用户流量数仓建设思考（一）：基于漏斗模型的通用建设</a></p><h1 id="乱七八糟的"><a href="#乱七八糟的" class="headerlink" title="乱七八糟的"></a>乱七八糟的</h1><p><a href="https://mp.weixin.qq.com/s/g5aQVHMUVkSrEO6QWDI1yw">2万字揭秘阿里巴巴数据治理平台建设经验</a></p>]]></content>
       
       
       <categories>

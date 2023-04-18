@@ -1,3 +1,7 @@
+https://llye-hub.github.io/posts/bbbc8dfb.html
+https://llye-hub.github.io/posts/49066d40.html
+https://llye-hub.github.io/posts/cafe49d7.html
+https://llye-hub.github.io/posts/76d5a95a.html
 https://llye-hub.github.io/posts/ed2327bc.html
 https://llye-hub.github.io/posts/4142350a.html
 https://llye-hub.github.io/posts/5e1f3fb0.html
@@ -14,7 +18,6 @@ https://llye-hub.github.io/posts/e912f2da.html
 https://llye-hub.github.io/posts/5af52219.html
 https://llye-hub.github.io/posts/faab1ad7.html
 https://llye-hub.github.io/posts/e6b1209.html
-https://llye-hub.github.io/posts/76d5a95a.html
 https://llye-hub.github.io/posts/8a94c1da.html
 https://llye-hub.github.io/posts/bcc5bdf2.html
 https://llye-hub.github.io/posts/44d3528f.html
@@ -52,6 +55,9 @@ https://llye-hub.github.io/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/
 https://llye-hub.github.io/tags/spark-on-yarn/
 https://llye-hub.github.io/tags/hiveSQL/
 https://llye-hub.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/
+https://llye-hub.github.io/tags/%E5%86%99UDF/
+https://llye-hub.github.io/tags/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/
+https://llye-hub.github.io/tags/private/
 https://llye-hub.github.io/categories/shell/
 https://llye-hub.github.io/categories/hadoop/
 https://llye-hub.github.io/categories/hive/
@@ -60,3 +66,4 @@ https://llye-hub.github.io/categories/%E8%B5%84%E6%96%99/
 https://llye-hub.github.io/categories/%E9%A2%98%E9%9B%86/
 https://llye-hub.github.io/categories/spark/
 https://llye-hub.github.io/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/
+https://llye-hub.github.io/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/

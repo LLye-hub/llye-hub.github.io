@@ -6,7 +6,7 @@
   <link href="https://llye-hub.github.io/atom.xml" rel="self"/>
   
   <link href="https://llye-hub.github.io/"/>
-  <updated>2023-04-07T03:23:39.244Z</updated>
+  <updated>2023-04-18T07:45:38.184Z</updated>
   <id>https://llye-hub.github.io/</id>
   
   <author>
@@ -15,6 +15,71 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么要建设数据仓库</title>
+    <link href="https://llye-hub.github.io/posts/49066d40.html"/>
+    <id>https://llye-hub.github.io/posts/49066d40.html</id>
+    <published>2023-04-14T09:02:13.000Z</published>
+    <updated>2023-04-18T07:45:38.184Z</updated>
+    
+    <content type="html"><![CDATA[<p>数据仓库解决什么问题？</p><p>1、减少由于业务定义变化带来的维护成本</p><p>2、统一数据指标口径</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;数据仓库解决什么问题？&lt;/p&gt;
+&lt;p&gt;1、减少由于业务定义变化带来的维护成本&lt;/p&gt;
+&lt;p&gt;2、统一数据指标口径&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="数据仓库" scheme="https://llye-hub.github.io/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数仓建模之关于流量域模型的一些想法</title>
+    <link href="https://llye-hub.github.io/posts/bbbc8dfb.html"/>
+    <id>https://llye-hub.github.io/posts/bbbc8dfb.html</id>
+    <published>2023-04-14T08:56:16.000Z</published>
+    <updated>2023-04-18T07:53:59.814Z</updated>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="7a79925839fa7fdda9dfa526727e44c97eccd5977802ece12e90da754aa4905e">0ae7e196f2221a75e5346dcbb7e124f36deed831076312fa04e0c81d58c043c1df62ffbe6a273ec95f53038b311e862cf068b7bf679bb836d0ba5f591d62585d3babe455b4b6e19c870974166d2b13662b44fab7caeb9c35159493cba611b2e708b1f50ea228c69590fe6ff63a1c48e953f452a49d0ec43e5dbd66b5585f81e450f078c81dffe25e9ec0aa20e86de2b7549a64337d363b894adc10d995f734f02ee123cbdee7e7e52d3ab37b54c589cc1e60f91b3b7519a07233415a77def29f9e7c151dc5f9620557e3a0516c330f21d37b374abe68c402c466f1612a4e684ce1854eedc9d24bee28c8b978b9daa30545d1b4e3ee8ad983554a84cf913fc8d2cb06e8b2d2f58297764ae066533822d9ece3c129a8802b1a99736f2e1eaa443d9ec71ecfed2538cdbdc941048ee22764580815e004042b0e1be8ad7a24bdc98f4980a1558c92307407b979f7ece3829399401fc0349f4e11acab3a4593cb77d119d129a372cf7bba2d92b62c2cd839d4db9f29493f710e2edd175cbdfbfeebd39617ed44c28e0ff007ff7b7886f68f18f2845f11ba01051b56d145f38b5dcd81d952ec0e97847d70cdf8cbc3ad51e8cc2494a2bad92a77cff70bae201b891bb59495a88661ff82bdfdf1823821cf920e248facae013c60fb597b8aac60c6f082526daa1f2dfffbbc55870401949164bfa1caa47307acf71483744ba42c369fd133bce4d9b55249370a23d1b20408bbf56af431c9715c3273872c1b922bacc3c4141e44dbf8aa89b662c14ab481a9d1d30d40f1012832d829e13f5eb312d690bd</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <summary type="html">这是一篇加密文章，需要密码才能继续阅读。</summary>
+    
+    
+    
+    <category term="数据仓库" scheme="https://llye-hub.github.io/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/"/>
+    
+    
+    <category term="数仓建模" scheme="https://llye-hub.github.io/tags/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/"/>
+    
+    <category term="private" scheme="https://llye-hub.github.io/tags/private/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在hive中嵌入自定义数据处理函数-UDF函数</title>
+    <link href="https://llye-hub.github.io/posts/cafe49d7.html"/>
+    <id>https://llye-hub.github.io/posts/cafe49d7.html</id>
+    <published>2023-04-11T09:04:03.000Z</published>
+    <updated>2023-04-18T07:45:38.183Z</updated>
+    
+    
+    
+    
+    <category term="hive" scheme="https://llye-hub.github.io/categories/hive/"/>
+    
+    
+    <category term="写UDF" scheme="https://llye-hub.github.io/tags/%E5%86%99UDF/"/>
+    
+  </entry>
   
   <entry>
     <title>hiveSQL之全面认识窗口函数</title>
@@ -422,76 +487,6 @@
     
     
     <category term="SQL高级语法" scheme="https://llye-hub.github.io/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SparkSQL之conf参数</title>
-    <link href="https://llye-hub.github.io/posts/5e220c44.html"/>
-    <id>https://llye-hub.github.io/posts/5e220c44.html</id>
-    <published>2023-02-03T08:15:46.000Z</published>
-    <updated>2023-02-20T05:44:02.740Z</updated>
-    
-    <content type="html"><![CDATA[<h1><span id="官方说明传送门"></span></h1><h1><span id="资源参数">资源参数</span></h1><h2><span id="num-executors">num-executors</span></h2><ul><li>参数说明：该参数用于设置Spark作业总共要用多少个Executor进程来执行。Driver在向YARN集群管理器申请资源时，YARN集群管理器会尽可能按照你的设置来在集群的各个工作节点上，启动相应数量的Executor进程。这个参数非常之重要，如果不设置的话，默认只会给你启动少量的Executor进程，此时你的Spark作业的运行速度是非常慢的。</li><li>参数调优建议：每个Spark作业的运行一般设置50~100个左右的Executor进程比较合适，设置太少或太多的Executor进程都不好。设置的太少，无法充分利用集群资源；设置的太多的话，大部分队列可能无法给予充分的资源。</li></ul><h2><span id="executor-memory">executor-memory</span></h2><ul><li>参数说明：该参数用于设置每个Executor进程的内存。Executor内存的大小，很多时候直接决定了Spark作业的性能，而且跟常见的JVM OOM异常，也有直接的关联。</li><li>参数调优建议：每个Executor进程的内存设置4G~8G较为合适。但是这只是一个参考值，具体的设置还是得根据不同部门的资源队列来定。可以看看自己团队的资源队列的最大内存限制是多少，num-executors乘以executor-memory，是不能超过队列的最大内存量的。此外，如果你是跟团队里其他人共享这个资源队列，那么申请的内存量最好不要超过资源队列最大总内存的1&#x2F;3~1&#x2F;2，避免你自己的Spark作业占用了队列所有的资源，导致别的同学的作业无法运行。</li></ul><p>##executor-cores</p><ul><li>参数说明：该参数用于设置每个Executor进程的CPU core数量。这个参数决定了每个Executor进程并行执行task线程的能力。因为每个CPU core同一时间只能执行一个task线程，因此每个Executor进程的CPU core数量越多，越能够快速地执行完分配给自己的所有task线程。</li><li>参数调优建议：Executor的CPU core数量设置为2~4个较为合适。同样得根据不同部门的资源队列来定，可以看看自己的资源队列的最大CPU core限制是多少，再依据设置的Executor数量，来决定每个Executor进程可以分配到几个CPU core。同样建议，如果是跟他人共享这个队列，那么num-executors * executor-cores不要超过队列总CPU core的1&#x2F;3~1&#x2F;2左右比较合适，也是避免影响其他同学的作业运行。</li></ul><h2><span id="driver-memory">driver-memory</span></h2><ul><li>参数说明：该参数用于设置Driver进程的内存。</li><li>参数调优建议：Driver的内存通常来说不设置，或者设置1G左右应该就够了。唯一需要注意的一点是，如果需要使用collect算子将RDD的数据全部拉取到Driver上进行处理，那么必须确保Driver的内存足够大，否则会出现OOM内存溢出的问题。</li></ul><h2><span id="sparkdefaultparallelism">spark.default.parallelism</span></h2><ul><li>参数说明：该参数用于设置每个stage的默认task数量。这个参数极为重要，如果不设置可能会直接影响你的Spark作业性能。</li><li>参数调优建议：Spark作业的默认task数量为500~1000个较为合适。很多同学常犯的一个错误就是不去设置这个参数，那么此时就会导致Spark自己根据底层HDFS的block数量来设置task的数量，默认是一个HDFS block对应一个task。通常来说，Spark默认设置的数量是偏少的（比如就几十个task），如果task数量偏少的话，就会导致你前面设置好的Executor的参数都前功尽弃。试想一下，无论你的Executor进程有多少个，内存和CPU有多大，但是task只有1个或者10个，那么90%的Executor进程可能根本就没有task执行，也就是白白浪费了资源！因此Spark官网建议的设置原则是，设置该参数为num-executors * executor-cores的2~3倍较为合适，比如Executor的总CPU core数量为300个，那么设置1000个task是可以的，此时可以充分地利用Spark集群的资源。</li></ul><h2><span id="sparkstoragememoryfraction">spark.storage.memoryFraction</span></h2><ul><li>参数说明：该参数用于设置RDD持久化数据在Executor内存中能占的比例，默认是0.6。也就是说，默认Executor 60%的内存，可以用来保存持久化的RDD数据。根据你选择的不同的持久化策略，如果内存不够时，可能数据就不会持久化，或者数据会写入磁盘。</li><li>参数调优建议：如果Spark作业中，有较多的RDD持久化操作，该参数的值可以适当提高一些，保证持久化的数据能够容纳在内存中。避免内存不够缓存所有的数据，导致数据只能写入磁盘中，降低了性能。但是如果Spark作业中的shuffle类操作比较多，而持久化操作比较少，那么这个参数的值适当降低一些比较合适。此外，如果发现作业由于频繁的gc导致运行缓慢（通过spark web ui可以观察到作业的gc耗时），意味着task执行用户代码的内存不够用，那么同样建议调低这个参数的值。</li></ul><h2><span id="sparkshufflememoryfraction">spark.shuffle.memoryFraction</span></h2><ul><li>参数说明：该参数用于设置shuffle过程中一个task拉取到上个stage的task的输出后，进行聚合操作时能够使用的Executor内存的比例，默认是0.2。也就是说，Executor默认只有20%的内存用来进行该操作。shuffle操作在进行聚合时，如果发现使用的内存超出了这个20%的限制，那么多余的数据就会溢写到磁盘文件中去，此时就会极大地降低性能。</li><li>参数调优建议：如果Spark作业中的RDD持久化操作较少，shuffle操作较多时，建议降低持久化操作的内存占比，提高shuffle操作的内存占比比例，避免shuffle过程中数据过多时内存不够用，必须溢写到磁盘上，降低了性能。此外，如果发现作业由于频繁的gc导致运行缓慢，意味着task执行用户代码的内存不够用，那么同样建议调低这个参数的值。</li></ul><h1><span id="广播相关">广播相关</span></h1><h2><span id="sparksqlbroadcasttimeout">spark.sql.broadcastTimeout</span></h2><h2><span id="sparkkryoserializerbuffermaxx3d128m">spark.kryoserializer.buffer.max&#x3D;128M</span></h2><h2><span id="sparksqlshufflepartitionsx3d1000">spark.sql.shuffle.partitions&#x3D;1000</span></h2><h2><span id="sparksqlorccompressioncodecx3dzlib">spark.sql.orc.compression.codec&#x3D;zlib</span></h2><h2><span id="sparksqlfilesmaxpartitionbytesx3d65536">spark.sql.files.maxPartitionBytes&#x3D;65536</span></h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;官方说明传送门&quot;&gt;&lt;/span&gt;&lt;/h1&gt;&lt;h1&gt;&lt;span id=&quot;资源参数&quot;&gt;资源参数&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;num-executors&quot;&gt;num-executors&lt;/span&gt;&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;参数说明：该</summary>
-      
-    
-    
-    
-    <category term="SQL" scheme="https://llye-hub.github.io/categories/SQL/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>hiveSQL之set参数</title>
-    <link href="https://llye-hub.github.io/posts/4547a6e2.html"/>
-    <id>https://llye-hub.github.io/posts/4547a6e2.html</id>
-    <published>2023-02-03T08:14:57.000Z</published>
-    <updated>2023-02-20T07:52:21.554Z</updated>
-    
-    <content type="html"><![CDATA[<h1><span id="官方传送门"></span></h1><h2><span id="hivemergemapfiles">hive.merge.mapfiles</span></h2><p>Default Value: true<br>map-only任务结束时合并小文件</p><h2><span id="hivemergemapredfiles">hive.merge.mapredfiles</span></h2><p>Default Value: true<br>map-reduce任务结束时合并小文件</p><h2><span id="hiveoptimizectematerializethreshold">hive.optimize.cte.materialize.threshold</span></h2><p>默认情况下是-1（关闭）；当开启（大于0），比如设置为2，则如果with..as语句被引用2次及以上时，会把with..as语句生成的table物化，从而做到with..as语句只执行一次，来提高效率</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;&lt;span id=&quot;官方传送门&quot;&gt;&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;&lt;span id=&quot;hivemergemapfiles&quot;&gt;hive.merge.mapfiles&lt;/span&gt;&lt;/h2&gt;&lt;p&gt;Default Value: true&lt;br&gt;map-only任务结束时合并小文</summary>
-      
-    
-    
-    
-    <category term="SQL" scheme="https://llye-hub.github.io/categories/SQL/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>hiveSQL命令之alter partition</title>
-    <link href="https://llye-hub.github.io/posts/8a94c1da.html"/>
-    <id>https://llye-hub.github.io/posts/8a94c1da.html</id>
-    <published>2023-02-02T06:02:26.000Z</published>
-    <updated>2023-02-21T06:18:34.677Z</updated>
-    
-    <content type="html"><![CDATA[<p>msck repair table</p><p><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-ExchangePartition">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-ExchangePartition</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;msck repair table&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-ExchangePartition</summary>
-      
-    
-    
-    
-    <category term="SQL" scheme="https://llye-hub.github.io/categories/SQL/"/>
-    
-    
-    <category term="改分区" scheme="https://llye-hub.github.io/tags/%E6%94%B9%E5%88%86%E5%8C%BA/"/>
     
   </entry>
   
