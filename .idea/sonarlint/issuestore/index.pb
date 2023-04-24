@@ -21,8 +21,6 @@ Z
 *source/_posts/hadoop/hadoop基本命令.md,b/6/b6f9df6ded39b09cd31e599117593f51a4f646f3
 V
 &source/_posts/hive/hive动态分区.md,0/0/006fe3a64f3b59c1872fb29aca871601cb749113
-B
-scaffolds/draft.md,3/e/3e7a03dd9205b2e5a0f3d16f7b5cd8edb527c1f8
 ]
 -themes/my-theme/layout/_partial/post/date.ejs,b/2/b23f2a61bd70f76da6e055de38a386ab848fa3f4
 `
@@ -37,10 +35,6 @@ T
 $themes/my-theme/source/css/style.css,e/6/e676159440e92a7f69e2b9ccb3ad045be449e994
 K
 themes/my-theme/_config.yml,f/4/f40204e7a65a602fc934397c94efd09b04296a04
-A
-scaffolds/page.md,3/1/31ac5adc9eb86f83ab8bdf74aa5906a10cfde4c4
-A
-scaffolds/post.md,e/0/e0b79f4f395c86e16a3c16385e6c61e4eff03c75
 Z
 *source/_posts/SQL/SparkSQL之conf参数.md,8/2/82d1a730cd6059466ad8b0f7fc612316508cf2ca
 d
@@ -59,5 +53,3 @@ u
 Esource/_posts/spark/Spark SQL无法处理hive表中的空ORC文件.md,5/3/530014ab40d8f8d394e7f35ef901f3f8fd35b664
 M
 .idea/leetcode/statistics.xml,9/9/99c41393072353482c698dd2a80c1f2319585a58
-�
-bsource/_posts/阅读笔记/读书笔记之数据仓库工具箱维度建模权威指南-第3版.md,3/4/34b1face8338a6a26d7630eccb87dd855b9507a8
