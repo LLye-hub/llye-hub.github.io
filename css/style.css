@@ -5140,6 +5140,10 @@ table table {
   content: "\e70a";
 }
 
+.icon-csdn:before {
+  content: "\e638";
+}
+
 .icon-time:before {
   content: "\e669";
 }
