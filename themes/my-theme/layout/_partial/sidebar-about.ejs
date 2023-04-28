@@ -1,17 +1,17 @@
 <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
   <div class="slimContent">
-    <% if(theme.profile.links) { %>
+    <% if(theme.profile.socials) { %>
     <div class="widget">
-      <h3 class="widget-title"><%= __('profile.link') %></h3>
+      <h3 class="widget-title"><%= __('profile.social') %></h3>
       <div class="widget-body">
         <ul class="link-list lh-2x">
-          <% for(var i in theme.profile.links) { %>
+          <% for(var i in theme.profile.socials) { %>
           <li>
             <%= i %>:
-            <% if (theme.profile.links[i].startsWith('http')) { %>
-              <a href="<%- theme.profile.links[i] %>" target="_blank"><%- theme.profile.links[i] %></a>
+            <% if (theme.profile.socials[i].startsWith('http')) { %>
+              <a href="<%- theme.profile.socials[i] %>" target="_blank"><%- theme.profile.socials[i] %></a>
             <%  } else { %>
-              <a><%- theme.profile.links[i] %></a>
+              <a><%- theme.profile.socials[i] %></a>
             <% } %>
           </li>
           <% } %>

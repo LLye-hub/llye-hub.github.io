@@ -188,7 +188,14 @@ plugins:
   google_site_verification: # enter Google site verification code
   baidu_analytics: # enter Baidu Analytics hash key
   tencent_analytics: 
-  
+
+# mermaid chart  https://github.com/webappdevelp/hexo-filter-mermaid-diagrams
+mermaid: ## mermaid url https://github.com/knsv/mermaid
+  enable: true  # default true
+  version: "8.13.8" # default v7.1.2
+  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
+  #startOnload: true  // default true
+
 # Miscellaneous
 twitter:
 google_plus:
@@ -210,7 +217,7 @@ profile:
   social:
     links:
       github: https://github.com/LLye-hub
-    link_tooltip: false # enable the social link tooltip, options: true, false
+    link_tooltip: true # enable the social link tooltip, options: true, false
 
 
   # My Skills 
@@ -218,12 +225,14 @@ profile:
     SQL: ★★★★☆
     Hadoop: ★★☆☆☆
     Spark: ★★☆☆☆
-    Java: ★☆☆☆☆
     Git: ★★★☆☆
-  # My Personal Links
-  links:
+    Java: ★☆☆☆☆
+  # My Personal socials
+  socials:
     Github: https://github.com/LLye-hub
-    Blog: https://llye-hub.github.io/
+#    Blog: https://llye-hub.github.io/
+    CSDN: https://blog.csdn.net/weixin_44115164?spm=1000.2115.3001.5343
+    Email: yelilun@163.com
   # My Personal Works
   # works:
   #   nam4e:

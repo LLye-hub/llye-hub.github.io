@@ -2,7 +2,7 @@
   <header class="article-header">
     <h1 itemprop="title"><%= page.title %></h1>
     <% if(theme.profile.author_description || page.description) { %>
-    <p class="text-muted"><%= theme.profile.author_description || page.description %></p>
+    <p class="text-muted"><%= page.description || theme.profile.author_description %></p>
     <% } %>
   </header>
   <div class="article-body">
@@ -11,4 +11,14 @@
 </article>
 <% if (theme.comment.type && !is_home()) { %>
   <%- partial('post/comment', {post: page}) %>
+<% } %>
+
+<!-- 配置流程图插件mermaid，https://github.com/webappdevelp/hexo-filter-mermaid-diagrams -->
+<% if (theme.mermaid.enable) { %>
+  <script src='https://unpkg.com/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 <% } %>
