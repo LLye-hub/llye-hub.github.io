@@ -24,12 +24,12 @@ Hadoop 安装有三种方式：
 
 本人选择的是`伪分布模式`安装
 
-
 **下载安装**
 
 [下载地址](https://hadoop.apache.org/)
 
 * 解压安装包
+
 ```shell
 tar -zxvf hadoop-3.3.1.tar.gz
 ```
@@ -50,11 +50,13 @@ hadoop version
 ```
 
 **修改配置文件**
+
 ```shell
 cd $HADOOP_HOME/etc/hadoop
 ```
 
 `vi core-site.xml`编辑内容如下：
+
 ```xml
 <configuration>
 <!-- 配置分布式文件系统的schema和ip以及port,默认8020-->
@@ -66,6 +68,7 @@ cd $HADOOP_HOME/etc/hadoop
 ```
 
 `vi hdfs-site.xml`编辑内容如下：
+
 ```xml
 <configuration>
 <!-- 配置副本数，注意，伪分布模式只能是1。-->
@@ -77,11 +80,13 @@ cd $HADOOP_HOME/etc/hadoop
 ```
 
 `vi hadoop-env.sh`编辑内容如下：
+
 ```xml
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Home
 ```
 
 `vi mapred-site.xml`编辑内容如下：
+
 ```xml
 <configuration>
 <property>
@@ -105,6 +110,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Hom
 ```
 
 `vi yarn-site.xml`编辑内容如下：
+
 ```xml
 <configuration>
 
@@ -117,23 +123,27 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_301.jdk/Contents/Hom
 ```
 
 **ssh免密码登录**
+
 ```shell
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub>> ~/.ssh/authorized_keys
 chmod 0600~/.ssh/authorized_keys
 ```
+
 以前安装其他软件已操作过，所以此步骤忽略
 
 **格式化namenode**
+
 ```shell
 hdfs namenode -format
 ```
+
 忽略`SHUTDOWN_MSG: Shutting down NameNode at localhost/127.0.0.1`
 
 有`INFO common.Storage: Storage directory /tmp/hadoop-llye/dfs/name has been successfully formatted.`即说明操作成功。
 
-
 **启动**
+
 ```shell
 $HADOOP_HOME/sbin/start-dfs.sh &
 $HADOOP_HOME/sbin/start-yarn.sh
@@ -153,6 +163,7 @@ root@localhost hadoop % jps
 19771 Launcher
 74620 DataNode  # 数据节点
 ```
+
 **访问UI：ip+port**
 
 All Applications：`http://localhost:8088/cluster/apps`
@@ -169,16 +180,17 @@ Browse Hdfs：`http://localhost:9870/`
 
 ![J0ehd.png](https://i.328888.xyz/2023/03/15/J0ehd.png)
 
-
 **测试程序**
 
 * 测试一
+
 ```shell
 cd $HADOOP_HOME
 hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar pi 2 100
 ```
 
 * 测试二
+
 ```shell
 cd $HADOOP_HOME
 
@@ -210,7 +222,45 @@ hadoop fs -cat /wordcount/output/part-r-00000
 ```
 
 **停止**
+
 ```shell
 $HADOOP_HOME/sbin/stop-dfs.sh &
 $HADOOP_HOME/sbin/stop-yarn.sh
 ```
+
+
+**补充：hadoop启动会遇到的问题**
+
+* namenode启动失败，使用`jps`命令查看时无namenode进程
+
+解决办法：
+1. 执行命令`hdfs namenode -format`重新格式化namenode
+2. 执行命令`hadoop-daemon.sh start namenode`单独启动namenode，若是其他哪个进程挂了也可以采取这种方式。（本地尚未试过这种解决方式）
+3. 修改`core-site.xml`和`hdfs-site.xml`配置，再重新格式化namenode。因为系统重启后namenode和datanode的信息被清理了
+
+`core-site.xml`补充配置如下：
+```xml
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/Users/llye/hadoop/tmp</value>
+<description>Abase for other temporary directories.</description>
+</property>
+```   
+
+`hdfs-site.xml`补充配置如下：
+```xml
+<property>
+    <name>dfs.namenode.name.dir</name>
+    <value>/Users/llye/hadoop/tmp/dfs/name</value>
+</property>
+<property>
+    <name>dfs.datanode.data.dir</name>
+    <value>/Users/llye/hadoop/tmp/dfs/data</value>
+</property>
+```   
+
+若执行命令`hdfs namenode -format`报错：
+![iTZ6qL.png](https://i.328888.xyz/2023/05/05/iTZ6qL.png)
+上面报错原因是权限不够，无法再目录内新建文件，解决办法是执行命令`sudo chmod -R a+w /Users/llye/hadoop`，再格式化namenode就ok了。
+
+修改配置后，系统启动后会默认路径下的文件作为namenode、datanode的配置信息

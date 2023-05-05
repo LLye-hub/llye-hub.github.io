@@ -240,7 +240,7 @@ hiveserver2
 hive --service hiveserver2
 ```
 
-若启动失败，检查1000端口是否被占用，命令`lsof -i:10000`和`kill -9 xxx`
+若`hiveserver2`启动失败，检查1000端口是否被占用，命令`lsof -i:10000`和`kill -9 xxx`
 
 **beeline连接**
 ```shell
@@ -262,7 +262,7 @@ beeline -u jdbc:hive2://localhost:10000/default
 ```shell
 hive --service metastore
 
-hiveservice2
+hiveserver2
 # 或
 hive --service hiveserver2
 ```
