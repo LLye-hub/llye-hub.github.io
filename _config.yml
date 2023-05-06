@@ -133,3 +133,31 @@ encrypt: # hexo-blog-encrypt
     - {name: private, password: yelilun}
   wrong_pass_message: 抱歉，您输入的密码错误，请检查后重新输入。
   wrong_hash_message: 抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。
+
+# 插件hexo-renderer-markdown-it 的配置
+markdown:
+  preset: 'default'
+  render:
+    html: true
+    xhtmlOut: false
+    langPrefix: 'language-'
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  enable_rules:
+  disable_rules:
+  plugins:
+  anchors:
+    level: 2
+    collisionSuffix: ''
+    permalink: false
+    permalinkClass: 'header-anchor'
+    permalinkSide: 'left'
+    permalinkSymbol: '¶'
+    case: 0
+    separator: '-'
+  images:
+    lazyload: false
+    prepend_root: false
+    post_asset: false

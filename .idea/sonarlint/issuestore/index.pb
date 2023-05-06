@@ -29,14 +29,10 @@ d
 4source/_posts/SQL/hiveSQL命令之alter-partition.md,9/3/93c1a03f23ae01b7c901127f50c6c06c8c7eb7ec
 a
 1source/_posts/SQL/hiveSQL之生成连续数字.md,6/6/664b9eca1a37d9a92c24dd7823b8f4cfc811b863
-l
-<source/_posts/SQL/get_json_object在sql中的高级用法.md,9/f/9f2a66f2aabe1ff9672c9c4303707754c1882fa4
 X
 (source/_posts/SQL/hiveSQL之set参数.md,f/d/fdc3121162624b8c10fa0772e8154d81577e44ca
 c
 3source/_posts/SQL/mysql和hiveSQL的语法差别.md,c/2/c2c9de87de8ff82f9f9aefd0d209e67932515df0
-c
-3source/_posts/题集/解题思路之动态规划.md,3/5/35a0fb326822a7be664ae362befe991ab1b11f38
 u
 Esource/_posts/spark/Spark SQL无法处理hive表中的空ORC文件.md,5/3/530014ab40d8f8d394e7f35ef901f3f8fd35b664
 M
@@ -51,8 +47,6 @@ J
 source/categories/index.md,a/c/aca626f5e818825b594a6c01996205f115efe92f
 w
 G.idea/sonarlint/issuestore/5/3/530014ab40d8f8d394e7f35ef901f3f8fd35b664,c/f/cf762809480c476faf1b92786d74a73928e08a63
-M
-source/_posts/资料汇总.md,b/0/b0759f8c63f1b05dee7a70429a977e91e1974689
 _
 /themes/my-theme/layout/_partial/sidebar-toc.ejs,2/9/291057807ba7ae74705e03472ef7f66da2d57010
 B
