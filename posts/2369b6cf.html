@@ -26,7 +26,7 @@
 <meta property="og:description" content="hive官方文档说明 关键字 EXPLAIN 语法： EXPLAIN [EXTENDED|DEPENDENCY|AUTHORIZATION|VECTORIZATION|ANALYZE] query（hive2.3.9版本支持）    EXPLAIN EXTENDED是EXPLAIN的扩展，能展示更加详细的信息。除了EXPLAIN打印出的内容，还包括每个标的HDFS读取路径，每个HIVE表的配置信息">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-08T03:16:49.000Z">
-<meta property="article:modified_time" content="2023-05-08T08:26:10.832Z">
+<meta property="article:modified_time" content="2023-05-08T08:27:00.383Z">
 <meta property="article:author" content="LLye">
 <meta property="article:tag" content="hiveSQL">
 <meta name="twitter:card" content="summary">
@@ -409,7 +409,7 @@
 <li>EXPLAIN DEPENDENCY用于描述一段sql需要的数据来源，输出的是一个json格式的数据，里面包含一下两个部分的内容，<br>input_partitions：描述一段sql依赖的数据来源表分区，里面存储的分区名的列表，格式如下：<br>{“partitionname”:“库名@表名 @分区列&#x3D;分区列的值”} ，如果整段sql包含的所有表都是是非分区表，则显示为空。<br>input_table：描述一段sql依赖的数据来源表，里面存储的是HIVE表名的列表格式如下：<br>{“tablename”:“库名@表名 ”，“tabletype”：表的类型（外部表&#x2F;内部表）}</li>
 <li>EXPLAIN ANALYZE是EXPLAIN的扩展。EXPLAIN的信息中标示的是预估扫描行数，EXPLAIN ANALYZE但展示信息中也标示了实际扫描行数，格式为：<code>Num rows: (estimated row count)/(actual row count)</code></li>
 </ul>
-<p><strong>执行计划包含三部分内容</strong></p>
+<p>**执行计划包含三部分内容: **</p>
 <ul>
 <li>查询sql的抽象语法树</li>
 <li>所有stage之间的依赖关系</li>
