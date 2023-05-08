@@ -131,5 +131,3 @@ Y
 )themes/my-theme/source/fonts/iconfont.svg,9/e/9e423f8569a10c65b8163fb938fd4db184320dd6
 {
 Ksource/_posts/hive/在hive中嵌入自定义数据处理函数-UDF函数.md,a/a/aa2bbe112fba9427b04762ddcdd0cab8b28a704a
-l
-<source/_posts/SQL/get_json_object在sql中的高级用法.md,9/f/9f2a66f2aabe1ff9672c9c4303707754c1882fa4
