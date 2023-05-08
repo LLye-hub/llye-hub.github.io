@@ -1,9 +1,9 @@
 ---
 title: hiveSQL之groupBy语句增强语法grouping sets/CUBE/rollup
 tags:
-  - 文章内容的关键词
+  - grouping sets
 categories:
-  - 对照文件存放的目录名称
+  - SQL
 toc: true
 abbrlink: 67bc5d15
 date: 2023-05-05 14:01:45
