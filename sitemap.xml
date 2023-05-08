@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://llye-hub.github.io/posts/a0de71c0.html</loc>
+    <loc>https://llye-hub.github.io/posts/69a95f3b.html</loc>
     
     <lastmod>2023-05-08</lastmod>
     
@@ -353,13 +353,6 @@
 
   
   <url>
-    <loc>https://llye-hub.github.io/tags/%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D/</loc>
-    <lastmod>2023-05-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://llye-hub.github.io/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2023-05-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -534,14 +527,14 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://llye-hub.github.io/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/</loc>
+    <loc>https://llye-hub.github.io/tags/hexo/</loc>
     <lastmod>2023-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+
   
   <url>
     <loc>https://llye-hub.github.io/categories/%E8%B5%84%E6%96%99/</loc>

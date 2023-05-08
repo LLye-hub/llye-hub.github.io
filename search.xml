@@ -4,23 +4,17 @@
   
     
     <entry>
-      <title>11111</title>
-      <link href="/posts/a0de71c0.html"/>
-      <url>/posts/a0de71c0.html</url>
+      <title>hexo+GitHub自建博客遇到的问题</title>
+      <link href="/posts/69a95f3b.html"/>
+      <url>/posts/69a95f3b.html</url>
       
-        <content type="html"><![CDATA[<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1>]]></content>
+        <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/weixin_45149481/article/details/116794535">hexo文章目录点击不跳转，html没有生成href</a></p>]]></content>
       
-      
-      <categories>
-          
-          <category> 对照文件存放的目录名称 </category>
-          
-      </categories>
       
       
         <tags>
             
-            <tag> 文章内容的关键词 </tag>
+            <tag> hexo </tag>
             
         </tags>
       
