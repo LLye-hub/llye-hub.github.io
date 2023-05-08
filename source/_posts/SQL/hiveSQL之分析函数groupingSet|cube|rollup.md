@@ -65,30 +65,13 @@ grouping set子句可以实现对同一个数据集指定多个group by条件，
 
 `SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b GROUPING SETS ( (a, b), a, b, ( ) )`等同下面语句
 
-> SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b
->
-> UNION
->
-> SELECT a, null, SUM( c ) FROM tab1 GROUP BY a, null
->
-> UNION
->
-> SELECT null, b, SUM( c ) FROM tab1 GROUP BY null, b
->
-> UNION
->
+> SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b  
+> UNION  
+> SELECT a, null, SUM( c ) FROM tab1 GROUP BY a, null  
+> UNION  
+> SELECT null, b, SUM( c ) FROM tab1 GROUP BY null, b  
+> UNION  
 > SELECT null, null, SUM( c ) FROM tab1
-
-**实现逻辑**
-如果说 `union all`是先聚合再联合，那么 `grouping sets`就是先联合再聚合。`grouping sets`根据 `N`个分组对每条数据进行计算，不在当前分组的字段置为null，将数据量扩展成原来的 `N`倍，再按 `group by`的字段做聚合计算。
-
-`group by province,city grouping sets ((province,city),province,())`计算效果图如下：
-
-![iacyut.png](https://i.328888.xyz/2023/05/06/iacyut.png)
-
-`…… group by province,city union all …… group by province`计算效果图如下：
-
-![iaRuvE.png](https://i.328888.xyz/2023/05/06/iaRuvE.png)
 
 **语法**
 
@@ -251,8 +234,9 @@ order by
 * 字段顺序为:province,city,sale_date
 * 所有聚合维度对应的二进制数为：
 
+
 |      grouping sets      | 按字段顺序赋值二进制数 | 转换为十进制的grouping__id |
-| :---------------------: | :--------------------: | :------------------------: |
+| :-----------------------: | :----------------------: | :--------------------------: |
 | province,city,sale_date |          000          |             0             |
 |      province,city      |          001          |             1             |
 |   province,sale_date   |          010          |             2             |
@@ -285,15 +269,221 @@ order by
 
 从上面的结果可以看到，grouping__id的数值与计算规则得出来的一致。
 
-# 可实现的数据分析场景
+# grouping sets和union all性能对比
 
-上面几节总结了group by的增强语法，那么这些语法对实际工作场景有什么帮助呢？总不能说不用写多个union all语句，查询sql更简洁吧，但是sql并非越简洁越好，不能一味追求简洁性，好的sql应该是逻辑清晰且易理解的。
+**实现逻辑**
+如果说 `union all`是先聚合再联合，那么 `grouping sets`就是先联合再聚合。`grouping sets`根据 `N`个分组对每条数据进行计算，不在当前分组的字段置为null，将数据量扩展成原来的 `N`倍，再按 `group by`的字段做聚合计算。
 
-下面整理了些个人认为group by能解决或者说是能优化数据分析场景。
+`group by province,city grouping sets ((province,city),province,())`计算效果图如下：
 
-## 场景一：
+![iacyut.png](https://i.328888.xyz/2023/05/06/iacyut.png)
+
+`…… group by province,city union all …… group by province`计算效果图如下：
+
+![iaRuvE.png](https://i.328888.xyz/2023/05/06/iaRuvE.png)
+
+下面通过执行计划分析两种方式的差异。
+
+```sql
+explain select
+    province,
+    city,
+    grouping__id
+from
+    travel_data 
+group by
+    province,
+    city
+    grouping SETS ((province,city),province,())
+order by grouping__id
+;
+```
+
+hive执行计划：
+```text
+Explain                                                                                                      |
+-------------------------------------------------------------------------------------------------------------+
+STAGE DEPENDENCIES:                                                                                          |
+  Stage-1 is a root stage                                                                                    |
+  Stage-2 depends on stages: Stage-1                                                                         |
+  Stage-0 depends on stages: Stage-2                                                                         |
+                                                                                                             |
+STAGE PLANS:                                                                                                 |
+  Stage: Stage-1                                                                                             |
+    Map Reduce                                                                                               |
+      Map Operator Tree:                                                                                     |
+          TableScan                                                                                          |
+            alias: travel_data                                                                               |
+            Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE                 |
+            Select Operator                                                                                  |
+              expressions: province (type: string), city (type: string)                                      |
+              outputColumnNames: _col0, _col1                                                                |
+              Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE               |
+              Group By Operator                                                                              |
+                keys: _col0 (type: string), _col1 (type: string), 0 (type: int)                              |
+                mode: hash                                                                                   |
+                outputColumnNames: _col0, _col1, _col2                                                       |
+                Statistics: Num rows: 33 Data size: 1791 Basic stats: COMPLETE Column stats: NONE            |  这里读取数据后按grouping sets的3个分组维度，将数据由11条扩充为33条
+                Reduce Output Operator                                                                       |
+                 ……
+      Reduce Operator Tree:                                                                                  |
+        Group By Operator                                                                                    |
+          keys: KEY._col0 (type: string), KEY._col1 (type: string), KEY._col2 (type: int)                    |
+          mode: mergepartial                                                                                 |
+          outputColumnNames: _col0, _col1, _col2                                                             |
+          Statistics: Num rows: 16 Data size: 868 Basic stats: COMPLETE Column stats: NONE                   |
+          Select Operator                                                                                    |
+            expressions: _col0 (type: string), _col1 (type: string), _col2 (type: int)                       |
+            outputColumnNames: _col0, _col1, _col2                                                           |
+            Statistics: Num rows: 16 Data size: 868 Basic stats: COMPLETE Column stats: NONE                 |
+            ……
+                                                                                                             |
+  Stage: Stage-2                                                                                             |
+    Map Reduce                                                                                               |
+      Map Operator Tree:                                                                                     |
+          TableScan                                                                                          |
+            Reduce Output Operator                                                                           |
+              key expressions: _col2 (type: int)                                                             |
+              sort order: +                                                                                  |
+              Statistics: Num rows: 16 Data size: 868 Basic stats: COMPLETE Column stats: NONE               |
+              value expressions: _col0 (type: string), _col1 (type: string)                                  |
+      Reduce Operator Tree:                                                                                  |
+        Select Operator                                                                                      |
+          expressions: VALUE._col0 (type: string), VALUE._col1 (type: string), KEY.reducesinkkey0 (type: int)|  这里KEY.reducesinkkey0即为grouping__id
+          outputColumnNames: _col0, _col1, _col2                                                             |
+          Statistics: Num rows: 16 Data size: 868 Basic stats: COMPLETE Column stats: NONE                   |
+          ……                                                                                        |
+ 
+                                 |
+                                                                                                             |
+  Stage: Stage-0                                                                                             |
+    ……                                                                                     
+```
+
+从上面的执行计划可以看到，`Stage-1`在读取数据时，在`map`阶段根据`grouping sets`有3个分组维度，将数据量扩充至原来的3倍，然后在`reduce`阶段做`group by province,city`操作。 
+
+```sql
+explain
+select
+	province,
+	city
+from
+	travel_data
+group by
+    province,city
+union all
+select
+    province,
+    NULL as city
+from
+	travel_data
+group by
+    province 
+;
+```
+
+hive执行计划：
+```text
+Explain                                                                                           |
+--------------------------------------------------------------------------------------------------+
+STAGE DEPENDENCIES:                                                                               |
+  Stage-1 is a root stage                                                                         |
+  Stage-2 depends on stages: Stage-1, Stage-3                                                     |
+  Stage-3 is a root stage                                                                         |
+  Stage-0 depends on stages: Stage-2                                                              |
+                                                                                                  |
+STAGE PLANS:                                                                                      |
+  Stage: Stage-1                                                                                  |
+    Map Reduce                                                                                    |
+      Map Operator Tree:                                                                          |
+          TableScan                                                                               |
+            alias: travel_data                                                                    |
+            Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE      |
+            Select Operator                                                                       |
+              expressions: province (type: string), city (type: string)                           |
+              outputColumnNames: province, city                                                   |
+              Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE    |
+              Group By Operator                                                                   |
+                keys: province (type: string), city (type: string)                                |
+                mode: hash                                                                        |
+                outputColumnNames: _col0, _col1                                                   |
+                Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE  |  这里数据量没有变化
+                Reduce Output Operator                                                            |
+                  ……
+      Reduce Operator Tree:                                                                       |
+        Group By Operator                                                                         |
+          keys: KEY._col0 (type: string), KEY._col1 (type: string)                                |
+          mode: mergepartial                                                                      |
+          outputColumnNames: _col0, _col1                                                         |
+          Statistics: Num rows: 5 Data size: 271 Basic stats: COMPLETE Column stats: NONE         |
+          ……
+                                                                                                  |
+  Stage: Stage-2                                                                                  |
+    Map Reduce                                                                                    |
+      Map Operator Tree:                                                                          |
+          TableScan                                                                               |
+            Union                                                                                 |
+              Statistics: Num rows: 10 Data size: 542 Basic stats: COMPLETE Column stats: NONE    |
+              ……                  |
+          TableScan                                                                               |
+            Union                                                                                 |
+              Statistics: Num rows: 10 Data size: 542 Basic stats: COMPLETE Column stats: NONE    |
+              ……                 
+  Stage: Stage-3                                                                                  |
+    Map Reduce                                                                                    |
+      Map Operator Tree:                                                                          |
+          TableScan                                                                               |
+            alias: travel_data                                                                    |
+            Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE      |
+            Select Operator                                                                       |
+              expressions: province (type: string)                                                |
+              outputColumnNames: province                                                         |
+              Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE    |
+              Group By Operator                                                                   |
+                keys: province (type: string)                                                     |
+                mode: hash                                                                        |
+                outputColumnNames: _col0                                                          |
+                Statistics: Num rows: 11 Data size: 597 Basic stats: COMPLETE Column stats: NONE  |  这里数据量没有变化
+                Reduce Output Operator                                                            |
+                  ……
+      Reduce Operator Tree:                                                                       |
+        Group By Operator                                                                         |
+          keys: KEY._col0 (type: string)                                                          |
+          mode: mergepartial                                                                      |
+          outputColumnNames: _col0                                                                |
+          Statistics: Num rows: 5 Data size: 271 Basic stats: COMPLETE Column stats: NONE         |
+            ……               
+                                                                                                  |
+  Stage: Stage-0                                                                                  |
+    ……                       
+```
+
+从上面的执行计划可以看到，`Stage-1`和`Stage-3`都是读取数据，再分别按照`group by province,city`和`group by province`做聚合操作，最后在`Stage-2`做`union`操作合并数据。`union all`这种写法对表`travel_data`重复读取两次，查询性能上比`grouping sets`写法要差些。在集群空闲的情况下，对两种写法的sql分别执行5次，得到如下结果：
+>grouping sets写法执行5次的耗时:
+> > select province, city, grouping__id from travel_data group by province, city grouping SETS ((province,city),province) order by grouping__id ;
+>
+> Time taken: 54.807 seconds, Fetched: 6 row(s)  
+> Time taken: 56.261 seconds, Fetched: 6 row(s)  
+> Time taken: 52.671 seconds, Fetched: 6 row(s)  
+> Time taken: 62.945 seconds, Fetched: 6 row(s)  
+> Time taken: 57.337 seconds, Fetched: 6 row(s)
+
+>union all写法执行5次的耗时:
+> >select province,city from travel_data group by province,city union all select province, NULL as city from travel_data group by province;
+> 
+> Time taken: 83.91 seconds, Fetched: 6 row(s)  
+> Time taken: 94.466 seconds, Fetched: 6 row(s)  
+> Time taken: 86.253 seconds, Fetched: 6 row(s)  
+> Time taken: 75.509 seconds, Fetched: 6 row(s)  
+> Time taken: 88.633 seconds, Fetched: 6 row(s)
+
+可以算出，`grouping sets`写法的平均耗时为56.8s，`union all`写法的平均耗时为85.7s，耗时是前者的1.5倍。
+
+所以，`grouping sets`写法的sql不仅在表达上更加简洁，在查询性能上也更加高效。
+
 
 # 参考文章
 
 [Hive分析函数详解：GROUPING SETS/CUBE/ROLLUP](https://juejin.cn/post/7223211123961200700)
+
 [从源码深入理解 Spark SQL 中的 Grouping Sets 语句](https://zhuanlan.zhihu.com/p/536981356)
