@@ -17,18 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Tag: 动态分区 | Hexo</title>
-  <meta name="description" content="scsadad">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LLye">
-<meta property="og:url" content="https://llye-hub.github.io/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/index.html">
+  <title>hiveSQL之理解explain参数 | Hexo</title>
+  <meta name="description" content="关键字EXPLAIN 使用方法：EXPLAIN SELECT &#96;&#96;&#96;&#96;&#96;&#96;&#96;(SQL语句) 解释： MapReduce:表示当前任务执行所用的计算机引擎是MapReduce Map Operator Tree:表示当前描述的Map阶段执行的操作信息。 Reduce Operator Tree:表示当前描述的Reduce阶段的操作信息。 MAP: TableScan:表示对关键字alias声明的结果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hiveSQL之理解explain参数">
+<meta property="og:url" content="https://llye-hub.github.io/posts/2369b6cf.html">
 <meta property="og:site_name" content="LLye">
-<meta property="og:description" content="scsadad">
+<meta property="og:description" content="关键字EXPLAIN 使用方法：EXPLAIN SELECT &#96;&#96;&#96;&#96;&#96;&#96;&#96;(SQL语句) 解释： MapReduce:表示当前任务执行所用的计算机引擎是MapReduce Map Operator Tree:表示当前描述的Map阶段执行的操作信息。 Reduce Operator Tree:表示当前描述的Reduce阶段的操作信息。 MAP: TableScan:表示对关键字alias声明的结果">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-08T03:16:49.000Z">
+<meta property="article:modified_time" content="2023-05-08T03:19:51.388Z">
 <meta property="article:author" content="LLye">
+<meta property="article:tag" content="hiveSQL">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://llye-hub.github.io/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/index.html">
+  <link rel="canonical" href="https://llye-hub.github.io/posts/2369b6cf.html">
   
     <link rel="alternate" href="/atom.xml" title="LLye" type="application/atom+xml">
   
@@ -322,100 +325,255 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">Tag: 动态分区</h1>
-      <p class="text-muted hidden-xs">Total 1 articles</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/shell命令/">shell命令</a></li>
-          
-          <li><a href="/tags/hadoop命令/">hadoop命令</a></li>
-          
-          <li><a href="/tags/动态分区/">动态分区</a></li>
-          
-          <li><a href="/tags/数据倾斜/">数据倾斜</a></li>
-          
-          <li><a href="/tags/SQL高级语法/">SQL高级语法</a></li>
-          
-          <li><a href="/tags/hdfs文件拷贝/">hdfs文件拷贝</a></li>
-          
-          <li><a href="/tags/ORC/">ORC</a></li>
-          
-          <li><a href="/tags/LeetCode/">LeetCode</a></li>
-          
-          <li><a href="/tags/Maxcompute/">Maxcompute</a></li>
-          
-          <li><a href="/tags/改分区/">改分区</a></li>
-          
-          <li><a href="/tags/java/">java</a></li>
-          
-          <li><a href="/tags/数据结构/">数据结构</a></li>
-          
-          <li><a href="/tags/文章内容的关键词/">文章内容的关键词</a></li>
-          
-          <li><a href="/tags/窗口函数/">窗口函数</a></li>
-          
-          <li><a href="/tags/sql练习/">sql练习</a></li>
-          
-          <li><a href="/tags/免密登录/">免密登录</a></li>
-          
-          <li><a href="/tags/hive安装/">hive安装</a></li>
-          
-          <li><a href="/tags/hadoop安装/">hadoop安装</a></li>
-          
-          <li><a href="/tags/内置函数/">内置函数</a></li>
-          
-          <li><a href="/tags/spark-on-yarn/">spark on yarn</a></li>
-          
-          <li><a href="/tags/hiveSQL/">hiveSQL</a></li>
-          
-          <li><a href="/tags/读书笔记/">读书笔记</a></li>
-          
-          <li><a href="/tags/写UDF/">写UDF</a></li>
-          
-          <li><a href="/tags/数仓建模/">数仓建模</a></li>
-          
-          <li><a href="/tags/private/">private</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h1 class="toc-title">Catalogue</h1>
+        <!--  侧边栏目录样式，辅助函数toc介绍：https://hexo.io/zh-cn/docs/helpers.html  -->
+      
         
-<div class="col-md-6">
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-SQL/hiveSQL之理解explain参数" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2023-01-30T09:01:49.000Z" itemprop="datePublished">2023-01-30</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/posts/44d3528f.html">hive动态分区</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/" class="label label-default mb">动态分区</a>
-     
-     
-   </div>
-   
-</article>
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hiveSQL之理解explain参数
+    </h1>
+  
+
+      
+      <!-- 文章元数据：日期、分类、标签、访问统计 -->
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/2369b6cf.html" class="article-date">
+	  <time datetime="2023-05-08T03:16:49.000Z" itemprop="datePublished">2023-05-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/hive/">hive</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/hiveSQL/" rel="tag">hiveSQL</a>
+  </span>
 
 
-</div>
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/posts/2369b6cf.html" class="leancloud_visitors"  data-flag-title="hiveSQL之理解explain参数">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/2369b6cf.html#comments" class="article-comment-link">Comments</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 848(words)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 3(minutes)</span>
+	
 
       </div>
     </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <!-- 文章内容 -->
+        <p>关键字EXPLAIN<br>
+使用方法：EXPLAIN SELECT ```````(SQL语句)</p>
+<p>解释：<br>
+MapReduce:表示当前任务执行所用的计算机引擎是MapReduce</p>
+<p>Map Operator Tree:表示当前描述的Map阶段执行的操作信息。</p>
+<p>Reduce Operator Tree:表示当前描述的Reduce阶段的操作信息。</p>
+<p>MAP:</p>
+<p>TableScan:表示对关键字alias声明的结果集。这里代指表明。</p>
+<p>Statistics:表示对当前阶段的统计信息。例如数据行数和数据量，这两个都是预估值。</p>
+<p>Filter Operator:表示在之前操作（TableScan）的结果集上进行数据的过滤。</p>
+<p>Predicate:表示Filter Operator进行过滤时候使用的谓词，例如 pt_dt = 2020-11-11</p>
+<p>Select Operator:表示在之前的结果集上对列进行投影，即列筛选。</p>
+<p>Expressions:表示需要投影的列，即筛选的列。</p>
+<p>OutputColNames:表示输出的列名。</p>
+<p>Group By Operator:表示在之前的结果集上分组聚合。</p>
+<p>Aggreations:表示分组聚合使用的算法.例如 count（）。</p>
+<p>keys:表示分组的列。</p>
+<p>Reduce Output Operator :表示当前描述的是对之前的结果聚合后的输出信息，这里表示Map端聚合后的信息。</p>
+<p>key expressions/value expressions:MapReduce计算引擎，在Map阶段和Reduce阶段输出的都是键-值对的形式，这里key expression和 key expression 和 value expression 分别描述的就是Map阶段输出的键（key） 和值（value）所用的数据列。key expression指代的就是聚合列。 value expression 指代的就是 聚合的函数。</p>
+<p>sort order：表示输出是否进行排序，+表示正序，-表示倒序。</p>
+<p>Map-Reduce partition columns:表示Map阶段输出到Reduce阶段的分区列。在HIVE-SQL中可以用distribute by 指代分区的列。</p>
+<p>Reduce 阶段关键字和Map阶段的含义一样，不同的如下：</p>
+<p>compressed:在 File output operator中这个关键词表示文件输出的结果是否进行压缩，FALSE表示不进行输出压缩。</p>
+<p>table:表示正在操作的表。</p>
+<p>input format/out putformat:分别表示文件输入和输出的文件类型。</p>
+<p>serde:表示读取表数据的序列化和反序列化的方式。</p>
+<p>Explain extended， explain的扩展，展示更加详细的信息，</p>
+<p>抽象语法树（AST）：是SQL转换成Map Reduce或其他计算引擎的任务中的一个过程，在HIVE3.0版本中，AST会从Explain extended 移除，要查看AST需要使用Explain ast.</p>
+<p>作业的依赖关系图，即STAGE DEPENDENCIES其内容和explain所展现的一样。</p>
+<p>每个作业的详细信息，即STAGE PLAINS。在打印每个作业的详细信息时，explain extend会打印更多的信息，除了explain打印出的内容，还包括每个标的HDFS读取路径，每个HIVE表的配置信息等。</p>
+<p>很重要可以查看出表是否被全表扫描：</p>
+<p>explain dependency用于描述一段sql需要的数据来源，输出的是一个json格式的数据，里面包含一下两个部分的内容，</p>
+<p>input_partitions：描述一段sql依赖的数据来源表分区，里面存储的分区名的列表，格式如下：</p>
+<p>{“partitionname”:“库名@表名 @分区列=分区列的值”} ，如果整段sql包含的所有表都是是非分区表，则显示为空。</p>
+<p>input_table：描述一段sql依赖的数据来源表，里面存储的是HIVE表名的列表格式如下：</p>
+<p>{“tablename”:“库名@表名 ”，“tabletype”：表的类型（外部表/内部表）}</p>
+
+      
+    </div>
+    <!-- 版权声明 -->
+    <div class="article-footer">
+      <!-- 版权声明 -->
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://llye-hub.github.io/posts/2369b6cf.html" title="hiveSQL之理解explain参数" target="_blank" rel="external">https://llye-hub.github.io/posts/2369b6cf.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+<!-- 文末个人介绍 -->
+
+
+    </div>
   </article>
-   
+  <!-- 文末评论 -->
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+
+  <!-- 文章底部栏信息 -->
+<nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    <!-- 前一篇 -->
+    
+    <!-- 后一篇 -->
+    
+    <li class="next">
+      <a href="/posts/67bc5d15.html" title="hiveSQL之groupBy语句增强语法grouping sets/CUBE/rollup"><span>Next&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    <!-- 文章目录 -->
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+
+    <!--  打赏相关  -->
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+
+  <!-- 文章分享 -->
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.jpeg" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.jpeg" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- 配置流程图插件mermaid，https://github.com/webappdevelp/hexo-filter-mermaid-diagrams -->
+
+  <script src='https://unpkg.com/mermaid@8.13.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 </main>
 
   <!-- 版权信息 -->
@@ -481,6 +639,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'j0NAwHf3A34KzcPo5xsl4eNQ-gzGzoHsz',
+    appKey: 'VLwhImvGCHAwwqQ18j9mlE0G',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '5' || 10,
+    visitor: true
+  });
+  </script>
+
+     
 
 
 
