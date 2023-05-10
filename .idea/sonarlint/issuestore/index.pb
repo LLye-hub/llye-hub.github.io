@@ -53,8 +53,6 @@ A
 bsource/_posts/阅读笔记/读书笔记之数据仓库工具箱维度建模权威指南-第3版.md,3/4/34b1face8338a6a26d7630eccb87dd855b9507a8
 A
 scaffolds/post.md,e/0/e0b79f4f395c86e16a3c16385e6c61e4eff03c75
-u
-Esource/_posts/数据仓库/关于数据仓库建设的一些思考.md,f/d/fd0182d0dbf745a359ca320d017350bee24396d9
 E
 source/links/index.md,5/1/51b2a658227f587f558338094587f0612f598fa6
 [
