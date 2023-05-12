@@ -65,12 +65,12 @@ grouping set子句可以实现对同一个数据集指定多个group by条件，
 
 `SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b GROUPING SETS ( (a, b), a, b, ( ) )`等同下面语句
 
-> SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b  
-> UNION  
-> SELECT a, null, SUM( c ) FROM tab1 GROUP BY a, null  
-> UNION  
-> SELECT null, b, SUM( c ) FROM tab1 GROUP BY null, b  
-> UNION  
+> SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b
+> UNION
+> SELECT a, null, SUM( c ) FROM tab1 GROUP BY a, null
+> UNION
+> SELECT null, b, SUM( c ) FROM tab1 GROUP BY null, b
+> UNION
 > SELECT null, null, SUM( c ) FROM tab1
 
 **语法**
@@ -267,7 +267,7 @@ order by
 
 ![iT55Jb.png](https://i.328888.xyz/2023/05/05/iT55Jb.png)
 
-从上面的结果可以看到，grouping__id的数值与计算规则得出来的一致。
+从上面的结果可以看到，grouping__id的数值与计算规则得出来的一致。hive2.3版本前关于grouping__id的计算方式可能不同，可以参见[其他博客](https://blog.csdn.net/Dax1n/article/details/104308886)
 
 # grouping sets和union all性能对比
 
@@ -281,6 +281,42 @@ order by
 `…… group by province,city union all …… group by province`计算效果图如下：
 
 ![iaRuvE.png](https://i.328888.xyz/2023/05/06/iaRuvE.png)
+
+分析源码，grouping__id在process的时候将newKeysGroupingSets的值赋予具体的行
+
+```java
+// org/apache/hadoop/hive/ql/exec/GroupByOperator.java
+
+public void process(Object row, int tag) throws HiveException {
+	……
+    if (groupingSetsPresent) {
+    Object[] newKeysArray = newKeys.getKeyArray();
+    Object[] cloneNewKeysArray = new Object[newKeysArray.length];
+    for (int keyPos = 0; keyPos < groupingSetsPosition; keyPos++) {
+    cloneNewKeysArray[keyPos] = newKeysArray[keyPos];
+    }
+
+    for (int groupingSetPos = 0; groupingSetPos < groupingSets.size(); groupingSetPos++) {
+    for (int keyPos = 0; keyPos < groupingSetsPosition; keyPos++) {
+    newKeysArray[keyPos] = null;
+    }
+
+    FastBitSet bitset = groupingSetsBitSet[groupingSetPos];
+    // Some keys need to be left to null corresponding to that grouping set.
+    // 按照bitSet保留原值，对于group by a, b, c 如果bitSet是010，则表示keyPos为0和2就表示ClearBit，需要保留原值，1其他就为null
+    for (int keyPos = bitset.nextClearBit(0); keyPos < groupingSetsPosition;
+          keyPos = bitset.nextClearBit(keyPos+1)) {
+          newKeysArray[keyPos] = cloneNewKeysArray[keyPos];
+      }
+    // 这里就是给当前这条数据赋予GROUPING_ID的值
+    newKeysArray[groupingSetsPosition] = newKeysGroupingSets[groupingSetPos];
+    processKey(row, rowInspector);
+    }
+    } else {
+    processKey(row, rowInspector);
+    }  
+    }
+```
 
 下面通过执行计划分析两种方式的差异。
 
@@ -300,6 +336,7 @@ order by grouping__id
 ```
 
 hive执行计划：
+
 ```text
 Explain                                                                                                      |
 -------------------------------------------------------------------------------------------------------------+
@@ -357,10 +394,10 @@ STAGE PLANS:                                                                    
                                  |
                                                                                                              |
   Stage: Stage-0                                                                                             |
-    ……                                                                                     
+    ……                                                                                   
 ```
 
-从上面的执行计划可以看到，`Stage-1`在读取数据时，在`map`阶段根据`grouping sets`有3个分组维度，将数据量扩充至原来的3倍，然后在`reduce`阶段做`group by province,city`操作。 
+从上面的执行计划可以看到，`Stage-1`在读取数据时，在`map`阶段根据`grouping sets`有3个分组维度，将数据量扩充至原来的3倍，然后在`reduce`阶段做`group by province,city`操作。
 
 ```sql
 explain
@@ -383,6 +420,7 @@ group by
 ```
 
 hive执行计划：
+
 ```text
 Explain                                                                                           |
 --------------------------------------------------------------------------------------------------+
@@ -428,7 +466,7 @@ STAGE PLANS:                                                                    
           TableScan                                                                               |
             Union                                                                                 |
               Statistics: Num rows: 10 Data size: 542 Basic stats: COMPLETE Column stats: NONE    |
-              ……                 
+              ……               
   Stage: Stage-3                                                                                  |
     Map Reduce                                                                                    |
       Map Operator Tree:                                                                          |
@@ -452,38 +490,44 @@ STAGE PLANS:                                                                    
           mode: mergepartial                                                                      |
           outputColumnNames: _col0                                                                |
           Statistics: Num rows: 5 Data size: 271 Basic stats: COMPLETE Column stats: NONE         |
-            ……               
+            ……             
                                                                                                   |
   Stage: Stage-0                                                                                  |
-    ……                       
+    ……                     
 ```
 
 从上面的执行计划可以看到，`Stage-1`和`Stage-3`都是读取数据，再分别按照`group by province,city`和`group by province`做聚合操作，最后在`Stage-2`做`union`操作合并数据。`union all`这种写法对表`travel_data`重复读取两次，查询性能上比`grouping sets`写法要差些。在集群空闲的情况下，对两种写法的sql分别执行5次，得到如下结果：
->grouping sets写法执行5次的耗时:
-> > select province, city, grouping__id from travel_data group by province, city grouping SETS ((province,city),province) order by grouping__id ;
+
+> grouping sets写法执行5次的耗时:
 >
-> Time taken: 54.807 seconds, Fetched: 6 row(s)  
-> Time taken: 56.261 seconds, Fetched: 6 row(s)  
-> Time taken: 52.671 seconds, Fetched: 6 row(s)  
-> Time taken: 62.945 seconds, Fetched: 6 row(s)  
+>> select province, city, grouping__id from travel_data group by province, city grouping SETS ((province,city),province) order by grouping__id ;
+>>
+>
+> Time taken: 54.807 seconds, Fetched: 6 row(s)
+> Time taken: 56.261 seconds, Fetched: 6 row(s)
+> Time taken: 52.671 seconds, Fetched: 6 row(s)
+> Time taken: 62.945 seconds, Fetched: 6 row(s)
 > Time taken: 57.337 seconds, Fetched: 6 row(s)
 
->union all写法执行5次的耗时:
-> >select province,city from travel_data group by province,city union all select province, NULL as city from travel_data group by province;
-> 
-> Time taken: 83.91 seconds, Fetched: 6 row(s)  
-> Time taken: 94.466 seconds, Fetched: 6 row(s)  
-> Time taken: 86.253 seconds, Fetched: 6 row(s)  
-> Time taken: 75.509 seconds, Fetched: 6 row(s)  
+> union all写法执行5次的耗时:
+>
+>> select province,city from travel_data group by province,city union all select province, NULL as city from travel_data group by province;
+>>
+>
+> Time taken: 83.91 seconds, Fetched: 6 row(s)
+> Time taken: 94.466 seconds, Fetched: 6 row(s)
+> Time taken: 86.253 seconds, Fetched: 6 row(s)
+> Time taken: 75.509 seconds, Fetched: 6 row(s)
 > Time taken: 88.633 seconds, Fetched: 6 row(s)
 
 可以算出，`grouping sets`写法的平均耗时为56.8s，`union all`写法的平均耗时为85.7s，耗时是前者的1.5倍。
 
 所以，`grouping sets`写法的sql不仅在表达上更加简洁，在查询性能上也更加高效。
 
-
 # 参考文章
 
 [Hive分析函数详解：GROUPING SETS/CUBE/ROLLUP](https://juejin.cn/post/7223211123961200700)
 
 [从源码深入理解 Spark SQL 中的 Grouping Sets 语句](https://zhuanlan.zhihu.com/p/536981356)
+
+[Hive虚拟列的生成与计算【1】](https://zhuanlan.zhihu.com/p/408391394)
