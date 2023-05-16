@@ -176,11 +176,21 @@ PARTITIONS表存储hive表分区的基本信息。
 
 表字段有：`PART_ID`、`CREATE_TIME`、`LAST_ACCESS_TIME`、`PART_NAME`、`SD_ID`(分区存储ID)、`TBL_ID`、`LINK_TARGET_ID`。
 
+|PART_ID|CREATE_TIME|LAST_ACCESS_TIME|PART_NAME|SD_ID|TBL_ID|
+|-------|-----------|----------------|---------|-----|------|
+|1|1684221232|0|dt=1|18|17|
+|2|1684221294|0|dt=2|19|17|
+
 ## PARTITION_KEYS
 
 PARTITION_KEYS表存储hive表分区的字段信息。
 
 表字段有：`TBL_ID`、`PKEY_COMMENT`、`PKEY_NAME`、`PKEY_TYPE`、`INTEGER_IDX`(分区字段顺序)。
+
+|TBL_ID|PKEY_COMMENT|PKEY_NAME|PKEY_TYPE|INTEGER_IDX|
+|------|------------|---------|---------|-----------|
+|17|NULL|dt|string|0|
+
 
 ## PARTITION_KEY_VALS
 
@@ -188,12 +198,33 @@ PARTITION_KEY_VALS表存储hive表分区字段值。
 
 表字段有：`PART_ID`、`PART_KEY_VAL`(分区字段值)、`INTEGER_IDX`(分区字段值顺序)。
 
+|PART_ID|PART_KEY_VAL|INTEGER_IDX|
+|-------|------------|-----------|
+|1|1|0|
+|2|2|0|
+
 
 ## PARTITION_PARAMS
 
 PARTITIONS表存储hive表分区的属性信息。
 
 表字段有：`PART_ID`、`PARAM_KEY`(numFiles，numRows)、`PARAM_VALUE`。
+
+|PART_ID|PARAM_KEY|PARAM_VALUE|
+|-------|---------|-----------|
+|1|COLUMN_STATS_ACCURATE|{"BASIC_STATS":"true"}|
+|1|numFiles|1|
+|1|numRows|11|
+|1|rawDataSize|4290|
+|1|totalSize|1221|
+|1|transient_lastDdlTime|1684221233|
+|2|COLUMN_STATS_ACCURATE|{"BASIC_STATS":"true"}|
+|2|numFiles|1|
+|2|numRows|4|
+|2|rawDataSize|1564|
+|2|totalSize|1040|
+|2|transient_lastDdlTime|1684221294|
+
 
 # 其他不常用的元数据表
 
