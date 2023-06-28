@@ -4,7 +4,7 @@ tags:
   - java
   - 数据结构
 categories:
-  - 题集
+  - 练习笔记
 toc: true
 abbrlink: 76a5661e
 date: 2023-02-23 16:53:35

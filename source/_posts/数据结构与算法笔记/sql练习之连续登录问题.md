@@ -3,7 +3,7 @@ title: sql练习之连续登录问题
 tags:
   - sql练习
 categories:
-  - 题集
+  - 练习笔记
 toc: true
 abbrlink: 67cc9ac
 date: 2023-03-10 16:22:38
