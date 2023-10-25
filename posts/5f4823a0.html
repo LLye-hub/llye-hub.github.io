@@ -17,24 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>解题思路之回溯算法 | Hexo</title>
-  <meta name="description" content="什么是回溯算法回溯法也可以叫做回溯搜索法，它是一种搜索的方式。回溯是递归的副产品，回溯函数也就是递归函数。   回溯的本质是穷举，穷举所有可能，然后选出我们想要的答案，如果想让回溯法高效一些，可以加一些剪枝的操作，但也改不了回溯法就是穷举的本质。 回溯法，一般可以解决如下几种问题：  组合问题：N个数里面按一定规则找出k个数的集合 切割问题：一个字符串按一定规则有几种切割方式 子集问题：一个N个数">
+  <title>算法思路总结 | Hexo</title>
+  <meta name="description" content="ST表ST表（Sparse Table，稀疏表）是一种数据结构，采用了倍增的思想，在O(nlogn)时间构造一个二维表，可以在O(1)时间查询[l,r]区间的最值。主要用于解决RMQ（Range Minimum&#x2F;Maximum Query，区间最值查询）问题。 实现思路：  设F[i,j]表示[i,i+2^j-1]区间的最值，区间长度为2^j 根据倍增思想，长度为2^j的区间能分成两个长">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解题思路之回溯算法">
-<meta property="og:url" content="https://llye-hub.github.io/posts/49adf57d.html">
+<meta property="og:title" content="算法思路总结">
+<meta property="og:url" content="https://llye-hub.github.io/posts/5f4823a0.html">
 <meta property="og:site_name" content="LLye">
-<meta property="og:description" content="什么是回溯算法回溯法也可以叫做回溯搜索法，它是一种搜索的方式。回溯是递归的副产品，回溯函数也就是递归函数。   回溯的本质是穷举，穷举所有可能，然后选出我们想要的答案，如果想让回溯法高效一些，可以加一些剪枝的操作，但也改不了回溯法就是穷举的本质。 回溯法，一般可以解决如下几种问题：  组合问题：N个数里面按一定规则找出k个数的集合 切割问题：一个字符串按一定规则有几种切割方式 子集问题：一个N个数">
+<meta property="og:description" content="ST表ST表（Sparse Table，稀疏表）是一种数据结构，采用了倍增的思想，在O(nlogn)时间构造一个二维表，可以在O(1)时间查询[l,r]区间的最值。主要用于解决RMQ（Range Minimum&#x2F;Maximum Query，区间最值查询）问题。 实现思路：  设F[i,j]表示[i,i+2^j-1]区间的最值，区间长度为2^j 根据倍增思想，长度为2^j的区间能分成两个长">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/19/VfjGSo.png">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/19/Vf87Gp.png">
-<meta property="article:published_time" content="2023-05-19T06:34:49.000Z">
-<meta property="article:modified_time" content="2023-06-28T02:03:26.203Z">
+<meta property="article:published_time" content="2023-06-15T06:16:02.000Z">
+<meta property="article:modified_time" content="2023-06-28T02:03:26.219Z">
 <meta property="article:author" content="LLye">
-<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.328888.xyz/2023/05/19/VfjGSo.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://llye-hub.github.io/posts/49adf57d.html">
+  <link rel="canonical" href="https://llye-hub.github.io/posts/5f4823a0.html">
   
     <link rel="alternate" href="/atom.xml" title="LLye" type="application/atom+xml">
   
@@ -335,7 +331,7 @@
       <h1 class="toc-title">Catalogue</h1>
         <!--  侧边栏目录样式，辅助函数toc介绍：https://hexo.io/zh-cn/docs/helpers.html  -->
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="toc-text">什么是回溯算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="toc-text">解题步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-text">例子：全排列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%E6%B4%BB%E5%AD%97%E5%8D%B0%E5%88%B7"><span class="toc-text">例子：活字印刷</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#st%E8%A1%A8"><span class="toc-text">ST表</span></a></li></ol>
       
     </nav>
   </div>
@@ -343,14 +339,14 @@
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-数据结构与算法笔记/解题思路之回溯算法" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-数据结构与算法笔记/算法思路总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      解题思路之回溯算法
+      算法思路总结
     </h1>
   
 
@@ -359,8 +355,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/posts/49adf57d.html" class="article-date">
-	  <time datetime="2023-05-19T06:34:49.000Z" itemprop="datePublished">2023-05-19</time>
+	<a href="/posts/5f4823a0.html" class="article-date">
+	  <time datetime="2023-06-15T06:16:02.000Z" itemprop="datePublished">2023-06-15</time>
 	</a>
 </span>
         
@@ -370,11 +366,6 @@
   </span>
 
         
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>
-  </span>
-
 
         
 	<span class="article-read hidden-xs">
@@ -387,16 +378,16 @@
 
 	<span class="article-read hidden-xs">
     	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/posts/49adf57d.html" class="leancloud_visitors"  data-flag-title="解题思路之回溯算法">0</span>
+    	<span id="/posts/5f4823a0.html" class="leancloud_visitors"  data-flag-title="算法思路总结">0</span>
     </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/49adf57d.html#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/5f4823a0.html#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1.2k(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 290(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 5(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
 	
 
       </div>
@@ -404,46 +395,14 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <!-- 文章内容 -->
-        <h1 id="什么是回溯算法"><a href="#什么是回溯算法" class="headerlink" title="什么是回溯算法"></a>什么是回溯算法</h1><p>回溯法也可以叫做回溯搜索法，它是一种搜索的方式。回溯是递归的副产品，回溯函数也就是递归函数。  </p>
-<p>回溯的本质是穷举，穷举所有可能，然后选出我们想要的答案，如果想让回溯法高效一些，可以加一些剪枝的操作，但也改不了回溯法就是穷举的本质。</p>
-<p>回溯法，一般可以解决如下几种问题：</p>
+        <h1 id="st表"><a href="#ST表" class="headerlink" title="ST表"></a>ST表</h1><p>ST表（Sparse Table，稀疏表）是一种数据结构，采用了倍增的思想，在<code>O(nlogn)</code>时间构造一个二维表，可以在<code>O(1)</code>时间查询<code>[l,r]</code>区间的最值。主要用于解决RMQ（Range Minimum&#x2F;Maximum Query，区间最值查询）问题。</p>
+<p>实现思路：</p>
 <ul>
-<li>组合问题：N个数里面按一定规则找出k个数的集合</li>
-<li>切割问题：一个字符串按一定规则有几种切割方式</li>
-<li>子集问题：一个N个数的集合里有多少符合条件的子集</li>
-<li>排列问题：N个数按一定规则全排列，有几种排列方式</li>
-<li>棋盘问题：N皇后，解数独等等</li>
+<li>设<code>F[i,j]</code>表示<code>[i,i+2^j-1]</code>区间的最值，区间长度为<code>2^j</code></li>
+<li>根据倍增思想，长度为<code>2^j</code>的区间能分成两个长度为<code>2^(j-1)</code>的区间，然后分别求两个区间的最值。递推公式：<code>F[i,j]=max(F[i,j-1],F[i+2^(j-1),j-1])</code></li>
 </ul>
-<h1 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h1><p>1、回溯函数模板返回值以及参数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; result;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; path;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">backtracking</span><span class="params">(参数)</span></span><br></pre></td></tr></table></figure>
-
-<p>2、终止条件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (终止条件) &#123;</span><br><span class="line">    存放结果;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3、回溯搜索的遍历过程</p>
-<p><img src="https://i.328888.xyz/2023/05/19/VfjGSo.png" alt="VfjGSo.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;</span><br><span class="line">    处理节点;</span><br><span class="line">    backtracking(路径，选择列表); <span class="comment">// 递归</span></span><br><span class="line">    回溯，撤销处理结果;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>for循环就是遍历集合区间，可以理解一个节点有多少个孩子，这个for循环就执行多少次。<br>backtracking是自己调用自己，实现递归。</p>
-<p>综上，回溯算法的模板框架如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; result;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; path;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">backtracking</span><span class="params">(参数)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (终止条件) &#123;</span><br><span class="line">        存放结果;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;</span><br><span class="line">        处理节点;</span><br><span class="line">        backtracking(路径，选择列表); <span class="comment">// 递归</span></span><br><span class="line">        回溯，撤销处理结果;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="例子全排列"><a href="#例子：全排列" class="headerlink" title="例子：全排列"></a>例子：全排列</h2><p>题目：给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。<br>输入：nums &#x3D; [1,2,3]<br>输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</p>
-<p>抽象成树形结构如下：<br><img src="https://i.328888.xyz/2023/05/19/Vf87Gp.png" alt="Vf87Gp.png"></p>
-<p>代码实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line">	List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();<span class="comment">// 存放符合条件结果的集合</span></span><br><span class="line">	LinkedList&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();<span class="comment">// 用来存放符合条件结果</span></span><br><span class="line">    <span class="type">boolean</span>[] isVisited;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">permute</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        isVisited = <span class="keyword">new</span> <span class="title class_">boolean</span>[nums.length];</span><br><span class="line">        backTracking(nums);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backTracking</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="comment">// 终止条件</span></span><br><span class="line">        <span class="keyword">if</span> (path.size() == nums.length) &#123;</span><br><span class="line">            res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历当前数组</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 处理节点</span></span><br><span class="line">            <span class="keyword">if</span> (isVisited[i]) &#123;  <span class="keyword">continue</span>;&#125;  <span class="comment">// 跳过已排列的元素</span></span><br><span class="line">            isVisited[i] = <span class="literal">true</span>; <span class="comment">// 标记当前位置元素是否已排列</span></span><br><span class="line">            path.add(nums[i]);</span><br><span class="line">            <span class="comment">// 递归</span></span><br><span class="line">            backTracking(nums);</span><br><span class="line">            <span class="comment">// 回溯</span></span><br><span class="line">            path.removeLast();</span><br><span class="line">            isVisited[i] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>扩展</strong>：给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。</p>
-<p>代码实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;List&lt;Integer&gt;&gt;();  <span class="comment">// 存放符合条件结果的集合</span></span><br><span class="line">    LinkedList&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();  <span class="comment">// 存放符合条件结果</span></span><br><span class="line">    Set&lt;Integer&gt; distNums;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">permuteUnique</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="comment">// 计数</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; dict = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> num : nums) &#123;dict.put(num, dict.getOrDefault(num, <span class="number">0</span>)+<span class="number">1</span>);&#125;</span><br><span class="line">        <span class="comment">// 唯一出现的数字</span></span><br><span class="line">        distNums = dict.keySet();</span><br><span class="line">        backTracking(nums,dict);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backTracking</span><span class="params">(<span class="type">int</span>[] nums,Map&lt;Integer, Integer&gt; dict)</span> &#123;</span><br><span class="line">        <span class="comment">// 终止条件</span></span><br><span class="line">        <span class="keyword">if</span> (path.size() == nums.length) &#123;</span><br><span class="line">            res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历所有数字（去重后的）</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : distNums) &#123;</span><br><span class="line">            <span class="comment">// 处理节点</span></span><br><span class="line">            <span class="keyword">if</span> (dict.get(num) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                path.add(num);</span><br><span class="line">                dict.put(num, dict.get(num) - <span class="number">1</span>);</span><br><span class="line">                <span class="comment">// 递归</span></span><br><span class="line">                backTracking(nums, dict);</span><br><span class="line">                <span class="comment">// 回溯</span></span><br><span class="line">                dict.put(num, dict.get(num) + <span class="number">1</span>);</span><br><span class="line">                path.removeLast();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 时间复杂度O(n^2)，空间复杂度O(n)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="例子活字印刷"><a href="#例子：活字印刷" class="headerlink" title="例子：活字印刷"></a>例子：活字印刷</h1><p>题目：你有一套活字字模 tiles，其中每个字模上都刻有一个字母 tiles[i]。返回你可以印出的非空字母序列的数目。<br>输入：”AAB”<br>输出：8  </p>
-<p>代码实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numTilePossibilities</span><span class="params">(String tiles)</span> &#123;</span><br><span class="line">        <span class="comment">// 统计字符个数</span></span><br><span class="line">        Map&lt;Character, Integer&gt; dict = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : tiles.toCharArray()) &#123;</span><br><span class="line">            dict.put(c, dict.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;Character&gt; tile=<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(dict.keySet());</span><br><span class="line">        <span class="keyword">return</span> dfs(tiles.length(),dict,tile)-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i, Map&lt;Character, Integer&gt; dict, Set&lt;Character&gt; tile)</span> &#123;</span><br><span class="line">        <span class="comment">// 递归终止条件，字符用完了</span></span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历当前dict中value大于0的字符（去重后的）</span></span><br><span class="line">        <span class="type">int</span> res=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : tile) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dict.get(c) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                dict.put(c, dict.get(c) - <span class="number">1</span>);</span><br><span class="line">                res += dfs(i - <span class="number">1</span>, dict, tile);</span><br><span class="line">                dict.put(c, dict.get(c) + <span class="number">1</span>); <span class="comment">// 回溯</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 时间复杂度O(n * n!)，空间复杂度O(∑)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E9%A2%98%E7%9B%AE%E5%88%86%E7%B1%BB%E5%A4%A7%E7%BA%B2%E5%A6%82%E4%B8%8B">代码随想录之回溯算法</a></p>
-
+<p>java代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构建ST表</span></span><br><span class="line"><span class="type">int</span>[] lg = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];<span class="comment">// 预处理：以2为底的对数，向下取整</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    lg[i] = lg[i &gt;&gt; <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(Arrays.toString(lg));</span><br><span class="line"></span><br><span class="line"><span class="comment">// f[i][j] 表示 [i - 2^j + 1, i] 区间的最大值</span></span><br><span class="line"><span class="type">int</span>[][] f = <span class="keyword">new</span> <span class="title class_">int</span>[n][lg[n] + <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    f[i][<span class="number">0</span>] = chargeTimes[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= lg[i + <span class="number">1</span>]; ++j) &#123;</span><br><span class="line">        f[i][j] = Math.max(f[i][j - <span class="number">1</span>], f[i - (<span class="number">1</span> &lt;&lt; j - <span class="number">1</span>)][j - <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] tmp : f) &#123;</span><br><span class="line">    System.out.printf(Arrays.toString(tmp));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <!-- 版权声明 -->
@@ -454,7 +413,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://llye-hub.github.io/posts/49adf57d.html" title="解题思路之回溯算法" target="_blank" rel="external">https://llye-hub.github.io/posts/49adf57d.html</a>
+      <a href="https://llye-hub.github.io/posts/5f4823a0.html" title="算法思路总结" target="_blank" rel="external">https://llye-hub.github.io/posts/5f4823a0.html</a>
     </li>
     
     <li class="post-copyright-license">
@@ -488,14 +447,10 @@
   <ul class="pager pull-left">
     <!-- 前一篇 -->
     
-    <li class="prev">
-      <a href="/posts/68201c19.html" title="SQL之distirbute by rand有坑"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Last</span></a>
-    </li>
-    
     <!-- 后一篇 -->
     
     <li class="next">
-      <a href="/posts/2dfa544e.html" title="hiveSQL之深入理解视图"><span>Next&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/posts/da0ecc89.html" title="解题思路之贪心算法"><span>Next&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     <!-- 文章目录 -->
