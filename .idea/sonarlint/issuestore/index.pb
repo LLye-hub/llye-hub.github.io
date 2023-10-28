@@ -103,10 +103,6 @@ a
 1themes/my-theme/layout/_partial/sidebar-about.ejs,9/9/99217bedb0832a9290acd21fa31e9d701e0a9020
 Y
 )themes/my-theme/source/fonts/iconfont.svg,9/e/9e423f8569a10c65b8163fb938fd4db184320dd6
-Z
-*source/_posts/hadoop/hadoop本机安装.md,4/b/4b72381499f2f44e5d51d971dbda6ebef81791c4
-V
-&source/_posts/hive/hive本机安装.md,0/9/09d6ba79bbef554e71227920cf4382211d156bb7
 ;
 _config.yml,c/d/cd089ae45ce870c45e434019e8f1ed4f066cd425
 _
@@ -139,27 +135,9 @@ Z
 *source/_posts/SQL/SparkSQL之conf参数.md,8/2/82d1a730cd6059466ad8b0f7fc612316508cf2ca
 b
 2source/_posts/SQL/SparkSQL优化之数据倾斜.md,a/b/ab0faa7999353a9399c82e3160b7b57f4f7b2b78
-u
-Esource/_posts/数据仓库/关于数据仓库建设的一些思考.md,f/d/fd0182d0dbf745a359ca320d017350bee24396d9
 r
 Bsource/_posts/数据仓库/数仓建模之关于流量域建设.md,c/8/c808908b6e2b29a2c3da521f358fd89eafb1690d
 �
 bsource/_posts/阅读笔记/读书笔记之数据仓库工具箱维度建模权威指南-第3版.md,3/4/34b1face8338a6a26d7630eccb87dd855b9507a8
-f
-6source/_posts/题集/sql练习之连续登录问题.md,e/e/ee04c25fcf6656b975de3a47abdc7b3ad16bae34
-r
-Bsource/_posts/题集/关于Java-PriorityQueue类的使用场景.md,8/f/8fc8a7b14417e14448e347c42d977ffb4f0b3ea8
 b
 2source/_posts/SQL/hiveSQL之理解explain参数.md,b/1/b1862f8104daf24a6ce21819fb3edc228eea2ac9
-v
-Fsource/_posts/在hive中嵌入自定义数据处理函数-UDF函数.md,c/7/c7f57f726ccc94233d066cc1ad67e18ef3b2c17d
-`
-0source/_posts/hiveSQL命令之alter-partition.md,d/1/d1d58ffc0c0600144628873b4cee41525f7ebe80
-T
-$source/_posts/Shell命令之set-e.md,8/1/81cf7c60033a313d2cf668b100d5ce291b7dcb41
-_
-/source/_posts/mysql和hiveSQL的语法差别.md,e/e/ee926ba678055716442382f40ed741b12661fd57
-W
-'source/_posts/内置函数之reflect.md,6/f/6f0012ae909087d6469a9689a7397c48e68d22a8
-]
--source/_posts/hiveSQL之深入理解视图.md,6/4/64ea2cf78cf8f65de60f50deac0974173dfc275d
