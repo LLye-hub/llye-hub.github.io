@@ -26,8 +26,8 @@
 <meta property="og:description" content="前言在Spark作业优化场景中，最常见且比较棘手的就是数据倾斜问题。个人认为，具备数据倾斜调优能力对从事数仓开发人员是必备的基本要求。当然，数据倾斜的场景是比较复杂的，针对不同的数据倾斜有不同的处理方案。 如何辨别和定位数据倾斜从Spark作业的执行计划看，若出现某个task任务比其他task任务执行耗时极其久，比如：某个stage有100个task，其中99个task在1min左右就执行成功，但">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.328888.xyz/2023/02/10/R2j3w.png">
-<meta property="article:published_time" content="2023-02-09T02:19:52.000Z">
-<meta property="article:modified_time" content="2023-02-28T08:29:17.852Z">
+<meta property="article:published_time" content="2023-07-09T02:19:52.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:56:31.674Z">
 <meta property="article:author" content="LLye">
 <meta property="article:tag" content="数据倾斜">
 <meta name="twitter:card" content="summary">
@@ -189,7 +189,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -222,6 +222,25 @@
       <ul class="recent-post-list list-unstyled no-thumbnail">
         <!-- 显示最新前5文章 -->
         
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/SQL/">SQL</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-07-09T02:19:52.000Z" itemprop="datePublished">2023-07-09</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/faab1ad7.html" class="title">SparkSQL优化之数据倾斜</a>
+              </p>
+            </div>
+          </li>
+          
           <li>
             <!-- 显示缩略图 -->
             
@@ -298,25 +317,6 @@
             </div>
           </li>
           
-          <li>
-            <!-- 显示缩略图 -->
-            
-            <div class="item-inner">
-              <!-- 显示文章分类 -->
-              <!-- <p class="item-category">
-                <a class="category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
-              </p> -->
-              <!-- 显示文章日期 -->
-              <p class="item-date">
-                <time datetime="2023-05-17T01:58:48.000Z" itemprop="datePublished">2023-05-17</time>
-              </p>
-              <!-- 显示文章标题 -->
-              <p class="item-title">
-                <a href="/posts/2dfa544e.html" class="title">hiveSQL之深入理解视图</a>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -359,7 +359,7 @@
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/posts/faab1ad7.html" class="article-date">
-	  <time datetime="2023-02-09T02:19:52.000Z" itemprop="datePublished">2023-02-09</time>
+	  <time datetime="2023-07-09T02:19:52.000Z" itemprop="datePublished">2023-07-09</time>
 	</a>
 </span>
         
@@ -462,14 +462,10 @@
   <ul class="pager pull-left">
     <!-- 前一篇 -->
     
-    <li class="prev">
-      <a href="/posts/d6cdfd6a.html" title="解题思路之动态规划"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Last</span></a>
-    </li>
-    
     <!-- 后一篇 -->
     
     <li class="next">
-      <a href="/posts/3ce3d37f.html" title="hiveSQL之生成连续数字"><span>Next&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/posts/5f4823a0.html" title="算法思路总结"><span>Next&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     <!-- 文章目录 -->

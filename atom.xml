@@ -6,7 +6,7 @@
   <link href="https://llye-hub.github.io/atom.xml" rel="self"/>
   
   <link href="https://llye-hub.github.io/"/>
-  <updated>2023-06-28T02:03:26.219Z</updated>
+  <updated>2023-11-08T03:56:31.674Z</updated>
   <id>https://llye-hub.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SparkSQL优化之数据倾斜</title>
+    <link href="https://llye-hub.github.io/posts/faab1ad7.html"/>
+    <id>https://llye-hub.github.io/posts/faab1ad7.html</id>
+    <published>2023-07-09T02:19:52.000Z</published>
+    <updated>2023-11-08T03:56:31.674Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在Spark作业优化场景中，最常见且比较棘手的就是数据倾斜问题。个人认为，具备数据倾斜调优能力对从事数仓开发人员是必备的基本要求。当然，数据倾斜的场景是比较复杂的，针对不同的数据倾斜有不同的处理方案。</p><h1 id="如何辨别和定位数据倾斜"><a href="#如何辨别和定位数据倾斜" class="headerlink" title="如何辨别和定位数据倾斜"></a>如何辨别和定位数据倾斜</h1><p>从Spark作业的执行计划看，若出现某个task任务比其他task任务执行耗时极其久，比如：某个stage有100个task，其中99个task在1min左右就执行成功，但是有1个task却执行了1个小时甚至更久，这种情况显然是出现了数据倾斜。</p><p>数据倾斜问题仅出现在shuffle过程，一些会触发shuffle的算子：distinct、groupByKey、reduceByKey、aggregateByKey、countByKey、join、cogroup、repartition等。<br>对应提交的SparkSQL中可能有distinct、count(distinct)、group by、partition by、join等关键词。</p><h1 id="常见的数据倾斜场景及解决方案"><a href="#常见的数据倾斜场景及解决方案" class="headerlink" title="常见的数据倾斜场景及解决方案"></a>常见的数据倾斜场景及解决方案</h1><h1 id="碰到的数据倾斜案例"><a href="#碰到的数据倾斜案例" class="headerlink" title="碰到的数据倾斜案例"></a>碰到的数据倾斜案例</h1><h2 id="窗口分组数据倾斜"><a href="#窗口分组数据倾斜" class="headerlink" title="窗口分组数据倾斜"></a>窗口分组数据倾斜</h2><p><strong>倾斜场景</strong><br>业务上有一张消息记录表msg_records，sql要求是取下一次回复消息</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> msg_tmp <span class="keyword">as</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span>  id                  <span class="comment">-- 唯一键，消息id</span></span><br><span class="line">           ,from_chat_id        <span class="comment">-- 消息发送者id</span></span><br><span class="line">           ,to_chat_id          <span class="comment">-- 消息接受者id</span></span><br><span class="line">           ,msg_time            <span class="comment">-- 消息时间</span></span><br><span class="line">    <span class="keyword">from</span> msg_records</span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span>  id</span><br><span class="line">       ,msg_time</span><br><span class="line">       ,<span class="built_in">first_value</span>(if(type <span class="operator">=</span> <span class="string">&#x27;reply&#x27;</span>,id,<span class="keyword">null</span>),<span class="literal">true</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> from_chat_id,to_chat_id <span class="keyword">order</span> <span class="keyword">by</span> msg_time,id <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">1</span> following <span class="keyword">and</span> unbounded following) <span class="keyword">as</span> reply_msg_id_n1t <span class="comment">-- 取下一次回复消息</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span>  id</span><br><span class="line">           ,from_chat_id</span><br><span class="line">           ,to_chat_id</span><br><span class="line">           ,msg_time</span><br><span class="line">           ,<span class="string">&#x27;send&#x27;</span> <span class="keyword">as</span> type</span><br><span class="line">    <span class="keyword">from</span> msg_tmp</span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">    <span class="comment">-- 调转，取返回消息</span></span><br><span class="line">    <span class="keyword">select</span>  id</span><br><span class="line">           ,to_chat_id   <span class="keyword">as</span> from_chat_id</span><br><span class="line">           ,from_chat_id <span class="keyword">as</span> to_chat_id</span><br><span class="line">           ,msg_time</span><br><span class="line">           ,<span class="string">&#x27;reply&#x27;</span>      <span class="keyword">as</span> type</span><br><span class="line">    <span class="keyword">from</span> msg_tmp</span><br><span class="line">) t1</span><br></pre></td></tr></table></figure><p><strong>sql执行分析</strong><br>有一个task执行耗时1h<br><img src="https://i.328888.xyz/2023/02/10/R2j3w.png" alt="R2j3w.png"></p><p><strong>数据倾斜分析</strong><br>根据窗口函数的分组<code>from_chat_id + to_chat_id</code>分析，数据量出现严重倾斜，表总数据量1亿多，其中，分组<code>from_chat_id=12 and to_chat_id=81867</code>的数据量有30w，其他分组数据量至多3w。</p><p>另外，分组<code>from_chat_id=12 and to_chat_id=81867</code>的数据在业务上可定义为脏数据，且first_value()函数计算出的值全为null。</p><p>经过测试验证发现，没有 <strong>rows between语句</strong> 或是 <strong>过滤倾斜数据</strong> 时，SQL执行很快</p><p>综上分析，再对照spark执行计划基本可以定位倾斜原因为<strong>窗口数据倾斜和rows between计算耗时</strong></p><p><strong>解决方案</strong><br>结合业务知识，在sql逻辑中过滤<code>from_chat_id=12 and to_chat_id=81867</code>的数据</p><p>最终，任务执行耗时从<code>1h</code>优化至<code>10min</code></p><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html">美团技术团队：Spark性能优化指南——高级篇</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在Spark作业优化场景中，最常见且比较棘手的就是数据倾斜问题。个人认为，具备数据倾斜调优能力对从事数仓开发人员是必备的基本要求。当然，数据</summary>
+      
+    
+    
+    
+    <category term="SQL" scheme="https://llye-hub.github.io/categories/SQL/"/>
+    
+    
+    <category term="数据倾斜" scheme="https://llye-hub.github.io/tags/%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法思路总结</title>
     <link href="https://llye-hub.github.io/posts/5f4823a0.html"/>
     <id>https://llye-hub.github.io/posts/5f4823a0.html</id>
     <published>2023-06-15T06:16:02.000Z</published>
-    <updated>2023-06-28T02:03:26.219Z</updated>
+    <updated>2023-06-28T03:05:20.441Z</updated>
     
     <content type="html"><![CDATA[<h1 id="st表"><a href="#ST表" class="headerlink" title="ST表"></a>ST表</h1><p>ST表（Sparse Table，稀疏表）是一种数据结构，采用了倍增的思想，在<code>O(nlogn)</code>时间构造一个二维表，可以在<code>O(1)</code>时间查询<code>[l,r]</code>区间的最值。主要用于解决RMQ（Range Minimum&#x2F;Maximum Query，区间最值查询）问题。</p><p>实现思路：</p><ul><li>设<code>F[i,j]</code>表示<code>[i,i+2^j-1]</code>区间的最值，区间长度为<code>2^j</code></li><li>根据倍增思想，长度为<code>2^j</code>的区间能分成两个长度为<code>2^(j-1)</code>的区间，然后分别求两个区间的最值。递推公式：<code>F[i,j]=max(F[i,j-1],F[i+2^(j-1),j-1])</code></li></ul><p>java代码如下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构建ST表</span></span><br><span class="line"><span class="type">int</span>[] lg = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];<span class="comment">// 预处理：以2为底的对数，向下取整</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">    lg[i] = lg[i &gt;&gt; <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(Arrays.toString(lg));</span><br><span class="line"></span><br><span class="line"><span class="comment">// f[i][j] 表示 [i - 2^j + 1, i] 区间的最大值</span></span><br><span class="line"><span class="type">int</span>[][] f = <span class="keyword">new</span> <span class="title class_">int</span>[n][lg[n] + <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    f[i][<span class="number">0</span>] = chargeTimes[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= lg[i + <span class="number">1</span>]; ++j) &#123;</span><br><span class="line">        f[i][j] = Math.max(f[i][j - <span class="number">1</span>], f[i - (<span class="number">1</span> &lt;&lt; j - <span class="number">1</span>)][j - <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] tmp : f) &#123;</span><br><span class="line">    System.out.printf(Arrays.toString(tmp));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -451,31 +475,6 @@
     
     
     <category term="shell命令" scheme="https://llye-hub.github.io/tags/shell%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>终端免密登录mysql</title>
-    <link href="https://llye-hub.github.io/posts/b31f5f52.html"/>
-    <id>https://llye-hub.github.io/posts/b31f5f52.html</id>
-    <published>2023-03-14T07:29:49.000Z</published>
-    <updated>2023-03-14T08:04:15.277Z</updated>
-    
-    <content type="html"><![CDATA[<p>参考资料：<a href="https://aijishu.com/a/1060000000088457">Mysql Shell免密登录的思考及实际应用案例</a></p><p>常见终端登录mysql的方式是通过命令<code>mysql -u&#123;user&#125; -p&#123;password&#125;</code>，每次登录都需要输入一长串命令和参数，我觉得麻烦，且这种方式下密码直接暴露出来是不安全的</p><p>虽然也可用命令<code>mysql -u&#123;user&#125; -p</code> + 手动输入密码，也是麻烦的，而且还要记密码</p><p>所以，如果仅用命令<code>mysql</code>即可实现登录，那得多方便</p><p>从网上搜索后发现，可以通过明文配置文件的方式实现mysql免密登录</p><p>具体命令如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编辑配置文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">[mysql]</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">user=xxx</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">password=xxx</span></span><br><span class="line">sudo vi /etc/my.cnf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看文件内容</span></span><br><span class="line">cat  /etc/my.cnf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定mysql server仅从这个配置文件读取参数</span></span><br><span class="line">mysql --defaults-file=/etc/my.cnf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">验证读取配置情况</span></span><br><span class="line">mysql --defaults-file=/etc/my.cnf --print-defaults</span><br></pre></td></tr></table></figure><p><img src="https://i.328888.xyz/2023/03/14/9EVXa.png" alt="9EVXa.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;参考资料：&lt;a href=&quot;https://aijishu.com/a/1060000000088457&quot;&gt;Mysql Shell免密登录的思考及实际应用案例&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;常见终端登录mysql的方式是通过命令&lt;code&gt;mysql -u&amp;#123;user&amp;#1</summary>
-      
-    
-    
-    
-    <category term="shell" scheme="https://llye-hub.github.io/categories/shell/"/>
-    
-    
-    <category term="免密登录" scheme="https://llye-hub.github.io/tags/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/"/>
     
   </entry>
   
