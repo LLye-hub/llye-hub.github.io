@@ -1,3 +1,5 @@
+https://llye-hub.github.io/posts/b06ccdfe.html
+https://llye-hub.github.io/posts/2a5db4cb.html
 https://llye-hub.github.io/posts/faab1ad7.html
 https://llye-hub.github.io/posts/5f4823a0.html
 https://llye-hub.github.io/posts/d6cdfd6a.html
@@ -70,6 +72,7 @@ https://llye-hub.github.io/tags/java/
 https://llye-hub.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/
 https://llye-hub.github.io/tags/LeetCode/
 https://llye-hub.github.io/tags/hexo/
+https://llye-hub.github.io/tags/hive%E5%85%83%E6%95%B0%E6%8D%AE/
 https://llye-hub.github.io/categories/%E8%B5%84%E6%96%99/
 https://llye-hub.github.io/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/
 https://llye-hub.github.io/categories/hadoop/
