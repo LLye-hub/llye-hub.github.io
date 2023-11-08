@@ -1,12 +1,12 @@
+---
 title: hive之常用元数据表
 tags:
-
-- hive元数据
-  categories:
-- hive
-  toc: true
-  date: 2023-05-16 11:30:36
-
+  - hive元数据
+categories:
+  - hive
+toc: true
+abbrlink: b06ccdfe
+date: 2023-05-16 11:30:36
 ---
 
 hive元数据信息通常存储在关系型数据库，常见的是MySQL数据库。hive元数据信息存储在MySQL库的57张表中。
