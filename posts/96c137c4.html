@@ -17,18 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Category: 阅读笔记 | Hexo</title>
-  <meta name="description" content="scsadad">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LLye">
-<meta property="og:url" content="https://llye-hub.github.io/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+  <title>数仓分层 | Hexo</title>
+  <meta name="description" content="为什么要分层试想一下没有数仓分层的以下场景： 有一个需求，计算每个用户日gmv，然后从交易系统抽取数据，并求和计算得到一张 A 表。又来了一个需求，计算每个地区的日gmv，这时发现能再 A 表的基础上能聚合加工得到 B 表。一段时间后，需要每个地区的日净gmv（不包含退款），这时 B 表和 A 表都不能支持，然后又从交易系统重复抽取数据。   上面场景比较简单化，实际中，在没有划分数仓分层的情况下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数仓分层">
+<meta property="og:url" content="https://llye-hub.github.io/posts/96c137c4.html">
 <meta property="og:site_name" content="LLye">
-<meta property="og:description" content="scsadad">
+<meta property="og:description" content="为什么要分层试想一下没有数仓分层的以下场景： 有一个需求，计算每个用户日gmv，然后从交易系统抽取数据，并求和计算得到一张 A 表。又来了一个需求，计算每个地区的日gmv，这时发现能再 A 表的基础上能聚合加工得到 B 表。一段时间后，需要每个地区的日净gmv（不包含退款），这时 B 表和 A 表都不能支持，然后又从交易系统重复抽取数据。   上面场景比较简单化，实际中，在没有划分数仓分层的情况下">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-11-09T13:54:03.000Z">
+<meta property="article:modified_time" content="2023-11-09T15:45:14.655Z">
 <meta property="article:author" content="LLye">
+<meta property="article:tag" content="文章内容的关键词">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://llye-hub.github.io/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+  <link rel="canonical" href="https://llye-hub.github.io/posts/96c137c4.html">
   
     <link rel="alternate" href="/atom.xml" title="LLye" type="application/atom+xml">
   
@@ -322,69 +325,233 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-categories article-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">Category: 阅读笔记</h1>
-      <p class="hidden-xs">Total 1 articles</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/categories">All</a></li>
-          
-          <li><a href="/categories/对照文件存放的目录名称/">对照文件存放的目录名称</a></li>
-          
-          <li><a href="/categories/SQL/">SQL</a></li>
-          
-          <li><a href="/categories/hive/">hive</a></li>
-          
-          <li><a href="/categories/练习笔记/">练习笔记</a></li>
-          
-          <li><a href="/categories/shell/">shell</a></li>
-          
-          <li><a href="/categories/资料/">资料</a></li>
-          
-          <li><a href="/categories/spark/">spark</a></li>
-          
-          <li><a href="/categories/hadoop/">hadoop</a></li>
-          
-          <li><a href="/categories/数据仓库/">数据仓库</a></li>
-          
-          <li><a href="/categories/阅读笔记/">阅读笔记</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="panel panel-default b-no">
-    <div class="panel-heading" role="tab">
-        <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse阅读笔记" aria-expanded="true">
-              <i class="icon icon-folder text-active"></i><i class="icon icon-folder-open text"></i>
-              阅读笔记
-            </a>
-            <small class="text-muted">(Total 1 articles)</small>
-        </h4>
-    </div>
-    <div id="collapse阅读笔记" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading阅读笔记">
-        <div class="panel-body">
-            <div class="collection">
-              
-                
-<a href="/posts/4142350a.html" class="collection-item"  target="_blank"   itemprop="url">
-  <time datetime="2023-03-29T06:31:37.000Z" itemprop="datePublished">2023-03-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 读书笔记之数据仓库工具箱维度建模权威指南(第3版)
-</a>
+  
+  <aside class="sidebar sidebar-toc collapse   in  " id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h1 class="toc-title">Catalogue</h1>
+        <!--  侧边栏目录样式，辅助函数toc介绍：https://hexo.io/zh-cn/docs/helpers.html  -->
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E5%B1%82"><span class="toc-text">为什么要分层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-text">分层的好处</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-text">分层架构</span></a></li></ol>
+      
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-数据仓库/数仓分层" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数仓分层
+    </h1>
+  
+
+      
+      <!-- 文章元数据：日期、分类、标签、访问统计 -->
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/posts/96c137c4.html" class="article-date">
+	  <time datetime="2023-11-09T13:54:03.000Z" itemprop="datePublished">2023-11-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D/" rel="tag">文章内容的关键词</a>
+  </span>
 
 
-              
-            </div>
-        </div>
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/posts/96c137c4.html" class="leancloud_visitors"  data-flag-title="数仓分层">0</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/96c137c4.html#comments" class="article-comment-link">Comments</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1.1k(words)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 3(minutes)</span>
+	
+
+      </div>
     </div>
-</div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <!-- 文章内容 -->
+        <h1 id="为什么要分层"><a href="#为什么要分层" class="headerlink" title="为什么要分层"></a>为什么要分层</h1><p>试想一下没有数仓分层的以下场景：</p>
+<p>有一个需求，计算每个用户日gmv，然后从交易系统抽取数据，并求和计算得到一张 A 表。<br>又来了一个需求，计算每个地区的日gmv，这时发现能再 A 表的基础上能聚合加工得到 B 表。<br>一段时间后，需要每个地区的日净gmv（不包含退款），这时 B 表和 A 表都不能支持，然后又从交易系统重复抽取数据。  </p>
+<p>上面场景比较简单化，实际中，在没有划分数仓分层的情况下，我们可能会做出一套表依赖结构混乱，甚至出现循环依赖的数据体系。</p>
+<p>类比图书管理，如果没有书架和分类标识，图书随意堆叠在一起，每次都需要重复搬书翻找，十分地耗时耗力。当有了书架和分类摆放，每次按照标识就能快速定位书籍位置。</p>
+<p>因此，我们需要一套行之有效的数据组织和管理方法来让我们的数据体系更有序，这就是谈到的数据分层。</p>
+<h1 id="分层的好处"><a href="#分层的好处" class="headerlink" title="分层的好处"></a>分层的好处</h1><p>数据分层并不能解决所有的数据问题，但是，数据分层却可以给我们带来如下的好处：</p>
+<p>（1）<strong>清晰数据结构</strong>：每一个数据分层都有对应的作用域，在使用数据的时候能更方便的定位和理解。<br>（2）<strong>数据血缘追踪</strong>：提供给业务人员或下游系统的数据服务时都是目标数据，目标数据的数据来源一般都来自于多张表数据。若出现目标数据异常时，清晰的血缘关系可以快速定位问题所在。而且，血缘管理也是元数据管理重要的一部分。<br>（2）<strong>减少重复开发</strong>：数据的逐层加工原则，下层包含了上层数据加工所需要的全量数据，这样的加工方式避免了每个数据开发人员都重新从源系统抽取数据进行加工。<br>（3）<strong>数据关系条理化</strong>：源系统间存在复杂的数据关系，比如客户信息同时存在于核心系统、信贷系统、理财系统、资金系统，取数时该如何决策呢？数据仓库会对相同主题的数据进行统一建模，把复杂的数据关系梳理成条理清晰的数据模型，使用时就可避免上述问题了。<br>（4）<strong>屏蔽原始数据的影响</strong>：数据的逐层加工原则，上层的数据都由下一层的数据加工获取，不允许跳级取数。而原始数据位于数仓的最底层，离应用层数据还有多层的数据加工，所以加工应用层数据的过程中就会把原始数据的变更消除掉，保持应用层的稳定性。  </p>
+<h1 id="分层架构"><a href="#分层架构" class="headerlink" title="分层架构"></a>分层架构</h1><p>以呆过的一家公司的数仓架构为例，数仓架构主要分为五层：</p>
+<p>1）<strong>ods：（Operational Data Store）数据贴源层</strong>，将业务系统的数据几乎无处理地存储在数仓系统中，结构上与业务系统基本保持一致。<br>2）<strong>dwd：（Data Warehouse Detail）数据明细层</strong>，用于隔离业务层和数据仓库，保持和ods层一样的颗粒度，对ods层的数据做一些简单的清洗、去空值、标准化处理。<br>3）<strong>dw：（Data Warehouse）数据中间层</strong>，在dwd层的基础上，对数据进行轻微的聚合操作，提升公共指标的复用性，减少重复加工操作。<br>4）<strong>dws：（Data Warehouse Summary）数据汇总层</strong>，以dw层为基础，整合成分析某个主题域的汇总数据，用于提供后续的查询分析服务。该层的数据表会涵盖较多的业务信息，字段较多，一般称为宽表。<br>5）<strong>ads：（Application Data Store）数据应用层</strong>，为各种数据产品提供个性化的统计指标数据。 </p>
+<p>此外，还有<strong>dim层（维表层）</strong>，将事实表中重复出现的属性信息抽取出来，用一张表进行规范管理，查询时再与事实表进行关联。</p>
+
+      
+    </div>
+    <!-- 版权声明 -->
+    <div class="article-footer">
+      <!-- 版权声明 -->
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://llye-hub.github.io/posts/96c137c4.html" title="数仓分层" target="_blank" rel="external">https://llye-hub.github.io/posts/96c137c4.html</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+<!-- 文末个人介绍 -->
+
+
     </div>
   </article>
-   
+  <!-- 文末评论 -->
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+
+  <!-- 文章底部栏信息 -->
+<nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    <!-- 前一篇 -->
+    
+    <li class="prev">
+      <a href="/posts/a74701e.html" title="怎么评价是一个好的数仓设计"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Last</span></a>
+    </li>
+    
+    <!-- 后一篇 -->
+    
+    <li class="next">
+      <a href="/posts/2a5db4cb.html" title="java刷题常用code整理"><span>Next&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    <!-- 文章目录 -->
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn " data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+
+    <!--  打赏相关  -->
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+
+  <!-- 文章分享 -->
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,wechat"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.jpeg" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.jpeg" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- 配置流程图插件mermaid，https://github.com/webappdevelp/hexo-filter-mermaid-diagrams -->
+
+  <script src='https://unpkg.com/mermaid@8.13.8/dist/mermaid.min.js'></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
+
 </main>
 
   <!-- 版权信息 -->
@@ -450,6 +617,39 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: true,
+    notify: true,
+    appId: 'j0NAwHf3A34KzcPo5xsl4eNQ-gzGzoHsz',
+    appKey: 'VLwhImvGCHAwwqQ18j9mlE0G',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '5' || 10,
+    visitor: true
+  });
+  </script>
+
+     
 
 
 

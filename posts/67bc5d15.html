@@ -25,18 +25,11 @@
 <meta property="og:site_name" content="LLye">
 <meta property="og:description" content="本文详细整理了关于group by子句的增强聚合语法grouping sets&#x2F;CUBE&#x2F;rollup的具体用法，语法的hive官方介绍文档 。 测试数据首先声明使用的hive版本为 2.3.9 12345678910111213141516171819202122232425262728293031323334drop table if exists travel_data;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/05/iTpX0x.png">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/06/iatksp.png">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/06/iakvoL.png">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/05/iT55Jb.png">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/06/iacyut.png">
-<meta property="og:image" content="https://i.328888.xyz/2023/05/06/iaRuvE.png">
 <meta property="article:published_time" content="2023-05-05T06:01:45.000Z">
 <meta property="article:modified_time" content="2023-05-12T03:37:35.202Z">
 <meta property="article:author" content="LLye">
 <meta property="article:tag" content="grouping sets">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.328888.xyz/2023/05/05/iTpX0x.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://llye-hub.github.io/posts/67bc5d15.html">
   
@@ -194,7 +187,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -204,7 +197,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop/">hadoop</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hive/">hive</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/">练习笔记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99/">资料</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop/">hadoop</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hive/">hive</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/">练习笔记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99/">资料</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -214,7 +207,7 @@
   <div class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maxcompute/" rel="tag">Maxcompute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORC/" rel="tag">ORC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/" rel="tag">SQL高级语法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grouping-sets/" rel="tag">grouping sets</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%91%BD%E4%BB%A4/" rel="tag">hadoop命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%AE%89%E8%A3%85/" rel="tag">hadoop安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D/" rel="tag">hdfs文件拷贝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hiveSQL/" rel="tag">hiveSQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%85%83%E6%95%B0%E6%8D%AE/" rel="tag">hive元数据</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%AE%89%E8%A3%85/" rel="tag">hive安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell%E5%91%BD%E4%BB%A4/" rel="tag">shell命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark-on-yarn/" rel="tag">spark on yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql%E7%BB%83%E4%B9%A0/" rel="tag">sql练习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" rel="tag">免密登录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" rel="tag">内置函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%99UDF/" rel="tag">写UDF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/" rel="tag">动态分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B9%E5%88%86%E5%8C%BA/" rel="tag">改分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/" rel="tag">数仓建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C/" rel="tag">数据倾斜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D/" rel="tag">文章内容的关键词</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maxcompute/" rel="tag">Maxcompute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORC/" rel="tag">ORC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/" rel="tag">SQL高级语法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grouping-sets/" rel="tag">grouping sets</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%91%BD%E4%BB%A4/" rel="tag">hadoop命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%AE%89%E8%A3%85/" rel="tag">hadoop安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D/" rel="tag">hdfs文件拷贝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hiveSQL/" rel="tag">hiveSQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%85%83%E6%95%B0%E6%8D%AE/" rel="tag">hive元数据</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%AE%89%E8%A3%85/" rel="tag">hive安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell%E5%91%BD%E4%BB%A4/" rel="tag">shell命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark-on-yarn/" rel="tag">spark on yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql%E7%BB%83%E4%B9%A0/" rel="tag">sql练习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" rel="tag">免密登录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" rel="tag">内置函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%99UDF/" rel="tag">写UDF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/" rel="tag">动态分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B9%E5%88%86%E5%8C%BA/" rel="tag">改分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/" rel="tag">数仓建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C/" rel="tag">数据倾斜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D/" rel="tag">文章内容的关键词</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -227,6 +220,44 @@
       <ul class="recent-post-list list-unstyled no-thumbnail">
         <!-- 显示最新前5文章 -->
         
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-11-09T13:55:18.000Z" itemprop="datePublished">2023-11-09</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/a74701e.html" class="title">怎么评价是一个好的数仓设计</a>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            <!-- 显示缩略图 -->
+            
+            <div class="item-inner">
+              <!-- 显示文章分类 -->
+              <!-- <p class="item-category">
+                <a class="category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
+              </p> -->
+              <!-- 显示文章日期 -->
+              <p class="item-date">
+                <time datetime="2023-11-09T13:54:03.000Z" itemprop="datePublished">2023-11-09</time>
+              </p>
+              <!-- 显示文章标题 -->
+              <p class="item-title">
+                <a href="/posts/96c137c4.html" class="title">数仓分层</a>
+              </p>
+            </div>
+          </li>
+          
           <li>
             <!-- 显示缩略图 -->
             
@@ -280,44 +311,6 @@
               <!-- 显示文章标题 -->
               <p class="item-title">
                 <a href="/posts/5f4823a0.html" class="title">算法思路总结</a>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            <!-- 显示缩略图 -->
-            
-            <div class="item-inner">
-              <!-- 显示文章分类 -->
-              <!-- <p class="item-category">
-                <a class="category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
-              </p> -->
-              <!-- 显示文章日期 -->
-              <p class="item-date">
-                <time datetime="2023-05-31T07:37:07.000Z" itemprop="datePublished">2023-05-31</time>
-              </p>
-              <!-- 显示文章标题 -->
-              <p class="item-title">
-                <a href="/posts/da0ecc89.html" class="title">解题思路之贪心算法</a>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            <!-- 显示缩略图 -->
-            
-            <div class="item-inner">
-              <!-- 显示文章分类 -->
-              <!-- <p class="item-category">
-                <a class="category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
-              </p> -->
-              <!-- 显示文章日期 -->
-              <p class="item-date">
-                <time datetime="2023-05-23T09:29:09.000Z" itemprop="datePublished">2023-05-23</time>
-              </p>
-              <!-- 显示文章标题 -->
-              <p class="item-title">
-                <a href="/posts/68201c19.html" class="title">SQL之distirbute by rand有坑</a>
               </p>
             </div>
           </li>
@@ -436,7 +429,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    td.province,</span><br><span class="line">    td.city,</span><br><span class="line">    IF(<span class="keyword">grouping</span>(td.city) <span class="operator">=</span> <span class="number">0</span>,td.city,<span class="string">&#x27;城市&#x27;</span>) <span class="keyword">as</span> city2, <span class="comment">-- 进行空值判断，替换输出更有实际意义的值</span></span><br><span class="line">    <span class="built_in">sum</span>(sales) <span class="keyword">as</span> sales,</span><br><span class="line">    grouping__id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    travel_data td</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">    td.province,</span><br><span class="line">    td.city</span><br><span class="line">    <span class="keyword">grouping</span> SETS (td.province,td.city)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> grouping__id</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
 
 <p>查询结果：</p>
-<p><img src="https://i.328888.xyz/2023/05/05/iTpX0x.png" alt="iTpX0x.png"></p>
+<p>10289</p>
 <ul>
 <li>第一列按照province</li>
 <li>第二列按照city</li>
@@ -453,7 +446,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    province ,</span><br><span class="line">    city,</span><br><span class="line">    <span class="built_in">sum</span>(sales) <span class="keyword">as</span> sales,</span><br><span class="line">    grouping__id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    travel_data</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">    province,city</span><br><span class="line"><span class="keyword">with</span> <span class="keyword">CUBE</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line">    grouping__id</span><br><span class="line">;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 或者下面这种写法</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    province ,</span><br><span class="line">    city,</span><br><span class="line">    <span class="built_in">sum</span>(sales) <span class="keyword">as</span> sales,</span><br><span class="line">    grouping__id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    travel_data</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">    <span class="keyword">CUBE</span>(province,city)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line">    grouping__id</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
 
 <p>查询结果：</p>
-<p><img src="https://i.328888.xyz/2023/05/06/iatksp.png" alt="iatksp.png"></p>
+<p>15315</p>
 <p>从上面的结果数据可以看到，对聚合字段 <code>(province,city)</code>使用CUBE函数后，返回结果有4种聚合维度：<code>(province,city)</code>、<code>(province)</code>、<code>(city)</code>、<code>()</code></p>
 <h1 id="rollup语句"><a href="#rollup语句" class="headerlink" title="rollup语句"></a>rollup语句</h1><p>rollup是CUBE的子集，以最左侧的维度为主，从该维度进行层级聚合，可以实现上钻和下钻的效果</p>
 <p><code>group by a,b,c with rollup</code>假设层次结构是 “a “向下钻到 “b “向下钻到 “c”，执行效果等同于 <code>group by a, b, c grouping sets ( (a, b, c), (a, b), (a), ( ))</code></p>
@@ -461,7 +454,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    province ,</span><br><span class="line">    city,</span><br><span class="line">    sale_date ,</span><br><span class="line">    <span class="built_in">sum</span>(sales) <span class="keyword">as</span> sales,</span><br><span class="line">    grouping__id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    travel_data</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">    province,city,sale_date</span><br><span class="line"><span class="keyword">with</span> <span class="keyword">rollup</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line">    grouping__id</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 或者下面这种写法</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	province ,</span><br><span class="line">	city,</span><br><span class="line">	sale_date ,</span><br><span class="line">	<span class="built_in">sum</span>(sales) <span class="keyword">as</span> sales,</span><br><span class="line">	grouping__id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	travel_data </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">	<span class="keyword">rollup</span>(province,city,sale_date)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line">	grouping__id</span><br></pre></td></tr></table></figure>
 
 <p>查询结果：</p>
-<p><img src="https://i.328888.xyz/2023/05/06/iakvoL.png" alt="iakvoL.png"></p>
+<p>18451</p>
 <p>从上面的结果数据可以看到，对聚合字段 <code>(province,city,sale_date)</code>使用rollup函数后，返回结果有4种聚合维度：<code>(province,city,sale_date)</code>、<code>(province,city)</code>、<code>(province)</code>、<code>()</code></p>
 <h1 id="grouping__id计算方法"><a href="#grouping-id计算方法" class="headerlink" title="grouping__id计算方法"></a>grouping__id计算方法</h1><p>从rollup函数的例子可以看到，grouping__id的数值并不是连续的，下面总结下grouping__id计算方法</p>
 <ol>
@@ -527,13 +520,13 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">	td.province ,</span><br><span class="line">	city,</span><br><span class="line">	td.sale_date ,</span><br><span class="line">	<span class="built_in">sum</span>(sales) <span class="keyword">as</span> sales,</span><br><span class="line">	grouping__id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	travel_data td</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">	<span class="keyword">CUBE</span>(td.province,td.city,td.sale_date)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span></span><br><span class="line">	grouping__id</span><br></pre></td></tr></table></figure>
 
 <p>查询结果：</p>
-<p><img src="https://i.328888.xyz/2023/05/05/iT55Jb.png" alt="iT55Jb.png"></p>
+<p>21146</p>
 <p>从上面的结果可以看到，grouping__id的数值与计算规则得出来的一致。hive2.3版本前关于grouping__id的计算方式可能不同，可以参见<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dax1n/article/details/104308886">其他博客</a></p>
 <h1 id="grouping-sets和union-all性能对比"><a href="#grouping-sets和union-all性能对比" class="headerlink" title="grouping sets和union all性能对比"></a>grouping sets和union all性能对比</h1><p><strong>实现逻辑</strong><br>如果说 <code>union all</code>是先聚合再联合，那么 <code>grouping sets</code>就是先联合再聚合。<code>grouping sets</code>根据 <code>N</code>个分组对每条数据进行计算，不在当前分组的字段置为null，将数据量扩展成原来的 <code>N</code>倍，再按 <code>group by</code>的字段做聚合计算。</p>
 <p><code>group by province,city grouping sets ((province,city),province,())</code>计算效果图如下：</p>
-<p><img src="https://i.328888.xyz/2023/05/06/iacyut.png" alt="iacyut.png"></p>
+<p>21602</p>
 <p><code>…… group by province,city union all …… group by province</code>计算效果图如下：</p>
-<p><img src="https://i.328888.xyz/2023/05/06/iaRuvE.png" alt="iaRuvE.png"></p>
+<p>21729</p>
 <p>分析源码，grouping__id在process的时候将newKeysGroupingSets的值赋予具体的行</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// org/apache/hadoop/hive/ql/exec/GroupByOperator.java</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(Object row, <span class="type">int</span> tag)</span> <span class="keyword">throws</span> HiveException &#123;</span><br><span class="line">	……</span><br><span class="line">    <span class="keyword">if</span> (groupingSetsPresent) &#123;</span><br><span class="line">    Object[] newKeysArray = newKeys.getKeyArray();</span><br><span class="line">    Object[] cloneNewKeysArray = <span class="keyword">new</span> <span class="title class_">Object</span>[newKeysArray.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">keyPos</span> <span class="operator">=</span> <span class="number">0</span>; keyPos &lt; groupingSetsPosition; keyPos++) &#123;</span><br><span class="line">    cloneNewKeysArray[keyPos] = newKeysArray[keyPos];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">groupingSetPos</span> <span class="operator">=</span> <span class="number">0</span>; groupingSetPos &lt; groupingSets.size(); groupingSetPos++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">keyPos</span> <span class="operator">=</span> <span class="number">0</span>; keyPos &lt; groupingSetsPosition; keyPos++) &#123;</span><br><span class="line">    newKeysArray[keyPos] = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">FastBitSet</span> <span class="variable">bitset</span> <span class="operator">=</span> groupingSetsBitSet[groupingSetPos];</span><br><span class="line">    <span class="comment">// Some keys need to be left to null corresponding to that grouping set.</span></span><br><span class="line">    <span class="comment">// 按照bitSet保留原值，对于group by a, b, c 如果bitSet是010，则表示keyPos为0和2就表示ClearBit，需要保留原值，1其他就为null</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">keyPos</span> <span class="operator">=</span> bitset.nextClearBit(<span class="number">0</span>); keyPos &lt; groupingSetsPosition;</span><br><span class="line">          keyPos = bitset.nextClearBit(keyPos+<span class="number">1</span>)) &#123;</span><br><span class="line">          newKeysArray[keyPos] = cloneNewKeysArray[keyPos];</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="comment">// 这里就是给当前这条数据赋予GROUPING_ID的值</span></span><br><span class="line">    newKeysArray[groupingSetsPosition] = newKeysGroupingSets[groupingSetPos];</span><br><span class="line">    processKey(row, rowInspector);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    processKey(row, rowInspector);</span><br><span class="line">    &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
