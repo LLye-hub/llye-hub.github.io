@@ -18,18 +18,17 @@
   
   
   <title>怎么评价是一个好的数仓设计 | Hexo</title>
-  <meta name="description" content="这是一篇加密文章，需要密码才能继续阅读。">
+  <meta name="description" content="好的数仓设计标准应该是数据丰富完善、数据复用性强、数据规范性高。 完善度 dwd层完善度：衡量dwd层的完善度，看ods层被dw&#x2F;dws&#x2F;ads&#x2F;dim层依赖的数量（跨层引用率）。ods层被越多的非dwd层引用，说明越多任务基于原始数据进行开发，各种数据清洗、数据格式化存在重复计算。好的数仓设计一般要求ods层只能被dwd层引用，即跨层引用率为100%。  dw&amp;#x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="怎么评价是一个好的数仓设计">
 <meta property="og:url" content="https://llye-hub.github.io/posts/a74701e.html">
 <meta property="og:site_name" content="LLye">
-<meta property="og:description" content="这是一篇加密文章，需要密码才能继续阅读。">
+<meta property="og:description" content="好的数仓设计标准应该是数据丰富完善、数据复用性强、数据规范性高。 完善度 dwd层完善度：衡量dwd层的完善度，看ods层被dw&#x2F;dws&#x2F;ads&#x2F;dim层依赖的数量（跨层引用率）。ods层被越多的非dwd层引用，说明越多任务基于原始数据进行开发，各种数据清洗、数据格式化存在重复计算。好的数仓设计一般要求ods层只能被dwd层引用，即跨层引用率为100%。  dw&amp;#x">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-15T07:55:18.000Z">
-<meta property="article:modified_time" content="2023-11-09T15:47:17.794Z">
+<meta property="article:modified_time" content="2023-11-09T15:48:25.592Z">
 <meta property="article:author" content="LLye">
-<meta property="article:tag" content="文章内容的关键词">
-<meta property="article:tag" content="private">
+<meta property="article:tag" content="数仓">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
   <link rel="canonical" href="https://llye-hub.github.io/posts/a74701e.html">
@@ -198,7 +197,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop/">hadoop</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hive/">hive</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/">练习笔记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99/">资料</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop/">hadoop</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hive/">hive</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/">练习笔记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%B5%84%E6%96%99/">资料</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读笔记</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -208,7 +207,7 @@
   <div class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maxcompute/" rel="tag">Maxcompute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORC/" rel="tag">ORC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/" rel="tag">SQL高级语法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grouping-sets/" rel="tag">grouping sets</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%91%BD%E4%BB%A4/" rel="tag">hadoop命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%AE%89%E8%A3%85/" rel="tag">hadoop安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D/" rel="tag">hdfs文件拷贝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hiveSQL/" rel="tag">hiveSQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%85%83%E6%95%B0%E6%8D%AE/" rel="tag">hive元数据</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%AE%89%E8%A3%85/" rel="tag">hive安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell%E5%91%BD%E4%BB%A4/" rel="tag">shell命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark-on-yarn/" rel="tag">spark on yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql%E7%BB%83%E4%B9%A0/" rel="tag">sql练习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" rel="tag">免密登录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" rel="tag">内置函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%99UDF/" rel="tag">写UDF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/" rel="tag">动态分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B9%E5%88%86%E5%8C%BA/" rel="tag">改分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/" rel="tag">数仓建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C/" rel="tag">数据倾斜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D/" rel="tag">文章内容的关键词</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maxcompute/" rel="tag">Maxcompute</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORC/" rel="tag">ORC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/" rel="tag">SQL高级语法</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grouping-sets/" rel="tag">grouping sets</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%91%BD%E4%BB%A4/" rel="tag">hadoop命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop%E5%AE%89%E8%A3%85/" rel="tag">hadoop安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D/" rel="tag">hdfs文件拷贝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hiveSQL/" rel="tag">hiveSQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%85%83%E6%95%B0%E6%8D%AE/" rel="tag">hive元数据</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive%E5%AE%89%E8%A3%85/" rel="tag">hive安装</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/private/" rel="tag">private</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell%E5%91%BD%E4%BB%A4/" rel="tag">shell命令</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark-on-yarn/" rel="tag">spark on yarn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql%E7%BB%83%E4%B9%A0/" rel="tag">sql练习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" rel="tag">免密登录</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" rel="tag">内置函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%99UDF/" rel="tag">写UDF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA/" rel="tag">动态分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B9%E5%88%86%E5%8C%BA/" rel="tag">改分区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93/" rel="tag">数仓</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/" rel="tag">数仓建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C/" rel="tag">数据倾斜</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D/" rel="tag">文章内容的关键词</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -246,7 +245,7 @@
             <div class="item-inner">
               <!-- 显示文章分类 -->
               <!-- <p class="item-category">
-                <a class="category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
+                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
               </p> -->
               <!-- 显示文章日期 -->
               <p class="item-date">
@@ -265,7 +264,7 @@
             <div class="item-inner">
               <!-- 显示文章分类 -->
               <!-- <p class="item-category">
-                <a class="category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
+                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
               </p> -->
               <!-- 显示文章日期 -->
               <p class="item-date">
@@ -364,13 +363,13 @@
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E5%AF%B9%E7%85%A7%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E7%9B%AE%E5%BD%95%E5%90%8D%E7%A7%B0/">对照文件存放的目录名称</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/">数据仓库</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/private/" rel="tag">private</a>, <a class="article-tag-link-link" href="/tags/%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E7%9A%84%E5%85%B3%E9%94%AE%E8%AF%8D/" rel="tag">文章内容的关键词</a>
+	<a class="article-tag-link-link" href="/tags/%E6%95%B0%E4%BB%93/" rel="tag">数仓</a>
   </span>
 
 
@@ -391,7 +390,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/a74701e.html#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 19(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 519(words)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
@@ -402,18 +401,26 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <!-- 文章内容 -->
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">
-  <script id="hbeData" type="hbeData" data-hmacdigest="69b5f80c9bf67dac073d779e08444ae21c6c8d93e76814699f8f254eccd9942a">0ae7e196f2221a75e5346dcbb7e124f375ee452f0e1dfe97425ee8d90480f4a82dd0bff8bb1de87bbdf8c8f61ddd661841f5c58968743d3916df3f33556d274a256a6e721056c10f09476bdbf86e6ada76dbf9eeedf09ceb94b8d10e4b21f3def597c869afd96c8a5ab40b0e351adf09b69eab33f2377ddf1701189559cd32899780ab0fd5c35a7cf4d8ba86d23e03322b8e650e4f52ed6ffbd62ca5473d0f44f31df7a781557d5cffbb017db45c77a213b3db3fc20699bebe82b2c52d252702ea3bd4c9d1a36b2a68de048185cea9829ac00cb77ed507c07f4a70f4905c5c81f30ed54cfc73d25af8a5b33dc401f15ed8411ec168ea4c40474b25e74505debbc246e2fbd9530444fe998c1a2755cf65116da03abb24336285e75f524d8e95270a1a6732690fdc5188c35f2bda44c747294bf2f3b1aef88ef1f1149a16bec80d3b7a5fd71cdca3c04e652defb3f737e8db3184cf75f37e037814f9a1616bf457d9e1d7f68edb2fedff7d3aae5a47da4835b2d8368f74443bbf6dbd35ab3e72f31cce1aeffa5885a2f632585a2a1ee98b8732c92dbeb48d0f32dabc2c1af26fb4748642e0bb96a11cef9e929f7acf032c058ac9fabbdd07ce3aa4ebb3186ad68ae43373eff349694c655111ba80c2be273812773f2f6e28717834b108e600344a264f2688f5318c5369d50b0f59e523680dfebaf95c155830faad9bba1b6ffb730192c0bd076d8f82cf364a22234f21aa88059f71496fb92dfc7e5adcde377bc44caa089a98900e0a126c532c0b87896937da9af508e7e4b19f330ea3b30a62294b3114d2090b5e3ea69b0aab0630290b8be36526db352cb28c28f9bfc4d5ec1009259fce4a88c9b4f9d40d16742a5effa8e8fc8550d285d200ed8f67e6dd498708a00a158116f8bcc44f3e87327ce016d41da8d6670f73e956e2806e4b9541e5082715fa621704052651945689adfdaca3e0ce9e4ddd1652296817a5e7fb2c6a489dbbc280072c1c323071942fce740e576a82bd7234603c76cc53d611ba051f0d21fca056d015cfb72031dd9145999666cc03fe7c84ceb095d21da0f7f01dae811ffb3ebc17ffeaa9de414eb5fbe218649ddfc70b75820c4388d13b2b6dd5844753ad27af8d90a49e6b005f2d41a84593bef3cd81ed7918e87d96876634272faf1a54abfb4dc8273a745e565c9e872a6ca62f7eef378ebffecd568befc8872d86bbbd3bc6e31c8d1fb6b1bdec752c5ce2feb095d9ef59dbce88c0d6edaec6a0b7ddf31a03a64c9ff2d18ccaee83b0b9bc39890c8ea27622c0078939c794f017fb1c25fcfe57e9b2dd4b858c1aa4974243845019047e47c2461b31a17d7d62e442aae874e45cb6c68cad6afb56cf264e0e449e27b84d49dc543eb6fb4f0a179b76beb4de2f0c97e9cf5ebec74c8c32d753b8892acc8b3343b09e3841ad84dce1c1f7049a4614e130a9920fd3ce64d81894dec720fc7bf4945c5c4281cf299e5d52038d61e5e66ea9f74fe562add6708fa7544deaa0139317241dfb5a49fc9ef074998d4601f954bb6248d49940fdf1ecd1e5853c38670b3e623d8dc230743c02633e16178658776d3df31e4905375937bc308af0d50d5ac2b874e37044d465d48b6582a75c63c893312ad8fac70cab7192145c0c5b579748df1424ddac584e92aa69be89bae8b59d5d6ed1be2250d6f624b65eabb8b24d78426f28d620d6b7068817931a1bd5f56db45698ac57afc353adba0fd3ce47354078592e944ff6e1f90c286f438be13287a8febc8c4815410c5375492fb8c8fcf50ff5601f88332d0961c65afa818fa97af6403966dbbd151bcf32920f5d6ed69c4b7192e65e2f6b7801dff649c9700efef4aa1b5e1b9cc6b3d2db6670df662def54c5e648046f56c59664b0c41b4541570f6f0f9bb0a07df5d2888ffe126e6d581c37edbf3a761d798dd0cef5bcfa92278412ec5db6b5f953629e73e29e5b747a695c1f27ad3a4c5206aa293529c374fc31ae0af89f04820bab57b51b9bca31a926301dc65fa084c1dcbc32fcea8f350520fc70b024427e9c2916b95af8998512fff28f25e1ca5dcc7d287aae178c7d733023b58c6bb34beda11f2fd595db438c30c8a2552e24764df1a0da131faf3152247af3545e590a42f89fe5b30b62cecaaab5afab6d6f9a2bceba8f84f168fbf81b8b95081831f2a538a82c4cd2725b57f2316bc5cde92e6ec74085826159d10fc6945c87cd0cb27d15ed18313495607f5b2a9e9cb017ce751aeb8a789db58731c5bfcda1ee8cf45669d98fea0daf577a90f85368fec4dca44b398cb19505e0210d2d6b7ae8fb1696f546c67de5cc3ecba28350203cc72717f88f44fbf953cac9bf9f121c45b7567ffb3e3e4fc7fdffcbf96f8c752948ba584a4eac285da378a9dc049f6e7038fb2b4a4b9e0e51f48ec8332c193fba5c7238108b6632938986f6e07e22404c656eabbd3d39195c1c217d1312622f5a7e495536f23f22a21d83cf4043d6c16d763e0a0ba72cc094259846dd7d2842e8dfdaec736be718e3e1bcbd2e3deb5b767251c8c9c71265486ec9a71890c60afcc22b48c6ea70cdbfaf0b6ed2fde484a14d845db2ea3008d5a77d3caab3913fcd506f154de8c12504c18c28ecec88cd37ba91694cd81867a12a07619bb1ba40dd523f54bbc5bc60504d5d09c3eff7f7f36a306e33e0cf799d817a15ff3929b30014a3b6930a3ae9f5b9378b992f71e3a40f6736f990f1207701e506925a68981c7a0b3dce235e70cdc9ef354402ae5ea71887ec1dc47e3af7fe6373b99d5b84b69d312bc7db866fec7dbaa9366870ee98b0b495c790378c771e516a6b40a3cf1d0bd077752eef6c331a8c8c3ab396dbf5a3f4bbb343238262cac702e895d103488b0232c60c772f74c049a6c5cc67278ac1fa335e624614d5cb02537f1a7bdf45f32fb1c0b19c5b80b1a9099ec6390f726f2bf7755bb6a633ecedbbe017b4dfd437ce1482bbee635335e8e6202fd6919619c0a45e17d83649568960b4412d126d9e2c03e92e53181985115cfe7c2dc8977c6fe4d989d346a61d08993c3a0b8cdc876ae68e50329731e627aee28ddb0424b1c471</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <p>好的数仓设计标准应该是数据丰富完善、数据复用性强、数据规范性高。</p>
+<h2 id="完善度"><a href="#完善度" class="headerlink" title="完善度"></a>完善度</h2><ul>
+<li><p>dwd层完善度：衡量dwd层的完善度，看ods层被dw&#x2F;dws&#x2F;ads&#x2F;dim层依赖的数量（跨层引用率）。ods层被越多的非dwd层引用，说明越多任务基于原始数据进行开发，各种数据清洗、数据格式化存在重复计算。好的数仓设计一般要求ods层只能被dwd层引用，即跨层引用率为100%。</p>
+</li>
+<li><p>dw&#x2F;dws&#x2F;ads层完善度：衡量汇总数据的完善度，看仅靠dw&#x2F;dws&#x2F;ads层数据就能满足的查询比例（汇总层查询比例）。若汇总层数据无法满足查询要求，则需要从原始数据自行加工计算。汇总层查询比例不可能完全做到100%，但值越高，说明数仓上层模型建设越完善。</p>
+</li>
+</ul>
+<h2 id="复用度"><a href="#复用度" class="headerlink" title="复用度"></a>复用度</h2><ul>
+<li>模型引用系数：⼀个模型被读取，直接产出下游模型的平均数量。若对所有dwd层表（有下游）的模型引用系数取均值，则可衡量dwd层的模型引用系数。系数越大，说明数仓复用度越高。从数据血缘图来看，自下而上一条线的模型设计复用性差，复杂场景下这条线会极其长，而理想的模型设计应是交织的发散型结构</li>
+</ul>
+<h2 id="规范度"><a href="#规范度" class="headerlink" title="规范度"></a>规范度</h2><ul>
+<li><p>表分层规范：有多少表不能划属到数仓架构的某一层，一般从表命名前缀体现。</p>
+</li>
+<li><p>表命名规范：⼀个规范的表命名应该包括所属分层、所属主题域、调度周期、全量&#x2F;增量等信息。</p>
+</li>
+<li><p>字段命名规范：相同字段应在不同表保持一样的命名。同样是用户id，不能在A表叫user_id，在B表却叫u_id.</p>
+</li>
+</ul>
+<p>数仓规范度越高，表名包含的信息越多，在数据地图查找表越方便，也更利于提高模型表复用度。</p>
+
       
     </div>
     <!-- 版权声明 -->
