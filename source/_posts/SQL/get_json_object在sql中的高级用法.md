@@ -53,8 +53,8 @@ lateral view explode(split(regexp_replace(substr(item_properties,2,length(item_p
 
 
 ## 怎么高级了
-突然有一天在翻看[hive官方文档](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF?spm=a2c4g.11186623.0.0.3c267254Ka3fUh#LanguageManualUDF-get_json_object)时发现path支持的通配符```*```
-[![2Pw2H.png](https://i.328888.xyz/2023/01/17/2Pw2H.png)](https://imgloc.com/i/2Pw2H)
+突然有一天在翻看[hive官方文档](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF?spm=a2c4g.11186623.0.0.3c267254Ka3fUh#LanguageManualUDF-get_json_object)时发现path支持的通配符`*`
+
 ```
 $ : 表示根节点
 . : 表示子节点
