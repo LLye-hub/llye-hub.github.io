@@ -2,7 +2,6 @@
 title: java刷题常用code整理
 tags:
   - 文章内容的关键词
-  - private
 categories:
   - 对照文件存放的目录名称
 toc: true
