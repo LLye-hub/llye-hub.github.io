@@ -186,7 +186,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -248,11 +248,11 @@
               </p> -->
               <!-- 显示文章日期 -->
               <p class="item-date">
-                <time datetime="2023-11-09T13:54:03.000Z" itemprop="datePublished">2023-11-09</time>
+                <time datetime="2023-10-10T10:31:02.000Z" itemprop="datePublished">2023-10-10</time>
               </p>
               <!-- 显示文章标题 -->
               <p class="item-title">
-                <a href="/posts/96c137c4.html" class="title">数仓分层</a>
+                <a href="/posts/2a5db4cb.html" class="title">java刷题常用code整理</a>
               </p>
             </div>
           </li>
@@ -267,11 +267,11 @@
               </p> -->
               <!-- 显示文章日期 -->
               <p class="item-date">
-                <time datetime="2023-10-10T10:31:02.000Z" itemprop="datePublished">2023-10-10</time>
+                <time datetime="2023-09-09T13:54:03.000Z" itemprop="datePublished">2023-09-09</time>
               </p>
               <!-- 显示文章标题 -->
               <p class="item-title">
-                <a href="/posts/2a5db4cb.html" class="title">java刷题常用code整理</a>
+                <a href="/posts/96c137c4.html" class="title">数仓分层</a>
               </p>
             </div>
           </li>
@@ -417,7 +417,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">function3</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> function3(x, n / <span class="number">2</span>) * function3(x, n / <span class="number">2</span>)*x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> function3(x, n / <span class="number">2</span>) * function3(x, n / <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码中有两处递归调用。假设n&#x3D;16，将上面代码的计算过程抽象为二叉树效果如下：</p>
-<p>3874</p>
+<p>3873</p>
 <p>从图中可以看到，共有n-1个节点，也就是说做了n-1次乘法操作，所以时间复杂度还是O(n-1)&#x3D;O(n)。其实，只要再做个小改动就能实现时间复杂度O(logn)的效果。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">function4</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> x;</span><br><span class="line">		<span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> function4(x, n / <span class="number">2</span>);<span class="comment">// 这里相对于function3，是把这个递归操作抽取出来，减少了重复计算</span></span><br><span class="line">		<span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> t * t * x;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t * t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -430,7 +430,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fibonacci</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span>(i &lt;= <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">if</span>(i == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">return</span> fibonacci(i-<span class="number">1</span>) + fibonacci(i-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>假设i&#x3D;5，计算过程抽象为二叉树效果如下：</p>
-<p>7031</p>
+<p>7030</p>
 <p>每次递归中需要的空间是一个常量，并不会随着n的变化而变化，每次递归的空间复杂度就是O(1)。递归第n个斐波那契数的话，递归调用栈的深度是n。所以，上面代码的空间复杂度为O(1*n)&#x3D;O(n)。</p>
 <p>根据树的结点来看，时间复杂度为O(2^n)，随着n的增大，计算时间消耗呈指数上升，这样的性能是最差的。究其原因，代码中调用了2次递归，导致复杂度非常大，从这个角度，可以做如下优化：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fibonacci</span><span class="params">(<span class="type">int</span> first, <span class="type">int</span> second, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> first + second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fibonacci(second, first + second, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
