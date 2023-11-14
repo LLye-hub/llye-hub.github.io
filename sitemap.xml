@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://llye-hub.github.io/posts/2a5db4cb.html</loc>
+    <loc>https://llye-hub.github.io/posts/4e6addf5.html</loc>
     
     <lastmod>2023-11-14</lastmod>
     
@@ -11,9 +11,9 @@
   </url>
   
   <url>
-    <loc>https://llye-hub.github.io/posts/4e6addf5.html</loc>
+    <loc>https://llye-hub.github.io/posts/2a5db4cb.html</loc>
     
-    <lastmod>2023-11-10</lastmod>
+    <lastmod>2023-11-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -656,6 +656,13 @@
   
   <url>
     <loc>https://llye-hub.github.io/tags/%E5%88%B7%E9%A2%98/</loc>
+    <lastmod>2023-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://llye-hub.github.io/tags/%E6%8B%89%E9%93%BE%E8%A1%A8/</loc>
     <lastmod>2023-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
