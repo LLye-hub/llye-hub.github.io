@@ -18,15 +18,15 @@
   
   
   <title>认识一下拉链表 | Hexo</title>
-  <meta name="description" content="scsadad">
+  <meta name="description" content="什么是拉链表拉链表是维护历史状态，以及最新状态数据的一种表。拉链表记录一个事物从开始，一直到当前状态的所有变化的信息，存储的是用户的最基本信息以及每条记录的生命周期。拉链表根据拉链粒度的不同，实际上相当于快照，只不过做了优化，去除了一部分不变的记录，通过拉链表可以很方便的还原出拉链时点的客户记录。拉链表和流水表 ：流水表存放的是一个用户的变更记录，比如在一张流水表中，一天的数据中，会存放一个用户的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="认识一下拉链表">
 <meta property="og:url" content="https://llye-hub.github.io/posts/4e6addf5.html">
 <meta property="og:site_name" content="LLye">
-<meta property="og:description" content="scsadad">
+<meta property="og:description" content="什么是拉链表拉链表是维护历史状态，以及最新状态数据的一种表。拉链表记录一个事物从开始，一直到当前状态的所有变化的信息，存储的是用户的最基本信息以及每条记录的生命周期。拉链表根据拉链粒度的不同，实际上相当于快照，只不过做了优化，去除了一部分不变的记录，通过拉链表可以很方便的还原出拉链时点的客户记录。拉链表和流水表 ：流水表存放的是一个用户的变更记录，比如在一张流水表中，一天的数据中，会存放一个用户的">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-13T04:20:37.000Z">
-<meta property="article:modified_time" content="2023-11-14T05:28:13.241Z">
+<meta property="article:modified_time" content="2023-12-04T07:45:22.431Z">
 <meta property="article:author" content="LLye">
 <meta property="article:tag" content="拉链表">
 <meta name="twitter:card" content="summary">
@@ -332,7 +332,7 @@
       <h1 class="toc-title">Catalogue</h1>
         <!--  侧边栏目录样式，辅助函数toc介绍：https://hexo.io/zh-cn/docs/helpers.html  -->
       
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8B%89%E9%93%BE%E8%A1%A8"><span class="toc-text">什么是拉链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E4%BB%93%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B8%AD%E6%9C%89%E4%B8%8B%E9%9D%A2%E7%9A%84%E9%9C%80%E6%B1%82%E5%9C%BA%E6%99%AF"><span class="toc-text">数仓模型设计中有下面的需求场景：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E4%B9%88%E4%B8%8A%E9%9D%A2%E9%9C%80%E6%B1%82%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E8%AE%BE%E8%AE%A1"><span class="toc-text">那么，上面需求中的数据模型应该怎样设计：</span></a></li></ol></li></ol>
       
     </nav>
   </div>
@@ -390,10 +390,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/posts/4e6addf5.html#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 0(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 662(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
 	
 
       </div>
@@ -401,7 +401,20 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <!-- 文章内容 -->
-        
+        <h1 id="什么是拉链表"><a href="#什么是拉链表" class="headerlink" title="什么是拉链表"></a>什么是拉链表</h1><p>拉链表是维护历史状态，以及最新状态数据的一种表。拉链表记录一个事物从开始，一直到当前状态的所有变化的信息，存储的是用户的最基本信息以及每条记录的生命周期。拉链表根据拉链粒度的不同，实际上相当于快照，只不过做了优化，去除了一部分不变的记录，通过拉链表可以很方便的还原出拉链时点的客户记录。<br><strong>拉链表和流水表</strong> ：流水表存放的是一个用户的变更记录，比如在一张流水表中，一天的数据中，会存放一个用户的每条修改记录，但是在拉链表中只有一条记录。</p>
+<h2 id="数仓模型设计中有下面的需求场景"><a href="#数仓模型设计中有下面的需求场景：" class="headerlink" title="数仓模型设计中有下面的需求场景："></a>数仓模型设计中有下面的需求场景：</h2><p>1、表中的部分字段会被 update，例如：用户的地址，产品的描述信息，品牌信息等等。<br>2、需要查看某一个时间点或是时间段的历史快照信息，例如：查看某一个产品在历史某一时间点的状态；查看某一个用户在过去某一段时间内，更新过几次等等。<br>3、变化的比例和频率不是很大，例如：总共有 1000 万的会员，每天新增和发生变化的有 10 万左右，变化的比例占比很小。</p>
+<h2 id="那么上面需求中的数据模型应该怎样设计"><a href="#那么，上面需求中的数据模型应该怎样设计：" class="headerlink" title="那么，上面需求中的数据模型应该怎样设计："></a>那么，上面需求中的数据模型应该怎样设计：</h2><ul>
+<li><strong>方案一：快照每一天的数据到数仓</strong></li>
+<li>每一天都保存一份全量，将所有数据同步到数仓中，很多记录都是重复保存，没有任何变化</li>
+<li><strong>方案二：每天保留一份全量的切片数据</strong><br>每天一份全量的切片是一种比较稳妥的方案，而且历史数据也在。缺点就是存储空间占用量太大太大了，如果对这边表每天都保留一份全量，那么每次全量中会保存很多不变的信息，对存储是极大的浪费。当然也可以做一些取舍，比如只保留近一个月的数据？但是，需求是无耻的，数据的生命周期不是我们能完全左右的。</li>
+<li><strong>方案三：使用拉链表</strong><ul>
+<li>拉链表不存储冗余的数据，只有某行的数据发生变化，才需要保存下来，相比每次全量同步会节省存储空间</li>
+<li>能够查询到历史快照</li>
+<li>额外的增加了两个时间列（<code>dw_start_date</code>、<code>dw_end_date</code>），为数据行的生命周期</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     <!-- 版权声明 -->
