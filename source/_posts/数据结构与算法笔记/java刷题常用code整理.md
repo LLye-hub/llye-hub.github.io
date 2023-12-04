@@ -1,9 +1,9 @@
 ---
 title: java刷题常用code整理
 tags:
-  - 文章内容的关键词
+  - 刷题
 categories:
-  - 对照文件存放的目录名称
+  - 数据结构与算法笔记
 toc: true
 abbrlink: 2a5db4cb
 date: 2023-10-10 18:31:02
